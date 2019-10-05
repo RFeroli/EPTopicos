@@ -1,4 +1,5 @@
 import re
+from main.stringMode import SAction
 
 class Checker:
     def __init__(self, state, actions):
@@ -11,7 +12,9 @@ class Checker:
             action_args = a[2]
             action_effects = a[3]
 
-            self.testaPrecond(("banana","cafe","rainer"),action_args,action_preconditions,"")
+            string_action=SAction.Action(a)
+            print("ESTADO SUCESSOR:",string_action.perform(("room1","room2","blabla"),["robot-at(room1)"]))
+
             print(action_name)
             print('--- args:')
             print([(t.name, t.type) for t in action_args])
@@ -23,35 +26,3 @@ class Checker:
             print()
         pass
 
-    def testaPrecond(self,tuplaArg,args,preconds,state):
-
-        pares={}
-        for i,j in zip(tuplaArg,args):
-            pares[j.name]=i
-
-        for precond in preconds:
-            predicado=str(precond)
-            for argPrecond in precond.predicate.args:
-                predicado=predicado.replace(argPrecond,pares[argPrecond])
-            pass
-            print("PREDICADO:",predicado)
-
-        #TODO DEVOLVE VERDADEIRO SE O ESTADO CONTEM TODOS
-
-    def getEfects(self, tuplaArg, args, preconds, state):
-
-        pares = {}
-        for i, j in zip (tuplaArg, args):
-            pares[j.name] = i
-
-        for precond in preconds:
-            predicado = str (precond)
-            for argPrecond in precond.predicate.args:
-                predicado = predicado.replace (argPrecond, pares[argPrecond])
-            pass
-            print ("PREDICADO:", predicado)
-
-        # TODO DEVOLVE VERDADEIRO SE O ESTADO CONTEM TODOS
-
-    def next_states(self):
-        pass
