@@ -6,3 +6,4 @@ class Heuristica:
 
 
     def graphplan_nivel_maximo(self):
+        pass

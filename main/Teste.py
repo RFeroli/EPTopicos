@@ -18,7 +18,7 @@ print('Initial state:\n')
 
 state = {}
 for s in initial_state:
-    literal = re.split('[(,)]', s)[:-1]
+    literal = [x.strip() for x in re.split('[(,)]', s)[:-1]]
     pred = literal[0]
     args = literal[1:]
     state[pred] = state.get(pred, [])

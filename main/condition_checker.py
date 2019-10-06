@@ -13,7 +13,7 @@ class Checker:
             action_effects = a[3]
 
             string_action=SAction.Action(a)
-            print("ESTADO SUCESSOR:",string_action.perform(tuplaArg=("room1","room2","blabla"),state=["robot-at(room1)"]))
+            print("ESTADO SUCESSOR:",string_action.perform(tuplaArg=("room2","room1","blabla"),state=["robot-at(room1)"]))
 
             print(action_name)
             print('--- args:')
