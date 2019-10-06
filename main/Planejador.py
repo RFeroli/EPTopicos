@@ -12,6 +12,7 @@ class Planejador:
         saida = {}
 
         for operacao in self.operacoes:
+            # print(operacao)
             saida[operacao] = []
             op = self.operacoes[operacao]
             preconds = op[2]
@@ -49,26 +50,30 @@ class Planejador:
             # print('-------')
             # print(possiveis_estados)
             possiveis_estados_ordenados = []
+            # utilizados1 = {}
             utilizados = set()
-            faltam = []
+            faltam = set()
             faltam_variveis = []
-            for possivel in possiveis_estados:
+            for possivel, pos in zip(possiveis_estados, range(len(possiveis_estados))):
                 est = []
+                # utilizados1[pos] = set()
                 for variavel, tipo in zip(op[0], op[1]):
                     try:
                         i = l.index(variavel)
                         est.append(possivel[i])
+                        # utilizados1[pos].add(possivel[i])
                         utilizados.add(possivel[i])
                     except ValueError:
                         est.append(variavel)
-                        faltam.append(tipo)
+                        faltam.add(tipo)
                         faltam_variveis.append(variavel)
                 # print(est)
                 possiveis_estados_ordenados.append(est)
             # print(possiveis_estados_ordenados)
             # print(utilizados)
+            # print(utilizados1)
             for item in product(possiveis_estados_ordenados,
-                                *[list(self.argumentos[f].difference(utilizados)) for f in faltam]):
+                                *[list(self.argumentos[f]) for f in faltam]):
                 # print(item)
                 s = copy(item[0])
                 contador_indice = 1
@@ -76,9 +81,13 @@ class Planejador:
                     if s[i] in faltam_variveis:
                         s[i] = item[contador_indice]
                         contador_indice += 1
-                #
-                saida[operacao].append(s)
+
+                if len(s) == len(set(s)):
+                    saida[operacao].append(s)
         return saida
+
+    def _tupla_existe(self, lista, tupla):
+        return tupla in lista
 
     def crie_proximo_estado(self, estado_atual, ope):
         # estado atual é um dicionario
@@ -94,7 +103,9 @@ class Planejador:
         for pe in operacao[3]:
             if pe not in proximo_estado:
                 proximo_estado[pe] = []
-            proximo_estado[pe].append(tuple([d[x] for x in operacao[3][pe]]))
+            t = tuple([d[x] for x in operacao[3][pe]])
+            if not self._tupla_existe(proximo_estado[pe], t):
+                proximo_estado[pe].append(t)
 
         for pe in operacao[4]:
             proximo_estado[pe].remove(tuple([d[x] for x in operacao[4][pe]]))
@@ -115,9 +126,13 @@ class Planejador:
         for pe in operacao[3]:
             if pe not in proximo_estado:
                 proximo_estado[pe] = []
-            proximo_estado[pe].append(tuple([d[x] for x in operacao[3][pe]]))
+            t = tuple([d[x] for x in operacao[3][pe]])
+            if not self._tupla_existe(proximo_estado[pe], t):
+                proximo_estado[pe].append(t)
 
         return proximo_estado
+
+
 
 
 estado = {'box-at': [('box4', 'room2'), ('box3', 'room1'), ('box1', 'room1'), ('box2', 'room1')],
@@ -153,3 +168,4 @@ for nivel in range(3):
                 estado = p.crie_proximo_estado_graph_plan(estado, (i, j))
                 print(estado)
                 print('\n')
+
