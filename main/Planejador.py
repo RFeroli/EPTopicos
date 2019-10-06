@@ -26,6 +26,9 @@ class Planejador:
                 print('operacao indisponivel')
                 continue
             # encontre os indices das repeticoes
+
+            # print(l)
+            # print(lista)
             unique_entries = set(l)
             indices = {value: [i for i, v in enumerate(l) if v == value] for value in unique_entries}
             # print(indices)
@@ -34,6 +37,7 @@ class Planejador:
             possiveis_estados = []
             for p in product(*lista):
                 est = list(chain(*p))
+                # print(est)
                 possiveis_estados.append(est)
                 for variavel in indices:
                     lista_igualdades = [est[x] for x in indices[variavel]]
@@ -42,7 +46,8 @@ class Planejador:
                     if not lista_igualdades[1:] == lista_igualdades[:-1]:
                         possiveis_estados.pop()
                         break
-
+            # print('-------')
+            # print(possiveis_estados)
             possiveis_estados_ordenados = []
             utilizados = set()
             faltam = []
@@ -60,9 +65,11 @@ class Planejador:
                         faltam_variveis.append(variavel)
                 # print(est)
                 possiveis_estados_ordenados.append(est)
-
+            # print(possiveis_estados_ordenados)
+            # print(utilizados)
             for item in product(possiveis_estados_ordenados,
                                 *[list(self.argumentos[f].difference(utilizados)) for f in faltam]):
+                # print(item)
                 s = copy(item[0])
                 contador_indice = 1
                 for i in range(len(s)):
@@ -91,8 +98,27 @@ class Planejador:
 
         for pe in operacao[4]:
             proximo_estado[pe].remove(tuple([d[x] for x in operacao[4][pe]]))
+            if not proximo_estado[pe]:
+                del proximo_estado[pe]
 
         return proximo_estado
+
+
+    def crie_proximo_estado_graph_plan(self, estado_atual, ope):
+        nome, parametros = ope
+        proximo_estado = deepcopy(estado_atual)
+        operacao = self.operacoes[nome]
+        d = {}
+        for i, j in zip(operacao[0], parametros):
+            d[i] = j
+
+        for pe in operacao[3]:
+            if pe not in proximo_estado:
+                proximo_estado[pe] = []
+            proximo_estado[pe].append(tuple([d[x] for x in operacao[3][pe]]))
+
+        return proximo_estado
+
 
 estado = {'box-at': [('box4', 'room2'), ('box3', 'room1'), ('box1', 'room1'), ('box2', 'room1')],
           'robot-at': [('room1',)],
@@ -110,14 +136,20 @@ operacoes = {
             'move':[['?x', '?y'], ['room', 'room'], {'robot-at':['?x']}, {'robot-at':('?y', )}, {'robot-at':('?x', )}]}
 
 
-argumentos = {'room': {'room1', 'room2'}, 'box': {'box1', 'box2', 'box3', 'box4'}, 'arm': {'right', 'left'}}
+argumentos = {'room': {'room1', 'room2', 'room3'}, 'box': {'box1', 'box2', 'box3', 'box4'}, 'arm': {'right', 'left'}}
 
 
 
 p = Planejador(argumentos, operacoes)
-possiveis = p.devolve_possiveis_combinacoes(estado)
 
-for i in possiveis:
-    if possiveis[i]:
-        print('{} {}'.format(i, possiveis[i][0]))
-        p.crie_proximo_estado(estado, (i, possiveis[i][0]))
+print(estado)
+for nivel in range(3):
+    print('\n\nNivel {}'.format(nivel))
+    possiveis = p.devolve_possiveis_combinacoes(estado)
+    for i in possiveis:
+        if possiveis[i]:
+            for j in possiveis[i]:
+                print('{} {}'.format(i, j))
+                estado = p.crie_proximo_estado_graph_plan(estado, (i, j))
+                print(estado)
+                print('\n')
