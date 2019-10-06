@@ -2,14 +2,18 @@ from itertools import product, chain
 from copy import copy
 
 estado = {'box-at': [('box4', 'room2'), ('box3', 'room1'), ('box1', 'room1'), ('box2', 'room1')],
-          'robot-at': [('room1',)],
+          'robot-at': [('room2',)],
           'free': [('right',), ('left',)]}
 
 operacoes = {
-             'pickup':[['?x', '?y', '?w'], ['box', 'arm', 'room'], {'free': ['?y'], 'robot-at':['?w'], 'box-at': ['?x', '?w']}],
+             'pickup':[['?x', '?y', '?w'], ['box', 'arm', 'room'],
+                       {'free': ['?y'], 'robot-at':['?w'], 'box-at': ['?x', '?w']},
+                       {'carry':('?x', '?y')}, {'free':('?y',), 'box-at': ('?x', '?w')}],
 
-             'putdown':[['?x', '?y', '?w'], ['box', 'arm', 'room'], {'carry': ['?x', '?y'], 'robot-at':['?w']}],
-'move':[['?x', '?y'], ['room', 'room'], {'robot-at':['?x']}]}
+             'putdown':[['?x', '?y', '?w'], ['box', 'arm', 'room'], {'carry': ['?x', '?y'], 'robot-at':['?w']},
+                        {'free':('?y',), 'box-at': ('?x', '?w')}, {'carry':('?x', '?y')}
+                        ],
+            'move':[['?x', '?y'], ['room', 'room'], {'robot-at':['?x']}, {'robot-at':('?y', )}, {'robot-at':('?x', )}]}
 
 
 argumentos = {'room': {'room1', 'room2'}, 'box': {'box1', 'box2', 'box3', 'box4'}, 'arm': {'right', 'left'}}
