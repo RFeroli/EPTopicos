@@ -9,7 +9,7 @@ class Action:
         variable_map = {}
         for i, j in zip (tuplaArg, self.action_args):
             variable_map[j.name] = i
-            
+
         answer = []
         for precond in self.action_preconditions:
             string_predicate = str (precond)
@@ -56,3 +56,4 @@ class Action:
         else:
             return []
 
+# mpve ()

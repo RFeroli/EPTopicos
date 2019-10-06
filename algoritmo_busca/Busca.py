@@ -1,4 +1,5 @@
 
+
 class SimpleGraph:
     def __init__(self):
         self.edges = {}
