@@ -132,10 +132,49 @@ class Planejador:
 
         return proximo_estado
 
+    def _equivalentes(self, atual, meta):
+        for predicado in meta:
+            if predicado not in atual:
+                return False
+            argumentos = meta[predicado]
+            for arg in argumentos:
+                if arg not in atual[predicado]:
+                    return False
+
+        return True
+
+
+
+    def lista_niveis(self, estado_inicial, estado_final):
+        estado = estado_inicial
+        dict_niveis = []
+        dict_niveis.append(estado_inicial)
+        while True:
+            # print('\n\nNivel {}'.format(nivel))
+            possiveis = p.devolve_possiveis_combinacoes(estado)
+            for i in possiveis:
+                if possiveis[i]:
+                    for j in possiveis[i]:
+                        # print('{} {}'.format(i, j))
+                        estado = p.crie_proximo_estado_graph_plan(estado, (i, j))
+                        # print(estado)
+                        # print('\n')
+            dict_niveis.append(estado)
+            if self._equivalentes(estado, estado_final):
+                break
+
+            if len(dict_niveis) > 1 and self._equivalentes(dict_niveis[-2], dict_niveis[-1]):
+                break
+
+        return dict_niveis
 
 
 
 estado = {'box-at': [('box4', 'room2'), ('box3', 'room1'), ('box1', 'room1'), ('box2', 'room1')],
+          'robot-at': [('room1',)],
+          'free': [('right',), ('left',)]}
+
+meta = {'box-at': [('box4', 'room2'), ('box3', 'room2'), ('box1', 'room2'), ('box2', 'room2')],
           'robot-at': [('room1',)],
           'free': [('right',), ('left',)]}
 
@@ -157,15 +196,21 @@ argumentos = {'room': {'room1', 'room2', 'room3'}, 'box': {'box1', 'box2', 'box3
 
 p = Planejador(argumentos, operacoes)
 
-print(estado)
-for nivel in range(3):
-    print('\n\nNivel {}'.format(nivel))
-    possiveis = p.devolve_possiveis_combinacoes(estado)
-    for i in possiveis:
-        if possiveis[i]:
-            for j in possiveis[i]:
-                print('{} {}'.format(i, j))
-                estado = p.crie_proximo_estado_graph_plan(estado, (i, j))
-                print(estado)
-                print('\n')
+for i in p.lista_niveis(estado, meta):
+    print(i)
 
+# print(p._equivalentes(estado, meta))
+
+
+# print(estado)
+# for nivel in range(3):
+#     print('\n\nNivel {}'.format(nivel))
+#     possiveis = p.devolve_possiveis_combinacoes(estado)
+#     for i in possiveis:
+#         if possiveis[i]:
+#             for j in possiveis[i]:
+#                 print('{} {}'.format(i, j))
+#                 estado = p.crie_proximo_estado_graph_plan(estado, (i, j))
+#                 print(estado)
+#                 print('\n')
+#
