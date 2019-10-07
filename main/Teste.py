@@ -58,10 +58,28 @@ for s in initial_state:
     args = literal[1:]
     state[pred] = state.get(pred, [])
     state[pred].append(tuple(args))
+initial_state = state
 
-print(state)
+goal_state = list(robot_problem.goal)
+
+state = {}
+for s in goal_state:
+    literal = [x.strip() for x in re.split('[(,)]', s)[:-1]]
+    pred = literal[0]
+    args = literal[1:]
+    state[pred] = state.get(pred, [])
+    state[pred].append(tuple(args))
+goal_state = state
+
+print(initial_state)
+print(goal_state)
 print(operations)
 print(arguments)
+
+
+
+
+
 
 # Checker(state, actions)
 
