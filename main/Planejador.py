@@ -174,17 +174,26 @@ class Planejador:
     def heuristica_graphplan_nivel_maximo(self, estado_atual, estado_meta):
         lista, encontrou = self.lista_niveis(estado_atual, estado_meta)
         if encontrou:
-            return len(lista)
+            return len(lista)-1
         return inf
 
-    def heuristica_graphplan_soma_niveis(self, estado_atual, estado_meta):
-        lista, encontrou = self.lista_niveis(estado_atual, estado_meta)
+    def heuristica_graphplan_soma_niveis(self, estado_atual, meta):
+        lista, encontrou = self.lista_niveis(estado_atual, meta)
         if not encontrou:
             return inf
+        estado_meta = deepcopy(meta)
         soma = 0
+        # print(lista)
         for i in range(len(lista)):
+
             for pred in estado_meta:
-                
+                if pred in lista[i]:
+                    comprimento = len(estado_meta[pred])
+                    estado_meta[pred] = [x for x in  estado_meta[pred] if x not in lista[i][pred]]
+                    soma += (i)*(comprimento-len(estado_meta[pred]))
+
+        # print(soma)
+        return soma
 
 
 
@@ -216,8 +225,9 @@ argumentos = {'room': {'room1', 'room2', 'room3'}, 'box': {'box1', 'box2', 'box3
 
 p = Planejador(argumentos, operacoes)
 
-for i in p.lista_niveis(estado, meta):
-    print(i)
+p.heuristica_graphplan_soma_niveis(estado, meta)
+# for i in p.lista_niveis(estado, meta):
+#     print(i)
 
 # print(p._equivalentes(estado, meta))
 
