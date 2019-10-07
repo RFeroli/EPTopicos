@@ -1,5 +1,6 @@
 from itertools import product, chain
 from copy import copy, deepcopy
+from math import inf
 
 class Planejador:
     def __init__(self, argumentos, operacoes):
@@ -149,6 +150,7 @@ class Planejador:
         estado = estado_inicial
         dict_niveis = []
         dict_niveis.append(estado_inicial)
+        encontrou = False
         while True:
             # print('\n\nNivel {}'.format(nivel))
             possiveis = p.devolve_possiveis_combinacoes(estado)
@@ -161,12 +163,30 @@ class Planejador:
                         # print('\n')
             dict_niveis.append(estado)
             if self._equivalentes(estado, estado_final):
+                encontrou = True
                 break
 
             if len(dict_niveis) > 1 and self._equivalentes(dict_niveis[-2], dict_niveis[-1]):
                 break
 
-        return dict_niveis
+        return dict_niveis, encontrou
+
+    def heuristica_graphplan_nivel_maximo(self, estado_atual, estado_meta):
+        lista, encontrou = self.lista_niveis(estado_atual, estado_meta)
+        if encontrou:
+            return len(lista)
+        return inf
+
+    def heuristica_graphplan_soma_niveis(self, estado_atual, estado_meta):
+        lista, encontrou = self.lista_niveis(estado_atual, estado_meta)
+        if not encontrou:
+            return inf
+        soma = 0
+        for i in range(len(lista)):
+            for pred in estado_meta:
+                
+
+
 
 
 
