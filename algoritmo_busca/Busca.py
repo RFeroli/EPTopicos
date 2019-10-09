@@ -96,15 +96,21 @@ def a_star_search(planejador):
     inicio.contador = hsi
     came_from[hsi] = None
     cost_so_far[hsi] = 0
-
+    meta_path = []
     while not frontier.empty():
         current = frontier.get()
         print('Desenpilha {}'.format(current.contador))
         print('Com operacao {}\n\t\t{}\n'.format(current.operacao, current.dict))
         if foi_expandido(nos_expandidos, current.dict):
             continue
+
         nos_expandidos[current.contador] = current
         if planejador.equivalentes(current.dict, planejador.recupera_meta().dict):
+            hsi = make_hash(current.dict)
+            while came_from[hsi] is not None:
+                meta_path.insert(0, nos_expandidos[hsi])
+                hsi = came_from[hsi]
+            pass
             break
 
         for next in planejador.vizinhos(current):
@@ -126,7 +132,7 @@ def a_star_search(planejador):
     return came_from, cost_so_far, nos_expandidos
 
 
-estado = {'box-at': {('box4', 'room2'), ('box3', 'room1'), ('box1', 'room1'), ('box2', 'room1')},
+estado = {'box-at': {('box4', 'room1'), ('box3', 'room1'), ('box1', 'room1'), ('box2', 'room1')},
           'robot-at': {('room1',)},
           'free': {('right',), ('left',)}}
 
@@ -159,20 +165,20 @@ argumentos = {'room': {'room1', 'room2'}, 'box': {'box1', 'box2', 'box3', 'box4'
 
 
 
-p = Planejador(argumentos, operacoes, Estado(estado), Estado(meta), 'max')
+p = Planejador(argumentos, operacoes, Estado(estado), Estado(meta), 'soma')
 # for e in p.vizinhos(Estado(estado)):
 #     print(e.dict)
 #     pass
 c, s, no = a_star_search(p)
 print(c)
 print(no)
-# for nc in c:
-#     print(nc)
-#     if nc:
-#         print(c[nc])
-#         # print('\t'+str(c[nc].contador))
-#         print('\t' + str(c[nc].operacao))
-#         print('\t' + str(c[nc].dict))
+for nc in c:
+    print(nc)
+    if c[nc]:
+        print(c[nc])
+        print('\t'+str(no[nc].contador))
+        print('\t' + str(no[nc].operacao))
+        print('\t' + str(no[nc].dict))
 #     print('\n')
 print(s)
 
