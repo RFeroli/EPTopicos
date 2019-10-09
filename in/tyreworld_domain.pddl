@@ -1,10 +1,9 @@
-;; PDDL Domain Specification  File
-
 (define (domain tyreworld)
 	(:requirements :strips :equality :typing)
     (:types obj - object
 	  tool wheel nut - obj
 	  container hub - object)
+	(:constants wrench jack pump - tool)
     (:predicates (open ?x)
              (closed ?x)
              (have ?x)
