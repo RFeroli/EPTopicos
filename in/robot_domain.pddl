@@ -3,6 +3,7 @@
 (define (domain robot)
 	(:requirements :strips :equality :typing)
 	(:types room box arm)
+	(:constants left right - arm)
 	(:predicates
 		(robot-at ?x - room)
 		(box-at ?x - box ?y - room)
