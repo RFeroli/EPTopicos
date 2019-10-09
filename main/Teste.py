@@ -84,7 +84,7 @@ print(arguments)
 # Checker(state, actions)
 
 
-# tyreworld_domain = parser.parse(path + 'tyreworld_domain.pddl')
+tyreworld_domain = PDDLParser().parse(path + 'tyreworld_domain.pddl')
 # tyreworld_problem = parser.parse(path + 'tyreworld_problem.pddl')
-# print(tyreworld_domain)
+print(tyreworld_domain)
 # print(tyreworld_problem)

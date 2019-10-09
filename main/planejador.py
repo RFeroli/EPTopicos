@@ -2,13 +2,54 @@ from itertools import product, chain
 from copy import copy, deepcopy
 from math import inf
 
+
+class Estado:
+    def __init__(self, dict):
+        self.dict = dict
+        self.contador = -1
+        self.operacao = ''
+
+
 class Planejador:
-    def __init__(self, argumentos, operacoes):
+    def __init__(self, argumentos, operacoes, inicio, meta, heuristica):
         # ambos dicionarios
         self.operacoes = operacoes
         self.argumentos = argumentos
+        self.estado_inicial = inicio
+        self.estado_meta = meta
+        self.heu = heuristica
+
+    def recupera_inicio(self):
+        return self.estado_inicial
+
+    def recupera_meta(self):
+        return self.estado_meta
+
+    def vizinhos(self, estado_atual):
+        possiveis = self.devolve_possiveis_combinacoes(estado_atual.dict)
+        print(possiveis)
+        vizinhos = []
+        for ope in possiveis:
+            for parametros in possiveis[ope]:
+                vizinhos.append(self.crie_proximo_estado(estado_atual.dict, (ope, parametros)))
+
+        return vizinhos
+
+    def custo_movimento(self, atual, final):
+        return 1
+
+    def heuristica(self, atual, final):
+        if self.heu == 'soma':
+            return self.heuristica_graphplan_soma_niveis(atual, final)
+        elif self.heu == 'max':
+            return self.heuristica_graphplan_nivel_maximo(atual, final)
+        elif self.heu == 'FF':
+            return self.heuristica_fast_foward(atual, final)
+
+
 
     def devolve_possiveis_combinacoes(self, estado_atual):
+
 
         saida = {}
 
@@ -25,7 +66,7 @@ class Planejador:
                     l += preconds[precond]
                     lista.append(estado_atual[precond])
             except:
-                print('operacao indisponivel')
+                # print('operacao indisponivel')
                 continue
             # encontre os indices das repeticoes
 
@@ -100,7 +141,6 @@ class Planejador:
         for i, j in zip(operacao[0], parametros):
             d[i] = j
 
-        # print(d)
         for pe in operacao[3]:
             if pe not in proximo_estado:
                 proximo_estado[pe] = []
@@ -113,8 +153,9 @@ class Planejador:
             if not proximo_estado[pe]:
                 del proximo_estado[pe]
 
-        return proximo_estado
-
+        ne = Estado(proximo_estado)
+        ne.operacao = ope
+        return ne
 
     def crie_proximo_estado_graph_plan(self, estado_atual, ope):
         nome, parametros = ope
@@ -133,7 +174,7 @@ class Planejador:
 
         return proximo_estado
 
-    def _equivalentes(self, atual, meta):
+    def equivalentes(self, atual, meta):
         for predicado in meta:
             if predicado not in atual:
                 return False
@@ -153,20 +194,18 @@ class Planejador:
         encontrou = False
         while True:
             # print('\n\nNivel {}'.format(nivel))
-            possiveis = p.devolve_possiveis_combinacoes(estado)
+            possiveis = self.devolve_possiveis_combinacoes(estado)
             for i in possiveis:
                 if possiveis[i]:
                     for j in possiveis[i]:
-                        # print('{} {}'.format(i, j))
-                        estado = p.crie_proximo_estado_graph_plan(estado, (i, j))
-                        # print(estado)
-                        # print('\n')
+                        estado = self.crie_proximo_estado_graph_plan(estado, (i, j))
+
             dict_niveis.append(estado)
-            if self._equivalentes(estado, estado_final):
+            if self.equivalentes(estado.dict, estado_final.dict):
                 encontrou = True
                 break
 
-            if len(dict_niveis) > 1 and self._equivalentes(dict_niveis[-2], dict_niveis[-1]):
+            if len(dict_niveis) > 1 and self.equivalentes(dict_niveis[-2].dict, dict_niveis[-1].dict):
                 break
 
         return dict_niveis, encontrou
@@ -196,36 +235,63 @@ class Planejador:
         return soma
 
 
+    # Fast Foward
+    def lista_niveis_fast_forward(self, estado_inicial, estado_final):
+        estado = estado_inicial
+        dict_niveis = []
+        dict_niveis.append(estado_inicial)
+        encontrou = False
+        while True:
+            # print('\n\nNivel {}'.format(nivel))
+            possiveis = p.devolve_possiveis_combinacoes(estado)
+            for i in possiveis:
+                if possiveis[i]:
+                    for j in possiveis[i]:
+                        estado = p.crie_proximo_estado_graph_plan(estado, (i, j))
+
+            dict_niveis.append(estado)
+            if self.equivalentes(estado, estado_final):
+                encontrou = True
+                break
+
+            if len(dict_niveis) > 1 and self.equivalentes(dict_niveis[-2], dict_niveis[-1]):
+                break
+
+        return dict_niveis, encontrou
 
 
-
-estado = {'box-at': [('box4', 'room2'), ('box3', 'room1'), ('box1', 'room1'), ('box2', 'room1')],
-          'robot-at': [('room1',)],
-          'free': [('right',), ('left',)]}
-
-meta = {'box-at': [('box4', 'room2'), ('box3', 'room2'), ('box1', 'room2'), ('box2', 'room2')],
-          'robot-at': [('room1',)],
-          'free': [('right',), ('left',)]}
-
-# variaveis, tipo, precondicoes, efeitos positivos e efeitos negativos
-operacoes = {
-             'pickup':[['?x', '?y', '?w'], ['box', 'arm', 'room'],
-                       {'free': ['?y'], 'robot-at':['?w'], 'box-at': ['?x', '?w']},
-                       {'carry':('?x', '?y')}, {'free':('?y',), 'box-at': ('?x', '?w')}],
-
-             'putdown':[['?x', '?y', '?w'], ['box', 'arm', 'room'], {'carry': ['?x', '?y'], 'robot-at':['?w']},
-                        {'free':('?y',), 'box-at': ('?x', '?w')}, {'carry':('?x', '?y')}
-                        ],
-            'move':[['?x', '?y'], ['room', 'room'], {'robot-at':['?x']}, {'robot-at':('?y', )}, {'robot-at':('?x', )}]}
+    def heuristica_fast_foward(self, estado_atual, meta):
+        lista, encontrou = self.lista_niveis_fast_forward(estado_atual, meta)
 
 
-argumentos = {'room': {'room1', 'room2', 'room3'}, 'box': {'box1', 'box2', 'box3', 'box4'}, 'arm': {'right', 'left'}}
-
-
-
-p = Planejador(argumentos, operacoes)
-
-p.heuristica_graphplan_soma_niveis(estado, meta)
+# estado = {'box-at': [('box4', 'room2'), ('box3', 'room1'), ('box1', 'room1'), ('box2', 'room1')],
+#           'robot-at': [('room1',)],
+#           'free': [('right',), ('left',)]}
+#
+# meta = {'box-at': [('box4', 'room2'), ('box3', 'room2'), ('box1', 'room2'), ('box2', 'room2')],
+#           'robot-at': [('room1',)],
+#           'free': [('right',), ('left',)]}
+#
+# # variaveis, tipo, precondicoes, efeitos positivos e efeitos negativos
+# operacoes = {
+#              'pickup':[['?x', '?y', '?w'], ['box', 'arm', 'room'],
+#                        {'free': ['?y'], 'robot-at':['?w'], 'box-at': ['?x', '?w']},
+#                        {'carry':('?x', '?y')}, {'free':('?y',), 'box-at': ('?x', '?w')}],
+#
+#              'putdown':[['?x', '?y', '?w'], ['box', 'arm', 'room'], {'carry': ['?x', '?y'], 'robot-at':['?w']},
+#                         {'free':('?y',), 'box-at': ('?x', '?w')}, {'carry':('?x', '?y')}
+#                         ],
+#             'move':[['?x', '?y'], ['room', 'room'], {'robot-at':['?x']}, {'robot-at':('?y', )}, {'robot-at':('?x', )}]}
+#
+#
+# argumentos = {'room': {'room1', 'room2', 'room3'}, 'box': {'box1', 'box2', 'box3', 'box4'}, 'arm': {'right', 'left'}}
+#
+#
+#
+# p = Planejador(argumentos, operacoes, estado, meta, 'max')
+# print(p.vizinhos(estado))
+#
+# p.heuristica_graphplan_soma_niveis(estado, meta)
 # for i in p.lista_niveis(estado, meta):
 #     print(i)
 
