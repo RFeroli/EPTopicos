@@ -9,6 +9,9 @@ class Estado:
         self.contador = -1
         self.operacao = ''
 
+    def __lt__(self, other):
+        return True
+
 
 class Planejador:
     def __init__(self, argumentos, operacoes, inicio, meta, heuristica):
@@ -27,8 +30,9 @@ class Planejador:
 
     def vizinhos(self, estado_atual):
         possiveis = self.devolve_possiveis_combinacoes(estado_atual.dict)
-        print(possiveis)
+        # print(possiveis)
         vizinhos = []
+
         for ope in possiveis:
             for parametros in possiveis[ope]:
                 vizinhos.append(self.crie_proximo_estado(estado_atual.dict, (ope, parametros)))
@@ -40,11 +44,13 @@ class Planejador:
 
     def heuristica(self, atual, final):
         if self.heu == 'soma':
-            return self.heuristica_graphplan_soma_niveis(atual, final)
+            return self.heuristica_graphplan_soma_niveis(atual.dict, final.dict)
         elif self.heu == 'max':
-            return self.heuristica_graphplan_nivel_maximo(atual, final)
+            return self.heuristica_graphplan_nivel_maximo(atual.dict, final.dict)
         elif self.heu == 'FF':
-            return self.heuristica_fast_foward(atual, final)
+            return self.heuristica_fast_foward(atual.dict, final.dict)
+        elif self.heu == 'um':
+            return self.heuristica_um(atual.dict, final.dict)
 
 
 
@@ -143,10 +149,10 @@ class Planejador:
 
         for pe in operacao[3]:
             if pe not in proximo_estado:
-                proximo_estado[pe] = []
+                proximo_estado[pe] = set()
             t = tuple([d[x] for x in operacao[3][pe]])
             if not self._tupla_existe(proximo_estado[pe], t):
-                proximo_estado[pe].append(t)
+                proximo_estado[pe].add(t)
 
         for pe in operacao[4]:
             proximo_estado[pe].remove(tuple([d[x] for x in operacao[4][pe]]))
@@ -167,10 +173,10 @@ class Planejador:
 
         for pe in operacao[3]:
             if pe not in proximo_estado:
-                proximo_estado[pe] = []
+                proximo_estado[pe] = set()
             t = tuple([d[x] for x in operacao[3][pe]])
             if not self._tupla_existe(proximo_estado[pe], t):
-                proximo_estado[pe].append(t)
+                proximo_estado[pe].add(t)
 
         return proximo_estado
 
@@ -201,11 +207,11 @@ class Planejador:
                         estado = self.crie_proximo_estado_graph_plan(estado, (i, j))
 
             dict_niveis.append(estado)
-            if self.equivalentes(estado.dict, estado_final.dict):
+            if self.equivalentes(estado, estado_final):
                 encontrou = True
                 break
 
-            if len(dict_niveis) > 1 and self.equivalentes(dict_niveis[-2].dict, dict_niveis[-1].dict):
+            if len(dict_niveis) > 1 and self.equivalentes(dict_niveis[-2], dict_niveis[-1]):
                 break
 
         return dict_niveis, encontrou
@@ -215,6 +221,9 @@ class Planejador:
         if encontrou:
             return len(lista)-1
         return inf
+
+    def heuristica_um(self, estado_atual, meta):
+        return 1
 
     def heuristica_graphplan_soma_niveis(self, estado_atual, meta):
         lista, encontrou = self.lista_niveis(estado_atual, meta)
