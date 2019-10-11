@@ -68,11 +68,13 @@ class Planejador:
                 for precond in preconds:
                     for p in preconds[precond]:
                         aux = [x for x in p if "?" not in x]
-                        for el in aux:
-                            if el not in estado_atual[precond]:
-                                raise Exception('')
-                        l += [x for x in p if "?" in x]
-                        lista.append(estado_atual[precond])
+                        if aux:
+                            for el in aux:
+                                if (el, ) not in estado_atual[precond]:
+                                    raise Exception('')
+                        else:
+                            l += [x for x in p if "?" in x]
+                            lista.append(estado_atual[precond])
             except:
                 # print('operacao indisponivel')
                 continue
@@ -152,7 +154,7 @@ class Planejador:
         for pe in operacao[3]:
             if pe not in proximo_estado:
                 proximo_estado[pe] = set()
-            t = tuple([d[x] for x in operacao[3][pe]])
+            t = tuple([d[x] if x in d else x for x in operacao[3][pe]])
             if not self._tupla_existe(proximo_estado[pe], t):
                 proximo_estado[pe].add(t)
 
@@ -178,7 +180,8 @@ class Planejador:
         for pe in operacao[3]:
             if pe not in proximo_estado:
                 proximo_estado[pe] = set()
-            t = tuple([d[x] for x in operacao[3][pe]])
+            t = tuple([d[x] if x in d else x for x in operacao[3][pe]])
+            # t = tuple([d[x] for x in operacao[3][pe]])
             if not self._tupla_existe(proximo_estado[pe], t):
                 proximo_estado[pe].add(t)
 

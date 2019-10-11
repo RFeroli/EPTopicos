@@ -36,7 +36,7 @@ estado = {'in': {('jack', 'boot'), ('pump', 'boot'), ('wrench', 'boot'), ('r1', 
           'intact': {('r1',)},
           'not-inflated': {('r1',)},
           'tight': {('nuts1', 'the-hub1')},
-          'fastedned': {('the-hub1',)}
+          'fastened': {('the-hub1',)}
           }
 
 
@@ -124,7 +124,7 @@ argumentos = {
 
 
 
-p = Planejador(argumentos, operacoes, Estado(estado), Estado(meta), 'um')
+p = Planejador(argumentos, operacoes, Estado(estado), Estado(meta), 'soma')
 
 import time
 tempo_inicial = time.time()
