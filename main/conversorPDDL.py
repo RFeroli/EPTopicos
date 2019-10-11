@@ -1,7 +1,4 @@
 import re
-import pyparsing
-
-
 
 class Conversor:
 
@@ -153,6 +150,7 @@ class Conversor:
         is_type = False
         for j in params:
             if is_type:
+                is_type = False
                 action[action_name][0].extend(ls.copy())
                 action[action_name][1].extend([j] * len(ls))
                 ls = []
@@ -170,12 +168,12 @@ class Conversor:
         for j in effects:
             e = j
             positive = 0
-            match = re.search(r'not \(([a-z- ?]*)\)$', j)
+            match = re.search(r'not ?\(([a-z- ?]*)\)$', j)
             if match:
                 positive = 1
                 e = match.group(1)
             e = e.split(' ')
-            action[action_name][3+positive][e[0]] = set(e[1:])
+            action[action_name][3+positive][e[0]] = tuple(e[1:])
         return action
 
     def parse_problem_domain(self, s):
@@ -198,7 +196,12 @@ class Conversor:
                 is_type = True
             else:
                 obj_list.append(arg)
-        return objects
+        if self.domain['has_hierarchy']:
+            for k,v in self.domain['type_hierarchy'].items():
+                objects[k] = objects.get(k, set())
+                for x in v:
+                    objects[k].update(objects.get(x, set()))
+            return objects
 
     def parse_state(self, s):
         state = {}
