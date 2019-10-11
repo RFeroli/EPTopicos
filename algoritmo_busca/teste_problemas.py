@@ -111,14 +111,15 @@ operacoes = {
 }
 
 
-argumentos = {  'object':{'hub', 'container'},
-                'obj': {'tool', 'wheel', 'nut', 'hub', 'container'},
+
+argumentos = {
               'tool': {'wrench', 'jack', 'pump'},
+              'obj': {'wrench', 'jack', 'pump', 'nuts1', 'r1', 'w1'},
               'hub': {'the-hub1'},
               'nut': {'nuts1'},
               'container': {'boot'},
               'wheel': {'r1', 'w1'},
-              }
+}
 
 
 
