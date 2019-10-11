@@ -1,6 +1,6 @@
 ;; PDDL Problem File
 
-(define (problem tireworld-1)
+(define (problem tireworld1)
     (:domain tyreworld)
     (:objects
     	tool wheel nut - obj

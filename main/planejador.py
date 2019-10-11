@@ -10,7 +10,7 @@ class Estado:
         self.operacao = ''
 
     def __lt__(self, other):
-        return True
+        return False
 
 
 class Planejador:
@@ -30,7 +30,7 @@ class Planejador:
 
     def vizinhos(self, estado_atual):
         possiveis = self.devolve_possiveis_combinacoes(estado_atual.dict)
-        # print(possiveis)
+        print(possiveis)
         vizinhos = []
 
         for ope in possiveis:
@@ -53,14 +53,11 @@ class Planejador:
             return self.heuristica_um(atual.dict, final.dict)
 
 
-
     def devolve_possiveis_combinacoes(self, estado_atual):
-
-
         saida = {}
 
         for operacao in self.operacoes:
-            # print(operacao)
+            print(operacao)
             saida[operacao] = []
             op = self.operacoes[operacao]
             preconds = op[2]
@@ -69,8 +66,13 @@ class Planejador:
             try:
                 l = []
                 for precond in preconds:
-                    l += preconds[precond]
-                    lista.append(estado_atual[precond])
+                    for p in preconds[precond]:
+                        aux = [x for x in p if "?" not in x]
+                        for el in aux:
+                            if el not in estado_atual[precond]:
+                                raise Exception('')
+                        l += [x for x in p if "?" in x]
+                        lista.append(estado_atual[precond])
             except:
                 # print('operacao indisponivel')
                 continue
@@ -80,7 +82,7 @@ class Planejador:
             # print(lista)
             unique_entries = set(l)
             indices = {value: [i for i, v in enumerate(l) if v == value] for value in unique_entries}
-            # print(indices)
+            print(indices)
 
             # guarda os estados que respeitam as restricoes
             possiveis_estados = []
@@ -155,7 +157,9 @@ class Planejador:
                 proximo_estado[pe].add(t)
 
         for pe in operacao[4]:
-            proximo_estado[pe].remove(tuple([d[x] for x in operacao[4][pe]]))
+            print(1)
+
+            proximo_estado[pe].remove(tuple([d[x] if x in d else x for x in operacao[4][pe]]))
             if not proximo_estado[pe]:
                 del proximo_estado[pe]
 
@@ -252,11 +256,11 @@ class Planejador:
         encontrou = False
         while True:
             # print('\n\nNivel {}'.format(nivel))
-            possiveis = p.devolve_possiveis_combinacoes(estado)
+            possiveis = self.devolve_possiveis_combinacoes(estado)
             for i in possiveis:
                 if possiveis[i]:
                     for j in possiveis[i]:
-                        estado = p.crie_proximo_estado_graph_plan(estado, (i, j))
+                        estado = self.crie_proximo_estado_graph_plan(estado, (i, j))
 
             dict_niveis.append(estado)
             if self.equivalentes(estado, estado_final):
@@ -271,6 +275,8 @@ class Planejador:
 
     def heuristica_fast_foward(self, estado_atual, meta):
         lista, encontrou = self.lista_niveis_fast_forward(estado_atual, meta)
+
+
 
 
 # estado = {'box-at': [('box4', 'room2'), ('box3', 'room1'), ('box1', 'room1'), ('box2', 'room1')],
