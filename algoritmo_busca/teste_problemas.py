@@ -1,32 +1,32 @@
 from algoritmo_busca.busca import Busca
 from main.planejador import Estado, Planejador
-
-
-
-estado = {'box-at': {('box1', 'room1'), ('box2', 'room1'), ('box3', 'room1'), ('box4', 'room1')},
-          'robot-at': {('room1',)},
-          'free': {('right',), ('left',)}}
-
-meta = {'box-at': {('box1', 'room2'), ('box2', 'room2'), ('box3', 'room2'), ('box4', 'room2')},
-          'robot-at': {('room1',)},
-          'free': {('right',), ('left', )}}
-
-
-# variaveis, tipo, precondicoes, efeitos positivos e efeitos negativos
-operacoes = {
-             'pickup':[['?x', '?y', '?w'], ['box', 'arm', 'room'],
-                       {'free': [['?y']], 'robot-at':[['?w']], 'box-at': [['?x', '?w']]},
-                       {'carry':('?x', '?y')}, {'free':('?y',), 'box-at': ('?x', '?w')}],
-
-             'putdown':[['?x', '?y', '?w'], ['box', 'arm', 'room'], {'carry': [['?x', '?y']], 'robot-at':[['?w']]},
-                        {'free':('?y',), 'box-at': ('?x', '?w')}, {'carry':('?x', '?y')}
-                        ],
-            'move':[['?x', '?y'], ['room', 'room'], {'robot-at':[['?x']]}, {'robot-at':('?y', )}, {'robot-at':('?x', )}]}
-
-
-argumentos = {'room': {'room1', 'room2'}, 'box': {'box1', 'box2', 'box3', 'box4'}, 'arm': {'right', 'left'}}
+from main.conversorPDDL import Conversor
 
 #
+# estado = {'box-at': {('box1', 'room1'), ('box2', 'room1'), ('box3', 'room1'), ('box4', 'room1')},
+#           'robot-at': {('room1',)},
+#           'free': {('right',), ('left',)}}
+#
+# meta = {'box-at': {('box1', 'room2'), ('box2', 'room2'), ('box3', 'room2'), ('box4', 'room2')},
+#           'robot-at': {('room1',)},
+#           'free': {('right',), ('left', )}}
+#
+#
+# # variaveis, tipo, precondicoes, efeitos positivos e efeitos negativos
+# operacoes = {
+#              'pickup':[['?x', '?y', '?w'], ['box', 'arm', 'room'],
+#                        {'free': [['?y']], 'robot-at':[['?w']], 'box-at': [['?x', '?w']]},
+#                        {'carry':('?x', '?y')}, {'free':('?y',), 'box-at': ('?x', '?w')}],
+#
+#              'putdown':[['?x', '?y', '?w'], ['box', 'arm', 'room'], {'carry': [['?x', '?y']], 'robot-at':[['?w']]},
+#                         {'free':('?y',), 'box-at': ('?x', '?w')}, {'carry':('?x', '?y')}
+#                         ],
+#             'move':[['?x', '?y'], ['room', 'room'], {'robot-at':[['?x']]}, {'robot-at':('?y', )}, {'robot-at':('?x', )}]}
+#
+#
+# argumentos = {'room': {'room1', 'room2'}, 'box': {'box1', 'box2', 'box3', 'box4'}, 'arm': {'right', 'left'}}
+
+
 #
 # estado = {'in': {('jack', 'boot'), ('pump', 'boot'), ('wrench', 'boot'), ('r1', 'boot')},
 #           'on': {('w1', 'the-hub1')},
@@ -51,6 +51,7 @@ argumentos = {'room': {'room1', 'room2'}, 'box': {'box1', 'box2', 'box3', 'box4'
 #
 # # variaveis, tipo, precondicoes, efeitos positivos e efeitos negativos
 # operacoes = {
+#
 # 'close':[['?x'], ['container'], {'open':[['?x']]}, {'closed':('?x', )}, {'open':('?x', )}],
 # 'open':[['?x'], ['container'], {'unlocked':[['?x']], 'closed':[['?x']]}, {'open':('?x', )}, {'closed':('?x', )}],
 # 'inflate': [['?x'], ['wheel'],
@@ -62,7 +63,7 @@ argumentos = {'room': {'room1', 'room2'}, 'box': {'box1', 'box2', 'box3', 'box4'
 #
 # 'put-on-wheel': [['?x', '?y'], ['wheel', 'hub'],
 #              {'not-on-ground': [['?y']], 'unfastened': [['?y']], 'have': [['?x']], 'free': [['?y']]},
-#              {'on': ('?x', '?y'), 'free': ('?y',)}, {'have': ('?x', )}
+#              {'on': ('?x', '?y')}, {'have': ('?x', ), 'free': ('?y',)}
 #              ],
 #
 #
@@ -74,7 +75,7 @@ argumentos = {'room': {'room1', 'room2'}, 'box': {'box1', 'box2', 'box3', 'box4'
 #
 #
 #             'do-up': [['?x', '?y'], ['nut', 'hub'],
-#              {'not-on-ground': [['?y']], 'unfastened': [['?y']], 'have': [['?x'], ['wrench']]},
+#              {'not-on-ground': [['?y']], 'unfastened': [['?y']], 'have': [['wrench'], ['?x']]},
 #              {'loose': ('?x', '?y'), 'fastened': ('?y',)}, {'unfastened': ('?y',), 'have': ('?x',)}
 #              ],
 #             'undo': [['?x', '?y'], ['nut', 'hub'],
@@ -117,23 +118,81 @@ argumentos = {'room': {'room1', 'room2'}, 'box': {'box1', 'box2', 'box3', 'box4'
 #               'obj': {'wrench', 'jack', 'pump', 'nuts1', 'r1', 'w1'},
 #               'hub': {'the-hub1'},
 #               'nut': {'nuts1'},
+#                 'object': {'the-hub1', 'boot'},
 #               'container': {'boot'},
 #               'wheel': {'r1', 'w1'},
 # }
+#
+#
+#
+#
+# path = '../in/'
+#
+#
+# def confere_equivalencia(dic1, dic2):
+#     import collections
+#     compare = lambda x, y: collections.Counter(x) == collections.Counter(y)
+#     s1 = set(dic1.keys())
+#     s2 = set(dic2.keys())
+#     if s1 != s2:
+#         print('erro chaves')
+#         print(s1)
+#         print(s2)
+#         exit()
+#     for k in dic1:
+#         print(k)
+#         l1 = dic1[k]
+#         l2 = dic2[k]
+#         # print(l1)
+#         # print(l2)
+#         if not len(l1) == len(l2):
+#             print('erro conteudo1')
+#             print(l1)
+#             print(l2)
+#             # exit()
+#         for i, j in zip(l1, l2):
+#             if not type(i) == type(j):
+#                 print('erro conteudo2')
+#                 print(i)
+#                 print(j)
+#                 # exit()
+#             if isinstance(i, list):
+#                 if not compare(i, j):
+#                     print('erro conteudo')
+#                     print(i)
+#                     print(j)
+#                     # exit()
+#             else:
+#                 if not i.keys() == j.keys():
+#                     print('erro conteudo3')
+#                     print(i)
+#                     print(j)
+#                     # exit()
+#
+#
+#
 
-
-
-
-p = Planejador(argumentos, operacoes, Estado(estado), Estado(meta), 'soma')
+path = '../in/'
+estado2, meta2, operacoes2, argumentos2  = Conversor(path + 'robot_domain.pddl', path + 'robot_problem.pddl').get_planner_args()
+# estado2, meta2, operacoes2, argumentos2 = Conversor(path + 'tyreworld_domain.pddl', path + 'tyreworld_problem.pddl').get_planner_args()
+#
+# confere_equivalencia(estado, estado2)
+# confere_equivalencia(meta, meta2)
+# confere_equivalencia(operacoes, operacoes2)
+# confere_equivalencia(argumentos, argumentos2)
+# operacoes2['jack-down'][2] = {'not-on-ground': [['?y']]}
+# print(operacoes2)
+# exit()
+p = Planejador(argumentos2, operacoes2, Estado(estado2), Estado(meta2), 'max')
 
 import time
 tempo_inicial = time.time()
 no, fr = Busca().a_star_search(p)
+print(fr)
 print('O algoritmo levou {} milisegundos'.format(round((time.time()-tempo_inicial)*1000)))
 
-print(no)
-for nc in no:
-    print(str(nc.contador))
-    print(str(nc.operacao))
-    print('\t' + str(nc.dict))
-    print()
+print('\n')
+for nc, i in zip(no, range(1, len(no)+1)):
+    print('{}: '.format(i))
+    print('\t Aplicando a açao {}, gera-se o estado'.format(str(nc.operacao)))
+    print('\t\t' + str(nc.dict)+'\n')

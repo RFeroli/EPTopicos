@@ -14,6 +14,9 @@ class Conversor:
         with open(self.problem_file, 'r') as f:
             self.parse_problem(f)
 
+    def get_planner_args(self):
+        return self.problem['init'], self.problem['goal'], self.domain['action'], self.problem['objects']
+
     def parse_domain(self, f):
         domain = ' '.join([line.strip() for line in f.readlines() if not re.match(r';.*', line) and line != '\n'])
         args = self.get(domain)
@@ -38,7 +41,6 @@ class Conversor:
                     self.domain[arg_type].update(self.parse_action(s))
                 else:
                     pass
-        print(self.domain)
 
     def get(self, s, for_level=1, i=0):
         level = 0
@@ -73,7 +75,6 @@ class Conversor:
                     self.problem[arg_type] = self.parse_objects(s)
                 elif arg_type == 'init' or arg_type == 'goal':
                     self.problem[arg_type] = self.parse_state(s)
-        print(self.problem)
 
     def parse_types(self, s):
         if '-' in s:
@@ -139,8 +140,9 @@ class Conversor:
         return predicates
 
     def parse_action(self, s):
+        # print(s.strip())
 
-        a = re.search(r'([a-z-]*) :parameters \(([?a-z- ]*)\) :precondition \([and ]{0,4}([?a-z- ()]*)\) :effect \([and ]{0,4}([?a-z- ()]*)\)$', s.strip())
+        a = re.search(r'([a-z-]*) :parameters \(([?a-z- ]*)\) :precondition \(([?a-z- ()]*)\) :effect \([and ]{0,4}([?a-z- ()]*)\)$', s.strip())
         action_name = a.group(1)
         # variaveis, tipo, precondicoes, efeitos positivos e efeitos negativos
         action = {action_name:[[],[],{},{},{}]}
@@ -149,6 +151,8 @@ class Conversor:
         ls = []
         is_type = False
         for j in params:
+            if j == '':
+                continue
             if is_type:
                 is_type = False
                 action[action_name][0].extend(ls.copy())
@@ -159,11 +163,14 @@ class Conversor:
             else:
                 ls.append(j)
         preconds = a.group(3)
+        if 'and' in preconds:
+             preconds = preconds[3:].strip()
         if not re.match(r'[()]', preconds):
             preconds = '({})'.format(preconds)
         for j in self.get(preconds, for_level=0):
             p = j.split(' ')
-            action[action_name][2][p[0]] = [p[1:]]
+            action[action_name][2][p[0]] = action[action_name][2].get(p[0], [])
+            action[action_name][2][p[0]].insert(0, p[1:])
         effects = self.get(a.group(4), for_level=0)
         for j in effects:
             e = j
@@ -201,7 +208,7 @@ class Conversor:
                 objects[k] = objects.get(k, set())
                 for x in v:
                     objects[k].update(objects.get(x, set()))
-            return objects
+        return objects
 
     def parse_state(self, s):
         state = {}
@@ -209,7 +216,8 @@ class Conversor:
             state[pred[0]] = state.get(pred[0], set())
             state[pred[0]].add(tuple(pred[1].split(' ')))
         return state
+
 path = '../in/'
 
-Conversor(path + 'robot_domain.pddl', path + 'robot_problem.pddl')
-Conversor(path + 'tyreworld_domain.pddl', path + 'tyreworld_problem.pddl')
+Conversor(path + 'robot_domain.pddl', path + 'robot_problem.pddl').get_planner_args()
+Conversor(path + 'tyreworld_domain.pddl', path + 'tyreworld_problem.pddl').get_planner_args()

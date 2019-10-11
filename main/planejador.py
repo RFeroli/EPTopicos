@@ -30,7 +30,7 @@ class Planejador:
 
     def vizinhos(self, estado_atual):
         possiveis = self.devolve_possiveis_combinacoes(estado_atual.dict)
-        print(possiveis)
+        # print(possiveis)
         vizinhos = []
 
         for ope in possiveis:
@@ -57,7 +57,7 @@ class Planejador:
         saida = {}
 
         for operacao in self.operacoes:
-            print(operacao)
+            # print(operacao)
             saida[operacao] = []
             op = self.operacoes[operacao]
             preconds = op[2]
@@ -84,7 +84,7 @@ class Planejador:
             # print(lista)
             unique_entries = set(l)
             indices = {value: [i for i, v in enumerate(l) if v == value] for value in unique_entries}
-            print(indices)
+            # print(indices)
 
             # guarda os estados que respeitam as restricoes
             possiveis_estados = []
@@ -159,7 +159,7 @@ class Planejador:
                 proximo_estado[pe].add(t)
 
         for pe in operacao[4]:
-            print(1)
+            # print(1)
 
             proximo_estado[pe].remove(tuple([d[x] if x in d else x for x in operacao[4][pe]]))
             if not proximo_estado[pe]:

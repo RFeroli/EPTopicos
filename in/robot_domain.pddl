@@ -21,7 +21,7 @@
 		:effect (and (carry ?x ?y) (not (box-at ?x ?w)) (not(free ?y)))
 	)
 	(:action putdown
-		:parameters (?x - box ?y -arm ?w - room)    
+		:parameters (?x - box ?y - arm ?w - room)
 		:precondition (and (carry ?x ?y) (robot-at ?w))    
 		:effect (and (not(carry ?x ?y)) (box-at ?x ?w) (free ?y))  
 	)
