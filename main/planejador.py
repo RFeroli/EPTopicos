@@ -1,6 +1,7 @@
 from itertools import product, chain
 from copy import copy, deepcopy
 from math import inf
+from main import grafoFF
 
 
 class Estado:
@@ -137,6 +138,8 @@ class Planejador:
     def _tupla_existe(self, lista, tupla):
         return tupla in lista
 
+
+
     def crie_proximo_estado(self, estado_atual, ope):
         # estado atual é um dicionario
         # operacao é uma tupla com o nome e os parametros
@@ -162,6 +165,28 @@ class Planejador:
         ne = Estado(proximo_estado)
         ne.operacao = ope
         return ne
+
+    def calcula_efeitos_e_precondicoes(self, estado_atual, ope):
+        nome, parametros = ope
+        efeitos = {}
+        operacao = self.operacoes[nome]
+        preconds={}
+        preconds={}
+        d = {}
+        for i, j in zip (operacao[0], parametros):
+            d[i] = j
+
+        for precond in operacao[2]:
+            preconds[precond]=[]
+            for arg in operacao[2][precond]:
+                preconds[precond].append(d[arg])
+        for pe in operacao[3]:
+            if pe not in efeitos:
+                efeitos[pe] = set ()
+            t = tuple ([d[x] for x in operacao[3][pe]])
+            if not self._tupla_existe (efeitos[pe], t):
+                efeitos[pe].add (t)
+        return efeitos,preconds
 
     def crie_proximo_estado_graph_plan(self, estado_atual, ope):
         nome, parametros = ope
@@ -194,6 +219,37 @@ class Planejador:
 
 
     def lista_niveis(self, estado_inicial, estado_final):
+        estado = estado_inicial
+        dict_niveis = []
+        dict_niveis.append(estado_inicial)
+        encontrou = False
+
+        gff=grafoFF.GrafoFF()
+        nivel=1;
+        while True:
+            # print('\n\nNivel {}'.format(nivel))
+            possiveis = self.devolve_possiveis_combinacoes(estado)
+            for i in possiveis:
+                if possiveis[i]:
+                    for j in possiveis[i]:
+                        efeitos, preconds = self.calcula_efeitos_e_precondicoes (estado, (i, j))
+                        estado = self.crie_proximo_estado_graph_plan(estado, (i, j))
+                       # gff.incluir_noOps(estado,nivel)
+                        gff.incluir(preconds,(i,j),efeitos,nivel)
+
+            dict_niveis.append(estado)
+            if self.equivalentes(estado, estado_final):
+                encontrou = True
+                break
+
+            if len(dict_niveis) > 1 and self.equivalentes(dict_niveis[-2], dict_niveis[-1]):
+                break
+            nivel+=1
+
+
+        return dict_niveis, encontrou
+
+    def lista_niveis2(self, estado_inicial, estado_final):
         estado = estado_inicial
         dict_niveis = []
         dict_niveis.append(estado_inicial)
