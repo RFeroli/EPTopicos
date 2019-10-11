@@ -183,16 +183,19 @@ estado2, meta2, operacoes2, argumentos2  = Conversor(path + 'robot_domain.pddl',
 # operacoes2['jack-down'][2] = {'not-on-ground': [['?y']]}
 # print(operacoes2)
 # exit()
-p = Planejador(argumentos2, operacoes2, Estado(estado2), Estado(meta2), 'max')
+p = Planejador(argumentos2, operacoes2, Estado(estado2), Estado(meta2), 'soma')
 
 import time
 tempo_inicial = time.time()
-no, fr = Busca().a_star_search(p)
-print(fr)
+plano_estados, dicionario_expansao = Busca().busca_a_estrela(p)
 print('O algoritmo levou {} milisegundos'.format(round((time.time()-tempo_inicial)*1000)))
+print('No total {} nós foram visitados\nTivemos {} nós gerados\nE a taxa de ramificaçao foi de {} filhos por nó'.format(
+    len(dicionario_expansao), sum(list(dicionario_expansao.values())),
+    round(sum(list(dicionario_expansao.values()))/len(dicionario_expansao), 2)))
 
+print('O plano possui {} passos, os quais, a partir do estado inicial, sao:'.format(len(plano_estados)))
 print('\n')
-for nc, i in zip(no, range(1, len(no)+1)):
+for nc, i in zip(plano_estados, range(1, len(plano_estados)+1)):
     print('{}: '.format(i))
     print('\t Aplicando a açao {}, gera-se o estado'.format(str(nc.operacao)))
     print('\t\t' + str(nc.dict)+'\n')

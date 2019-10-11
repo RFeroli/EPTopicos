@@ -1,8 +1,5 @@
 import math
 import copy
-
-from main.planejador import Planejador, Estado
-
 import heapq
 
 class PriorityQueue:
@@ -34,65 +31,65 @@ class Busca:
       elif not isinstance(o, dict):
         return hash(o)
 
-      new_o = copy.deepcopy(o)
-      for k, v in new_o.items():
-        new_o[k] = self._gere_hash(v)
+      nova_estrutura = copy.deepcopy(o)
+      for k, v in nova_estrutura.items():
+        nova_estrutura[k] = self._gere_hash(v)
 
-      return hash(tuple(frozenset(sorted(new_o.items()))))
+      return hash(tuple(frozenset(sorted(nova_estrutura.items()))))
 
 
-    def a_star_search(self, planejador):
-        frontier = PriorityQueue()
+    def busca_a_estrela(self, planejador):
+        fila_prioridade = PriorityQueue()
         inicio = planejador.recupera_inicio()
-        frontier.put(inicio, 0)
+        fila_prioridade.put(inicio, 0)
         nos_expandidos = {}
         nos_ramificacao = {}
-        came_from = {}
-        cost_so_far = {}
+        no_pai = {}
+        custo_neste_momento = {}
         hsi = self._gere_hash(inicio.dict)
         # print('Empilha {} com prioridade {}'.format(hsi, 0))
         # print('Com operacao {}\n\t\t{}\n'.format(inicio.operacao, inicio.dict))
         inicio.contador = hsi
-        came_from[hsi] = None
-        cost_so_far[hsi] = 0
-        meta_path = []
+        no_pai[hsi] = None
+        custo_neste_momento[hsi] = 0
+        meta_plano = []
 
-        while not frontier.empty():
-            current = frontier.get()
+        while not fila_prioridade.empty():
+            atual = fila_prioridade.get()
             # print('Desenpilha {}'.format(current.contador))
             # print('Com operacao {}\n\t\t{}\n'.format(current.operacao, current.dict))
-            if self._foi_expandido(nos_expandidos, current.dict):
+            if self._foi_expandido(nos_expandidos, atual.dict):
                 continue
 
-            nos_expandidos[current.contador] = current
-            if planejador.equivalentes(current.dict, planejador.recupera_meta().dict):
-                hsi = self._gere_hash(current.dict)
-                while came_from[hsi] is not None:
-                    meta_path.insert(0, nos_expandidos[hsi])
-                    hsi = came_from[hsi]
+            nos_expandidos[atual.contador] = atual
+            if planejador.equivalentes(atual.dict, planejador.recupera_meta().dict):
+                hsi = self._gere_hash(atual.dict)
+                while no_pai[hsi] is not None:
+                    meta_plano.insert(0, nos_expandidos[hsi])
+                    hsi = no_pai[hsi]
                 break
 
-            nos_ramificacao[current.contador] = 0
+            nos_ramificacao[atual.contador] = 0
 
-            for vizinho in planejador.vizinhos(current):
+            for vizinho in planejador.vizinhos(atual):
 
-                nos_ramificacao[current.contador] +=1
                 vizinho.contador = self._gere_hash(vizinho.dict)
 
-                new_cost = cost_so_far[current.contador] + planejador.custo_movimento(current, vizinho)
-                if vizinho.contador not in cost_so_far or new_cost < cost_so_far[vizinho.contador]:
-                    cost_so_far[vizinho.contador] = new_cost
-                    priority = planejador.heuristica(vizinho, planejador.recupera_meta())
-                    if not math.isinf(priority):
+                novo_custo = custo_neste_momento[atual.contador] + planejador.custo_movimento(atual, vizinho)
+                if vizinho.contador not in custo_neste_momento or novo_custo < custo_neste_momento[vizinho.contador]:
+                    nos_ramificacao[atual.contador] += 1
+                    custo_neste_momento[vizinho.contador] = novo_custo
+                    prioridade = planejador.heuristica(vizinho, planejador.recupera_meta())
+                    if not math.isinf(prioridade):
                         # print('Empilha {} com prioridade {}'.format(next.contador, priority + new_cost))
                         # print('Com operacao {}\n\t\t{}\n'.format(next.operacao, next.dict))
-                        frontier.put(vizinho, (priority + new_cost))
+                        fila_prioridade.put(vizinho, (prioridade + novo_custo))
                     # else:
                     #     print('Descarta'.format(next.contador, priority + new_cost))
                     #     print('Com operacao {}\n\t\t{}\n'.format(next.operacao, next.dict))
-                    came_from[vizinho.contador] = current.contador
+                    no_pai[vizinho.contador] = atual.contador
 
         # Esses dicionarios sao usados para extrair a solucao
-        # return came_from, cost_so_far, nos_expandidos
+        # return came_from, custo_neste_momento, nos_expandidos
 
-        return meta_path, nos_ramificacao
+        return meta_plano, nos_ramificacao
