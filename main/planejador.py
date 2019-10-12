@@ -218,7 +218,7 @@ class Planejador:
 
 
 
-    def lista_niveis(self, estado_inicial, estado_final):
+    def heuristica_ff(self, estado_inicial, estado_final):
         estado = estado_inicial
         dict_niveis = []
         dict_niveis.append(estado_inicial)
@@ -249,7 +249,7 @@ class Planejador:
 
         return dict_niveis, encontrou
 
-    def lista_niveis2(self, estado_inicial, estado_final):
+    def lista_niveis(self, estado_inicial, estado_final):
         estado = estado_inicial
         dict_niveis = []
         dict_niveis.append(estado_inicial)
