@@ -34,7 +34,7 @@
        (not (open ?x))))
 
     (:action fetch
-    :parameters (?x - obj  ?y - container)
+    :parameters (?x - obj ?y - container)
     :precondition (and (in ?x ?y) (open ?y))
     :effect (and (have ?x)
        (not (in ?x ?y))))
