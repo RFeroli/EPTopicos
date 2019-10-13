@@ -190,7 +190,7 @@ class Planejador:
         for pe in operacao[3]:
             if pe not in efeitos:
                 efeitos[pe] = set ()
-            t = tuple ([d[x] for x in operacao[3][pe]])
+            t = tuple ([d[x] if x in d else x for x in operacao[3][pe]])
             if not self._tupla_existe (efeitos[pe], t):
                 efeitos[pe].add (t)
         return efeitos,preconds
@@ -267,7 +267,7 @@ class Planejador:
 
 
 
-        print(valor_heuristica)
+        #print(valor_heuristica)
         return valor_heuristica
 
 

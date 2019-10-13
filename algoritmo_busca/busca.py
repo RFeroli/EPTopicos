@@ -50,6 +50,7 @@ class Busca:
         # print('Empilha {} com prioridade {}'.format(hsi, 0))
         # print('Com operacao {}\n\t\t{}\n'.format(inicio.operacao, inicio.dict))
         inicio.contador = hsi
+        contador_gerados = 1
         no_pai[hsi] = None
         custo_neste_momento[hsi] = 0
         meta_plano = []
@@ -72,14 +73,14 @@ class Busca:
             nos_ramificacao[atual.contador] = 0
 
             for vizinho in planejador.vizinhos(atual):
-
+                nos_ramificacao[atual.contador] += 1
                 vizinho.contador = self._gere_hash(vizinho.dict)
 
                 novo_custo = custo_neste_momento[atual.contador] + planejador.custo_movimento(atual, vizinho)
                 if vizinho.contador not in custo_neste_momento or novo_custo < custo_neste_momento[vizinho.contador]:
-                    nos_ramificacao[atual.contador] += 1
                     custo_neste_momento[vizinho.contador] = novo_custo
                     prioridade = planejador.heuristica(vizinho, planejador.recupera_meta())
+                    contador_gerados +=1
                     if not math.isinf(prioridade):
                         # print('Empilha {} com prioridade {}'.format(next.contador, priority + new_cost))
                         # print('Com operacao {}\n\t\t{}\n'.format(next.operacao, next.dict))
@@ -92,4 +93,4 @@ class Busca:
         # Esses dicionarios sao usados para extrair a solucao
         # return came_from, custo_neste_momento, nos_expandidos
 
-        return meta_plano, nos_ramificacao
+        return meta_plano, nos_ramificacao, contador_gerados
