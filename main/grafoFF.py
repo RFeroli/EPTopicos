@@ -8,19 +8,20 @@ class GrafoFF:
 
 
     def incluir_noOps(self,estado,nivel):
+        #TODO olhar caso da tupla versus set de tuplas que ta fudendo
         for predicado in estado:
             for args in estado[predicado]:
-                no = self.No ((predicado, args), nivel)
+                no = self.No ((predicado, {args}), nivel)
                 if (not no["hash"] in self.nos):
                     self.nos[no["hash"]] = no
                 no = self.nos[no["hash"]]
 
-                noigual=self.No ((predicado, args), nivel+1)
+                noigual=self.No ((predicado, {args}), nivel+1)
                 if (not noigual["hash"] in self.nos):
                     self.nos[noigual["hash"]] = noigual
                 noigual = self.nos[noigual["hash"]]
 
-                noOp = self.No (("NO-OP", (predicado, args)), nivel)
+                noOp = self.NoOp (("NO-OP", (predicado, {args})), nivel)
                 if (not noOp["hash"] in self.nos):
                     self.nos[noOp["hash"]] = noOp
                 noOp = self.nos[noOp["hash"]]
@@ -32,10 +33,12 @@ class GrafoFF:
 
     def incluir(self,precondicoes,op,efeitos, nivel):
 
-        noAc=self.No (op, nivel)
+        noAc=self.NoOp (op, nivel)
         if (not noAc["hash"] in self.nos):
             self.nos[noAc["hash"]] = noAc
         noAc = self.nos[noAc["hash"]]
+        self.niveis[nivel] = self.niveis.get (nivel, dict())[noAc["hash"]]=noAc
+
 
         for efeito in efeitos:
             no = self.No ((efeito, efeitos[efeito]), nivel+1)
@@ -61,8 +64,22 @@ class GrafoFF:
         no["proximos"]=[]
         no["anteriores"]=[]
         no["nivel"] = nivel
-        no["hash"]=self._gere_hash((no["valor"],no["nivel"]))
+        no["hash"]=self._gere_hash({"chave":no["valor"],"nivel":no["nivel"]})
+        no["operacao"]=False
+        no["flag"]=False
         return  no
+
+    def NoOp(self, valor, nivel):
+        no = {}
+        no["valor"] = valor
+        no["proximos"] = []
+        no["anteriores"] = []
+        no["nivel"] = nivel
+        no["hash"] = self._gere_hash ({"chave": no["valor"], "nivel": no["nivel"]})
+        no["operacao"] = True
+        no["flag"] = False
+        return no
+
 
 
     def _gere_hash(self, o):

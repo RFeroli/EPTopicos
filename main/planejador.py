@@ -49,7 +49,7 @@ class Planejador:
         elif self.heu == 'max':
             return self.heuristica_graphplan_nivel_maximo(atual.dict, final.dict)
         elif self.heu == 'FF':
-            return self.heuristica_fast_foward(atual.dict, final.dict)
+            return self.heuristica_ff(atual.dict, final.dict)
         elif self.heu == 'um':
             return self.heuristica_um(atual.dict, final.dict)
 
@@ -183,9 +183,10 @@ class Planejador:
             d[i] = j
 
         for precond in operacao[2]:
-            preconds[precond]=[]
-            for arg in operacao[2][precond]:
-                preconds[precond].append(d[arg])
+            preconds[precond]=set()
+            for arg1 in operacao[2][precond]:
+                preconds[precond].add(tuple([d[x] if x in d else x for x in arg1]))
+
         for pe in operacao[3]:
             if pe not in efeitos:
                 efeitos[pe] = set ()
@@ -235,26 +236,63 @@ class Planejador:
         nivel=1;
         while True:
             # print('\n\nNivel {}'.format(nivel))
+            gff.incluir_noOps (estado, nivel)
             possiveis = self.devolve_possiveis_combinacoes(estado)
             for i in possiveis:
                 if possiveis[i]:
                     for j in possiveis[i]:
                         efeitos, preconds = self.calcula_efeitos_e_precondicoes (estado, (i, j))
-                        estado = self.crie_proximo_estado_graph_plan(estado, (i, j))
-                       # gff.incluir_noOps(estado,nivel)
                         gff.incluir(preconds,(i,j),efeitos,nivel)
+                        estado = self.crie_proximo_estado_graph_plan (estado, (i, j))
 
             dict_niveis.append(estado)
+            #print(len(gff.nos))
+            nivel += 1
             if self.equivalentes(estado, estado_final):
                 encontrou = True
                 break
 
             if len(dict_niveis) > 1 and self.equivalentes(dict_niveis[-2], dict_niveis[-1]):
                 break
-            nivel+=1
+
+            # parte do calculo
+        valor_heuristica=0
+        for predicado in estado_final:
+             for args in estado_final[predicado]:
+                no = gff.No ((predicado, {args}), nivel)
+                if (not no["hash"] in gff.nos):
+                    gff.nos[no["hash"]] = no
+                no = gff.nos[no["hash"]]
+                valor_heuristica+=self.f(no)
 
 
-        return dict_niveis, encontrou
+
+        print(valor_heuristica)
+        return valor_heuristica
+
+
+    def f(self,no):
+        soma=0
+        if(no["operacao"]):
+            if(no["valor"][0]!="NO-OP"and not no["flag"]):
+                soma+=1
+                no["flag"]=True
+            for anterior in no["anteriores"]:
+                #print(anterior["valor"])
+                #print ("valor",self.f (anterior))
+                soma+=self.f(anterior)
+            return soma
+        else:
+            conj=[x for x in no["anteriores"] if x["valor"][0]=="NO-OP"]
+            for anterior in conj:
+                #print(self.f(anterior))
+                return soma+self.f(anterior)
+            for anterior in no["anteriores"]:
+                #print (self.f (anterior))
+                return soma+self.f (anterior)
+        return soma
+
+
 
     def lista_niveis(self, estado_inicial, estado_final):
         estado = estado_inicial

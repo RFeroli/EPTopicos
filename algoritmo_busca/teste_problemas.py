@@ -183,7 +183,7 @@ estado2, meta2, operacoes2, argumentos2  = Conversor(path + 'robot_domain.pddl',
 # operacoes2['jack-down'][2] = {'not-on-ground': [['?y']]}
 # print(operacoes2)
 # exit()
-p = Planejador(argumentos2, operacoes2, Estado(estado2), Estado(meta2), 'soma')
+p = Planejador(argumentos2, operacoes2, Estado(estado2), Estado(meta2), 'FF')
 
 import time
 tempo_inicial = time.time()
