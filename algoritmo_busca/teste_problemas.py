@@ -1,30 +1,47 @@
 from algoritmo_busca.busca import Busca
 from main.planejador import Estado, Planejador
 from main.conversorPDDL import Conversor
+import time
 
+# def _gere_hash(o):
+#     if isinstance(o, (set, tuple, list)):
+#         return tuple([_gere_hash(e) for e in o])
 #
-# estado = {'box-at': {('box1', 'room1'), ('box2', 'room1'), ('box3', 'room1'), ('box4', 'room1')},
-#           'robot-at': {('room1',)},
-#           'free': {('right',), ('left',)}}
+#     elif not isinstance(o, dict):
+#         return hash(o)
 #
-# meta = {'box-at': {('box1', 'room2'), ('box2', 'room2'), ('box3', 'room2'), ('box4', 'room2')},
-#           'robot-at': {('room1',)},
-#           'free': {('right',), ('left', )}}
+#     nova_estrutura = copy.deepcopy(o)
+#     for k, v in nova_estrutura.items():
+#         nova_estrutura[k] = _gere_hash(v)
 #
+#     return hash(tuple(frozenset(sorted(nova_estrutura.items()))))
+
+# print(_gere_hash( {'operacao':{'move': ['room1', 'room2']}, 'nivel':2 } ))
 #
-# # variaveis, tipo, precondicoes, efeitos positivos e efeitos negativos
-# operacoes = {
-#              'pickup':[['?x', '?y', '?w'], ['box', 'arm', 'room'],
-#                        {'free': [['?y']], 'robot-at':[['?w']], 'box-at': [['?x', '?w']]},
-#                        {'carry':('?x', '?y')}, {'free':('?y',), 'box-at': ('?x', '?w')}],
-#
-#              'putdown':[['?x', '?y', '?w'], ['box', 'arm', 'room'], {'carry': [['?x', '?y']], 'robot-at':[['?w']]},
-#                         {'free':('?y',), 'box-at': ('?x', '?w')}, {'carry':('?x', '?y')}
-#                         ],
-#             'move':[['?x', '?y'], ['room', 'room'], {'robot-at':[['?x']]}, {'robot-at':('?y', )}, {'robot-at':('?x', )}]}
-#
-#
-# argumentos = {'room': {'room1', 'room2'}, 'box': {'box1', 'box2', 'box3', 'box4'}, 'arm': {'right', 'left'}}
+# exit()
+
+
+estado = {'box-at': {('box1', 'room1'), ('box2', 'room1')},
+          'robot-at': {('room1',)},
+          # 'free': {('right',), ('left',)}}
+            'free': {('right',)}}
+
+meta = {'box-at': {('box1', 'room2'), ('box2', 'room2')}}
+
+
+# variaveis, tipo, precondicoes, efeitos positivos e efeitos negativos
+operacoes = {
+             'pickup':[['?x', '?y', '?w'], ['box', 'arm', 'room'],
+                       {'free': [['?y']], 'robot-at':[['?w']], 'box-at': [['?x', '?w']]},
+                       {'carry':('?x', '?y')}, {'free':('?y',), 'box-at': ('?x', '?w')}],
+
+             'putdown':[['?x', '?y', '?w'], ['box', 'arm', 'room'], {'carry': [['?x', '?y']], 'robot-at':[['?w']]},
+                        {'free':('?y',), 'box-at': ('?x', '?w')}, {'carry':('?x', '?y')}
+                        ],
+            'move':[['?x', '?y'], ['room', 'room'], {'robot-at':[['?x']]}, {'robot-at':('?y', )}, {'robot-at':('?x', )}]}
+
+
+argumentos = {'room': {'room1', 'room2'}, 'box': {'box1', 'box2'}, 'arm': {'right'}}
 
 
 #
@@ -172,30 +189,59 @@ from main.conversorPDDL import Conversor
 #
 #
 
-path = '../in/'
-estado2, meta2, operacoes2, argumentos2  = Conversor(path + 'robot_domain.pddl', path + 'robot_problem.pddl').get_planner_args()
-# estado2, meta2, operacoes2, argumentos2 = Conversor(path + 'tyreworld_domain.pddl', path + 'tyreworld_problem.pddl').get_planner_args()
+
+# print('\nHeuristica: {}'.format(nome_heuristica[heuristica]))
+# estado, meta, operacoes, argumentos  = Conversor(path + problema[0], path + problema[1]).get_planner_args()
+# pl = Planejador(argumentos, operacoes, Estado(estado), Estado(meta), 'max')
 #
-# confere_equivalencia(estado, estado2)
-# confere_equivalencia(meta, meta2)
-# confere_equivalencia(operacoes, operacoes2)
-# confere_equivalencia(argumentos, argumentos2)
-# operacoes2['jack-down'][2] = {'not-on-ground': [['?y']]}
-# print(operacoes2)
+# tempo_inicial = time.time()
+# plano_estados, dicionario_expansao, contador_gerados = Busca().busca_a_estrela(pl)
+# tempo_execucao = round((time.time()-tempo_inicial)*1000)
+# print('O algoritmo levou {} milisegundos'.format(tempo_execucao))
+#
+# print('No total {} nós foram visitados\nTivemos {} e {} nós gerados\nE a taxa de ramificaçao foi de {} filhos por nó'.format(
+#     len(dicionario_expansao), sum(list(dicionario_expansao.values())), contador_gerados,
+#     round(sum(list(dicionario_expansao.values()))/len(dicionario_expansao), 2)))
+#
+# print('O plano possui {} passos, os quais, a partir do estado inicial, sao:'.format(len(plano_estados)))
+#
+# for nc, i in zip(plano_estados, range(1, len(plano_estados)+1)):
+#     print('{}: '.format(i))
+#     print('\t Aplicando a açao {}, gera-se o estado'.format(str(nc.operacao)))
+#     print('\t\t' + str(nc.dict)+'\n')
+#
+#
+#
 # exit()
-p = Planejador(argumentos2, operacoes2, Estado(estado2), Estado(meta2), 'soma')
+nome_heuristica = {'um': 'retorna 1', 'soma': 'soma de níveis', 'max': 'nível máximo'}
 
-import time
-tempo_inicial = time.time()
-plano_estados, dicionario_expansao = Busca().busca_a_estrela(p)
-print('O algoritmo levou {} milisegundos'.format(round((time.time()-tempo_inicial)*1000)))
-print('No total {} nós foram visitados\nTivemos {} nós gerados\nE a taxa de ramificaçao foi de {} filhos por nó'.format(
-    len(dicionario_expansao), sum(list(dicionario_expansao.values())),
-    round(sum(list(dicionario_expansao.values()))/len(dicionario_expansao), 2)))
+# problema do robo e problema tyreworld
+problemas = [('robot_domain.pddl', 'robot_problem.pddl', 'Problema do robo'), ('tyreworld_domain.pddl', 'tyreworld_problem.pddl', 'Problema TyreWorld')]
 
-print('O plano possui {} passos, os quais, a partir do estado inicial, sao:'.format(len(plano_estados)))
-print('\n')
-for nc, i in zip(plano_estados, range(1, len(plano_estados)+1)):
-    print('{}: '.format(i))
-    print('\t Aplicando a açao {}, gera-se o estado'.format(str(nc.operacao)))
-    print('\t\t' + str(nc.dict)+'\n')
+# Heurísticas que retorna 1, soma de nível, máximo nível e fast foward
+heuristicas = ['um', 'soma', 'max']
+
+path = '../in/'
+
+for problema in problemas:
+    print('\n\nTratando o {}'.format(problema[2]))
+    for heuristica in heuristicas:
+        print('\nHeuristica: {}'.format(nome_heuristica[heuristica]))
+        estado, meta, operacoes, argumentos  = Conversor(path + problema[0], path + problema[1]).get_planner_args()
+        pl = Planejador(argumentos, operacoes, Estado(estado), Estado(meta), heuristica)
+
+        tempo_inicial = time.time()
+        plano_estados, dicionario_expansao, contador_gerados = Busca().busca_a_estrela(pl)
+        tempo_execucao = round((time.time()-tempo_inicial)*1000)
+        print('O algoritmo levou {} milisegundos'.format(tempo_execucao))
+
+        print('No total {} nós foram visitados\nTivemos {} e {} nós gerados\nE a taxa de ramificaçao foi de {} filhos por nó'.format(
+            len(dicionario_expansao), sum(list(dicionario_expansao.values())), contador_gerados,
+            round(sum(list(dicionario_expansao.values()))/len(dicionario_expansao), 2)))
+
+        print('O plano possui {} passos, os quais, a partir do estado inicial, sao:'.format(len(plano_estados)))
+
+        for nc, i in zip(plano_estados, range(1, len(plano_estados)+1)):
+            print('{}: '.format(i))
+            print('\t Aplicando a açao {}, gera-se o estado'.format(str(nc.operacao)))
+            print('\t\t' + str(nc.dict)+'\n')
