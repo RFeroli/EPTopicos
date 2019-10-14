@@ -219,5 +219,6 @@ class Conversor:
 
 path = '../in/'
 
-Conversor(path + 'robot_domain.pddl', path + 'robot_problem.pddl').get_planner_args()
 Conversor(path + 'tyreworld_domain.pddl', path + 'tyreworld_problem.pddl').get_planner_args()
+for i in range(2,11):
+    Conversor(path + 'robot_domain.pddl', path + 'robot_problem_{}b.pddl'.format(i)).get_planner_args()
