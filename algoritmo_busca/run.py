@@ -219,7 +219,7 @@ nome_heuristica = {'um': 'retorna 1', 'soma': 'soma de níveis', 'max': 'nível 
 problemas = [('robot_domain.pddl', 'robot_problem.pddl', 'Problema do robo'), ('tyreworld_domain.pddl', 'tyreworld_problem.pddl', 'Problema TyreWorld')]
 
 # Heurísticas que retorna 1, soma de nível, máximo nível e fast foward
-heuristicas = ['um', 'soma', 'max',"FF"]
+heuristicas = [ 'soma', 'max',"FF"]
 
 path = '../in/'
 
