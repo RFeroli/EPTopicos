@@ -12,7 +12,7 @@ class GrafoGrafico:
         this=self
         def initialization():
             this.raiz = Tk ()
-            this.raiz.geometry ("{0}x{1}+0+0".format (self.raiz.winfo_screenwidth (), self.raiz.winfo_screenheight ()))
+            this.raiz.geometry ("{0}x{1}+0+0".format (self.raiz.winfo_screenwidth (), self.raiz.winfo_screenheight ()+1000))
 
             this.canvas = Canvas (self.raiz, bg=ColorUtils.toHex(255,255,255))
             this.canvas.initAresta=False

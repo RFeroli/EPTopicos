@@ -104,8 +104,8 @@ class Busca:
         # return came_from, custo_neste_momento, nos_expandidos
         grafico.tela.mudarCorArvore(ColorUtils.toHex(0,255,0))
         for no in meta_plano:
-            grafico.tela.tradutorNo[no].mudarCorTexto(ColorUtils.toHex(170,170,0))
+            grafico.tela.tradutorNo[no].mudarCorTexto(ColorUtils.toHex(0,200,30))
         grafico.tela.reordenarArvore()
-        grafico.tela.canvas.postscript(file="file_name.ps", colormode='color')
+        grafico.tela.canvas.postscript(file="grafico_"+planejador.heu+"_"+planejador.nome_do_problema, colormode='color')
 
         return meta_plano, nos_ramificacao, contador_gerados

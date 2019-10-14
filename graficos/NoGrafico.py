@@ -32,7 +32,7 @@ class NoGrafico:
                                         fill="#000000", width=0, tags=(self.tagPrincipal, "tudo"), stipple="gray25")
         self.no=canvas.create_oval (self.x, self.y, self.x , self.y , outline="#f15e5e",
                                     fill="#f7a987", width=4, tags=(self.tagPrincipal, "tudo"))
-        self.nome=self.canvas.create_text(self.x , self.y , fill="#595757", font="System 4", text=texto, tags=(self.tagPrincipal, "tudo"))
+        self.nome=self.canvas.create_text(self.x , self.y , fill="#595757", font="System 5", text=texto, tags=(self.tagPrincipal, "tudo"))
 
         #Listeners
 
@@ -93,7 +93,7 @@ class NoGrafico:
                                           fill="#ffffff", width=0, tags=(self.tagPrincipal, "tudo"), stipple="gray25")
         self.no = self.canvas.create_oval (noCords[0],noCords[1],noCords[2],noCords[3], outline="#ffffff",
                                       fill="#ffffff", width=4, tags=(self.tagPrincipal, "tudo"))
-        self.nome = self.canvas.create_text (nomeCords[0],nomeCords[1], fill=ColorUtils.toHex(255,0,0), font="System 4", text=self.texto,
+        self.nome = self.canvas.create_text (nomeCords[0],nomeCords[1], fill=ColorUtils.toHex(255,0,0), font="System 5", text=self.texto,
                                           tags=(self.tagPrincipal, "tudo"))
 
     def editarNome(self,nome):
@@ -125,43 +125,19 @@ class NoGrafico:
     def SairSobre(self, event):
         self.canvas.itemconfig(self.no, fill="#f7a987")
     def gerarTelaEdicao(self, event):
-        def ok_action():
-            self.editarNome(node_name.get())
-            self.dono.altere_nome(node_name.get())
-
-            tequinho.destroy()
-
-        def change_img():
-            game_name = 'appc'
-            game_path = os.getcwd().replace('\\', '/').rsplit('/', 1)[0] + '/{}/imagens_cenarios'.format(game_name)
-            new_file = filedialog.askopenfilename(initialdir=game_path)
-            if new_file:
-                new_path = new_file.replace('\\', '/').rsplit('/', 1)[0]
-                new_file_name = new_file.replace('\\', '/').rsplit('/', 1)[1]
-                print(new_path, new_file_name)
-                if new_path != game_path:
-                    copy(new_file, game_path)
-                self.dono.altere_plano(new_file_name)
-                img_label.config(text='Imagem: {}'.format(new_file_name))
-            f.pack()
 
         import os
         tequinho = Tk()
         f = Frame(tequinho)
-        tequinho.title(self.dono.obter_nome())
         tequinho.wm_attributes("-topmost", 1)
 
-        Label(f, text='Nome do cenário').grid(row=0)
-        node_name = Entry(f)
-        node_name.insert(END, self.dono.obter_nome())
-        node_name.grid(row=0, column=1)
+        string=""
 
-        img_label = Label(f, text='Imagem: {}'.format(self.dono.obter_plano_de_fundo()))
-        img_label.grid(row=1)
-        img_button = Button(f,text='Alterar imagem', command=change_img)
-        img_button.grid(row=1, column=1)
-        confirm_button = Button(f, text='OK',command= ok_action)
-        confirm_button.grid(row=2, column=1)
+        for predicado in self.dono.dict:
+            string+=predicado+"  "+str(self.dono.dict[predicado])+"\n"
+
+        img_label = Label(f, text=string)
+        img_label.pack()
         f.pack()
 
         tequinho.mainloop()

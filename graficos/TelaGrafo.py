@@ -78,7 +78,7 @@ class TelaGrafo:
             n=len(self.niveis[nivel])
             a=1000/(n+1)
             for no,i in zip(self.niveis[nivel],range(1,n+1)):
-                no.moverPara(a*i,nivel*100)
+                no.moverPara((nivel*70)+10,a*i)
 
 
 
@@ -126,23 +126,23 @@ class TelaGrafo:
         w=self.canvas.winfo_width()
         h=self.canvas.winfo_height()
 
-        self.b1=self.canvas.create_rectangle(200,0,w-200,50,tags="listenerC",fill="#f15e5e",outline="#72b5a4",stipple="gray12",width=0)
-        self.canvas.tag_bind("listenerC",'<Enter>',moveTela)
-        self.canvas.tag_bind ("listenerC", '<Leave>',paraMover)
-
-        self.b2=self.canvas.create_rectangle (0, 200, 50, h-200,tags="listenerL",fill="#f15e5e",outline="#72b5a4",stipple="gray12",width=0)
-        self.canvas.tag_bind ("listenerL", '<Enter>', moveTelaL)
-        self.canvas.tag_bind ("listenerL", '<Leave>', paraMover)
-
-        self.b3=self.canvas.create_rectangle (200, h-50, w-200, h, tags="listenerB", fill="#f15e5e", outline="#72b5a4",
-                                      stipple="gray12", width=0)
-        self.canvas.tag_bind ("listenerB", '<Enter>', moveTelaB)
-        self.canvas.tag_bind ("listenerB", '<Leave>', paraMover)
-
-        self.b4 =self.canvas.create_rectangle (w-50, 200, w, h-200, tags="listenerR", fill="#f15e5e", outline="#72b5a4",
-                                      stipple="gray12", width=0)
-        self.canvas.tag_bind ("listenerR", '<Enter>', moveTelaR)
-        self.canvas.tag_bind ("listenerR", '<Leave>', paraMover)
+        # self.b1=self.canvas.create_rectangle(200,0,w-200,50,tags="listenerC",fill="#f15e5e",outline="#72b5a4",stipple="gray12",width=0)
+        # self.canvas.tag_bind("listenerC",'<Enter>',moveTela)
+        # self.canvas.tag_bind ("listenerC", '<Leave>',paraMover)
+        #
+        # self.b2=self.canvas.create_rectangle (0, 200, 50, h-200,tags="listenerL",fill="#f15e5e",outline="#72b5a4",stipple="gray12",width=0)
+        # self.canvas.tag_bind ("listenerL", '<Enter>', moveTelaL)
+        # self.canvas.tag_bind ("listenerL", '<Leave>', paraMover)
+        #
+        # self.b3=self.canvas.create_rectangle (200, h-50, w-200, h, tags="listenerB", fill="#f15e5e", outline="#72b5a4",
+        #                               stipple="gray12", width=0)
+        # self.canvas.tag_bind ("listenerB", '<Enter>', moveTelaB)
+        # self.canvas.tag_bind ("listenerB", '<Leave>', paraMover)
+        #
+        # self.b4 =self.canvas.create_rectangle (w-50, 200, w, h-200, tags="listenerR", fill="#f15e5e", outline="#72b5a4",
+        #                               stipple="gray12", width=0)
+        # self.canvas.tag_bind ("listenerR", '<Enter>', moveTelaR)
+        # self.canvas.tag_bind ("listenerR", '<Leave>', paraMover)
 
     def reconfigureCanvas(self,event):
         self.canvas.delete(self.b1)
