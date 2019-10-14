@@ -78,7 +78,7 @@ class TelaGrafo:
             n=len(self.niveis[nivel])
             a=1000/(n+1)
             for no,i in zip(self.niveis[nivel],range(1,n+1)):
-                no.moverPara((nivel*70)+10,a*i)
+                no.moverPara(a*i,(nivel*70)+10)
 
 
 
