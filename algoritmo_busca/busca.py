@@ -104,7 +104,7 @@ class Busca:
         for no in meta_plano:
             grafico.tela.tradutorNo[no].mudarCorTexto (ColorUtils.toHex (0, 200, 30))
         grafico.tela.reordenarArvore ()
-        grafico.tela.canvas.postscript (file="grafico_" + planejador.heu + "_" + planejador.nome_do_problema,
+        grafico.tela.canvas.postscript (file="grafico_" + planejador.heu + "_" + planejador.nome_do_problema.replace(" ","_")+".ps",
                                         colormode='color')
 
         # Esses dicionarios sao usados para extrair a solucao
