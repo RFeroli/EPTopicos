@@ -1,6 +1,8 @@
 import math
 import copy
 import heapq
+from graficos import GrafoGrafico
+from graficos import ColorUtils
 
 class PriorityQueue:
     def __init__(self):
@@ -18,6 +20,9 @@ class PriorityQueue:
         return heapq.heappop(self.elements)[1]
 
 class Busca:
+
+
+
 
     def _foi_expandido(self, expandidos, estado):
         if self._gere_hash(estado) in expandidos:
@@ -39,8 +44,11 @@ class Busca:
 
 
     def busca_a_estrela(self, planejador):
+        grafico = GrafoGrafico.GrafoGrafico ()
+
         fila_prioridade = PriorityQueue()
         inicio = planejador.recupera_inicio()
+        grafico.incluir_raiz(inicio,"raiz")#incluindo raiz
         fila_prioridade.put(inicio, 0)
         nos_expandidos = {}
         nos_ramificacao = {}
@@ -78,9 +86,11 @@ class Busca:
 
                 novo_custo = custo_neste_momento[atual.contador] + planejador.custo_movimento(atual, vizinho)
                 if vizinho.contador not in custo_neste_momento or novo_custo < custo_neste_momento[vizinho.contador]:
+
                     custo_neste_momento[vizinho.contador] = novo_custo
                     prioridade = planejador.heuristica(vizinho, planejador.recupera_meta())
                     contador_gerados +=1
+                    grafico.incluir_no (atual, vizinho,prioridade+novo_custo)
                     if not math.isinf(prioridade):
                         # print('Empilha {} com prioridade {}'.format(next.contador, priority + new_cost))
                         # print('Com operacao {}\n\t\t{}\n'.format(next.operacao, next.dict))
@@ -90,7 +100,13 @@ class Busca:
                     #     print('Com operacao {}\n\t\t{}\n'.format(next.operacao, next.dict))
                     no_pai[vizinho.contador] = atual.contador
 
+        grafico.tela.mudarCorArvore (ColorUtils.toHex (0, 255, 0))
+        for no in meta_plano:
+            grafico.tela.tradutorNo[no].mudarCorTexto (ColorUtils.toHex (0, 200, 30))
+        grafico.tela.reordenarArvore ()
+        grafico.tela.canvas.postscript (file="grafico_" + planejador.heu + "_" + planejador.nome_do_problema.replace(" ","_")+".ps",
+                                        colormode='color')
+
         # Esses dicionarios sao usados para extrair a solucao
         # return came_from, custo_neste_momento, nos_expandidos
-
         return meta_plano, nos_ramificacao, contador_gerados
