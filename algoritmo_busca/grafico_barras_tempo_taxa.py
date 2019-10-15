@@ -11,7 +11,7 @@ performance = [14744, 9512, 166223, 35740]
 plt.barh(y_pos, performance, align='center', alpha=0.5)
 plt.yticks(y_pos, objects)
 plt.xlabel('Tempo (ms)')
-plt.title('Consumo médio de tempo de cada heurística para o problema Fast Forward')
+plt.title('Consumo médio de tempo de cada heurística para o problema Tyre World')
 
 plt.show()
 
@@ -21,6 +21,6 @@ performance = [4.51, 6.95, 5.22, 4.61]
 plt.barh(y_pos, performance, align='center', alpha=0.5)
 plt.yticks(y_pos, objects)
 plt.xlabel('nós')
-plt.title('Taxa de ramificaçao média de cada heurística para o problema Fast Forward')
+plt.title('Taxa de ramificaçao média de cada heurística para o problema Tyre World')
 
 plt.show()

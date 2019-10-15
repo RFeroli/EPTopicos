@@ -57,8 +57,6 @@ class Busca:
         no_pai = {}
         custo_neste_momento = {}
         hsi = self._gere_hash(inicio.dict)
-        # print('Empilha {} com prioridade {}'.format(hsi, 0))
-        # print('Com operacao {}\n\t\t{}\n'.format(inicio.operacao, inicio.dict))
         inicio.contador = hsi
         contador_gerados = 1
         no_pai[hsi] = None
@@ -67,8 +65,7 @@ class Busca:
 
         while not fila_prioridade.empty():
             atual = fila_prioridade.get()
-            # print('Desenpilha {}'.format(current.contador))
-            # print('Com operacao {}\n\t\t{}\n'.format(current.operacao, current.dict))
+
             if self._foi_expandido(nos_expandidos, atual.dict):
                 continue
 
@@ -95,12 +92,7 @@ class Busca:
                     if (planejador.gerar_grafico):
                         grafico.incluir_no (atual, vizinho,prioridade+novo_custo)
                     if not math.isinf(prioridade):
-                        # print('Empilha {} com prioridade {}'.format(next.contador, priority + new_cost))
-                        # print('Com operacao {}\n\t\t{}\n'.format(next.operacao, next.dict))
                         fila_prioridade.put(vizinho, (prioridade + novo_custo))
-                    # else:
-                    #     print('Descarta'.format(next.contador, priority + new_cost))
-                    #     print('Com operacao {}\n\t\t{}\n'.format(next.operacao, next.dict))
                     no_pai[vizinho.contador] = atual.contador
         if (planejador.gerar_grafico):
             grafico.tela.mudarCorArvore (ColorUtils.toHex (0, 255, 0))
