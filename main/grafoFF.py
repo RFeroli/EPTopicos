@@ -8,7 +8,6 @@ class GrafoFF:
 
 
     def incluir_noOps(self,estado,nivel):
-        #TODO olhar caso da tupla versus set de tuplas que ta fudendo
         for predicado in estado:
             for args in estado[predicado]:
                 no = self.No ((predicado, {args}), nivel)
