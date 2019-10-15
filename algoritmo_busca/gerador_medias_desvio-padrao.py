@@ -9,7 +9,10 @@ print('-----------------\n\tApós {} iteraçoes\n-----------------\n'.format(len
 nome_heuristica = {'um': 'retorna 1', 'soma': 'soma de níveis', 'max': 'nível máximo','FF':"fast forward"}
 
 # problema do robo e problema tyreworld
-problemas = ['Problema do robo: 2 caixas', 'Problema do robo: 3 caixas', 'Problema do robo: 4 caixas']
+problemas = ['Problema do robo: 2 caixas', 'Problema do robo: 3 caixas', 'Problema do robo: 4 caixas',
+                'Problema do robo: 5 caixas', 'Problema do robo: 6 caixas', 'Problema do robo: 7 caixas',
+                'Problema do robo: 8 caixas', 'Problema do robo: 9 caixas', 'Problema do robo: 10 caixas',
+             'Problema TyreWorld']
 # Heurísticas que retorna 1, soma de nível, máximo nível e fast foward
 heuristicas = ['um', 'soma', 'max',"FF"]
 

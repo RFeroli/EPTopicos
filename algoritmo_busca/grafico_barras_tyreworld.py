@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-saida_estatisticas = '../estatisticas/saida.txt'
+saida_estatisticas = '../estatisticas/saida_problema.txt'
 linhas = open(saida_estatisticas, 'r').readlines()
 
 
@@ -34,7 +34,8 @@ for problema in problemas:
             taxa_ramificacao.append(l[4])
             comprimento_plano.append(l[5])
 
-        heuristica_medias[heuristica] = [mean(visitados), mean(com_repeticoes), mean(sem_repeticoes)]
+        heuristica_medias[heuristica] = [round(mean(visitados), 2), round(mean(com_repeticoes),2),
+                                         round(mean(sem_repeticoes),2)]
 
     print(heuristica_medias)
 
