@@ -259,6 +259,7 @@ for problema in problemas:
         estado, meta, operacoes, argumentos  = Conversor(path + problema[0], path + problema[1]).get_planner_args()
         pl = Planejador(argumentos, operacoes, Estado(estado), Estado(meta), heuristica)
         pl.nome_do_problema=problema[2]
+        pl.gerar_grafico=True
 
         tempo_inicial = time.time()
         plano_estados, dicionario_expansao, contador_gerados = Busca().busca_a_estrela(pl)
