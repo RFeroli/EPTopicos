@@ -53,6 +53,8 @@ class Planejador:
         elif self.heu == 'um':
             return self.heuristica_um(atual.dict, final.dict)
 
+    def _deste_tipo(self, nome_obj, tipo):
+        return nome_obj in self.argumentos[tipo]
 
     def devolve_possiveis_combinacoes(self, estado_atual):
         saida = {}
@@ -74,8 +76,22 @@ class Planejador:
                                 if (el, ) not in estado_atual[precond]:
                                     raise Exception('')
                         else:
-                            l += [x for x in p if "?" in x]
-                            lista.append(estado_atual[precond])
+                            auxl =[x for x in p if "?" in x]
+
+                            l += auxl
+                            nova_lista_aux = []
+                            for et in estado_atual[precond]:
+                                for i, j in zip(auxl, et):
+                                    indice = op[0].index(i)
+                                    tipo = op[1][indice]
+                                    if not self._deste_tipo(j, tipo):
+                                        break
+                                else:
+                                    nova_lista_aux.append(et)
+                            lista.append(nova_lista_aux)
+
+
+                            # lista.append([x for x in estado_atual[precond] if ])
             except:
                 # print('operacao indisponivel')
                 continue
