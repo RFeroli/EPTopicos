@@ -6,18 +6,20 @@ import time
 nome_heuristica = {'um': 'retorna 1', 'soma': 'soma de níveis', 'max': 'nível máximo','FF':"fast forward"}
 
 # problema do robo e problema tyreworld
-problemas = [('robot_domain.pddl', 'robot_problem_2b.pddl', 'Problema do robo: 2 caixas'),
+problemas = [
+            ('robot_domain.pddl', 'robot_problem_2b.pddl', 'Problema do robo: 2 caixas'),
             ('robot_domain.pddl', 'robot_problem_3b.pddl', 'Problema do robo: 3 caixas'),
             ('robot_domain.pddl', 'robot_problem_4b.pddl', 'Problema do robo: 4 caixas'),
-            # ('robot_domain.pddl', 'robot_problem_5b.pddl', 'Problema do robo: 5 caixas'),
-            # ('robot_domain.pddl', 'robot_problem_6b.pddl', 'Problema do robo: 6 caixas'),
-            # ('robot_domain.pddl', 'robot_problem_7b.pddl', 'Problema do robo: 7 caixas'),
-            # ('robot_domain.pddl', 'robot_problem_8b.pddl', 'Problema do robo: 8 caixas'),
-            # ('robot_domain.pddl', 'robot_problem_9b.pddl', 'Problema do robo: 9 caixas'),
-            # ('robot_domain.pddl', 'robot_problem_10b.pddl', 'Problema do robo: 10 caixas'),
+            ('robot_domain.pddl', 'robot_problem_5b.pddl', 'Problema do robo: 5 caixas'),
+            ('robot_domain.pddl', 'robot_problem_6b.pddl', 'Problema do robo: 6 caixas'),
+            ('robot_domain.pddl', 'robot_problem_7b.pddl', 'Problema do robo: 7 caixas'),
+            ('robot_domain.pddl', 'robot_problem_8b.pddl', 'Problema do robo: 8 caixas'),
+            ('robot_domain.pddl', 'robot_problem_9b.pddl', 'Problema do robo: 9 caixas'),
+            ('robot_domain.pddl', 'robot_problem_10b.pddl', 'Problema do robo: 10 caixas'),
              ('tyreworld_domain.pddl', 'tyreworld_problem.pddl', 'Problema TyreWorld')]
 # Heurísticas que retorna 1, soma de nível, máximo nível e fast foward
-heuristicas = ['um', 'soma', 'max',"FF"]
+# TODO incluir FF
+heuristicas = ['um', 'soma', 'max']
 
 path = '../in/'
 saida_estatisticas = '../estatisticas/saida_problema.txt'

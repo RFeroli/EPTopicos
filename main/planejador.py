@@ -29,6 +29,19 @@ class Planejador:
     def recupera_meta(self):
         return self.estado_meta
 
+    def _gere_hash(self, o):
+      if isinstance(o, (set, tuple, list)):
+        return tuple([self._gere_hash(e) for e in o])
+
+      elif not isinstance(o, dict):
+        return hash(o)
+
+      nova_estrutura = deepcopy(o)
+      for k, v in nova_estrutura.items():
+        nova_estrutura[k] = self._gere_hash(v)
+
+      return hash(tuple(frozenset(sorted(nova_estrutura.items()))))
+
     def vizinhos(self, estado_atual):
         possiveis = self.devolve_possiveis_combinacoes(estado_atual.dict)
         # print(possiveis)
@@ -56,103 +69,108 @@ class Planejador:
     def _deste_tipo(self, nome_obj, tipo):
         return nome_obj in self.argumentos[tipo]
 
+
+    def _confere_precondicoes(self, estado_atual, preconds, op):
+        lista = []
+        l = []
+
+        for precond in preconds:
+            if precond not in estado_atual:
+                return [], []
+            for p in preconds[precond]:
+                if all([True if "?" not in x else False for x in p]):
+                    for el in p:
+                        if (el,) not in estado_atual[precond]:
+                            return [], []
+                else:
+                    # auxl = [x for x in p if "?" in x]
+                    l += p
+                    nova_lista_aux = []
+                    if precond not in estado_atual:
+                        return [], []
+
+                    for et in estado_atual[precond]:
+                        for i, j in zip(p, et):
+                            indice = op[0].index(i)
+                            tipo = op[1][indice]
+                            if not self._deste_tipo(j, tipo):
+                                break
+                        else:
+                            nova_lista_aux.append(et)
+                    lista.append(nova_lista_aux)
+        elem = [x for x in lista if x]
+        if not elem:
+            print(elem)
+
+        return lista, l
+
     def devolve_possiveis_combinacoes(self, estado_atual):
         saida = {}
 
         for operacao in self.operacoes:
             # print(operacao)
-            saida[operacao] = []
             op = self.operacoes[operacao]
             preconds = op[2]
-            lista = []
-            # print(operacao)
-            try:
-                l = []
-                for precond in preconds:
-                    for p in preconds[precond]:
-                        aux = [x for x in p if "?" not in x]
-                        if aux:
-                            for el in aux:
-                                if (el, ) not in estado_atual[precond]:
-                                    raise Exception('')
-                        else:
-                            auxl =[x for x in p if "?" in x]
-
-                            l += auxl
-                            nova_lista_aux = []
-                            for et in estado_atual[precond]:
-                                for i, j in zip(auxl, et):
-                                    indice = op[0].index(i)
-                                    tipo = op[1][indice]
-                                    if not self._deste_tipo(j, tipo):
-                                        break
-                                else:
-                                    nova_lista_aux.append(et)
-                            lista.append(nova_lista_aux)
-
-
-                            # lista.append([x for x in estado_atual[precond] if ])
-            except:
-                # print('operacao indisponivel')
+            # lista = []
+            lista, l = self._confere_precondicoes(estado_atual, preconds, op)
+            if not lista or not l:
                 continue
-            # encontre os indices das repeticoes
 
-            # print(l)
-            # print(lista)
+            saida[operacao] = []
+
             unique_entries = set(l)
             indices = {value: [i for i, v in enumerate(l) if v == value] for value in unique_entries}
+            indices_conferir = [[i for i, v in enumerate(l) if v == value] for value in unique_entries if len([i for i, v in enumerate(l) if v == value]) > 1]
             # print(indices)
 
             # guarda os estados que respeitam as restricoes
-            possiveis_estados = []
+            possiveis_estados_ordenados = []
+            posicao = 0
+            utilizados = {}
             for p in product(*lista):
                 est = list(chain(*p))
                 # print(est)
-                possiveis_estados.append(est)
-                for variavel in indices:
-                    lista_igualdades = [est[x] for x in indices[variavel]]
+
+                # possiveis_estados.append(est)
+                for confere in indices_conferir:
+                    lista_igualdades = [est[x] for x in confere]
                     # quando cria a lista de elementos que deveriam ser iguais, caso algum seja diferente apenas retira
                     # este da lista e para de coferir
                     if not lista_igualdades[1:] == lista_igualdades[:-1]:
-                        possiveis_estados.pop()
+                        # possiveis_estados.pop()
                         break
-            # print('-------')
-            # print(possiveis_estados)
-            possiveis_estados_ordenados = []
-            # utilizados1 = {}
-            utilizados = set()
-            faltam = set()
-            faltam_variveis = []
-            for possivel, pos in zip(possiveis_estados, range(len(possiveis_estados))):
-                est = []
-                # utilizados1[pos] = set()
-                for variavel, tipo in zip(op[0], op[1]):
-                    try:
-                        i = l.index(variavel)
-                        est.append(possivel[i])
-                        # utilizados1[pos].add(possivel[i])
-                        utilizados.add(possivel[i])
-                    except ValueError:
-                        est.append(variavel)
-                        faltam.add(tipo)
-                        faltam_variveis.append(variavel)
-                # print(est)
-                possiveis_estados_ordenados.append(est)
-            # print(possiveis_estados_ordenados)
-            # print(utilizados)
-            # print(utilizados1)
-            for item in product(possiveis_estados_ordenados,
-                                *[list(self.argumentos[f]) for f in faltam]):
-                # print(item)
-                s = copy(item[0])
-                contador_indice = 1
-                for i in range(len(s)):
-                    if s[i] in faltam_variveis:
-                        s[i] = item[contador_indice]
-                        contador_indice += 1
 
-                if len(s) == len(set(s)):
+                else:
+                    possivel = [est[indices[x][0]] if x in indices else x for x in op[0]]
+                    utilizados[posicao] = set(possivel)
+                    posicao+=1
+                    possiveis_estados_ordenados.append(possivel)
+
+            # print('-------')
+            if possiveis_estados_ordenados:
+                faltam = [(possiveis_estados_ordenados[0][x], op[1][x]) for x in range(len(possiveis_estados_ordenados[0])) if '?' in possiveis_estados_ordenados[0][x]]
+
+            if not faltam:
+                saida[operacao] = possiveis_estados_ordenados
+                continue
+            # print(faltam)
+
+            for item in range(len(possiveis_estados_ordenados)):
+                complementos = []
+                for f in faltam:
+                    complementos.append([d for d in self.argumentos[f[1]] if d not in utilizados[item]])
+                    # print(f)
+                    # print(utilizados[item])
+                for linha in product([possiveis_estados_ordenados[item]], *complementos):
+                    # print(linha)
+                    s = copy(linha[0])
+                    contador = 1
+                    for el in range(len(s)):
+                        if '?' in s[el]:
+                            s[el] = linha[contador]
+                            contador+=1
                     saida[operacao].append(s)
+
         return saida
 
     def _tupla_existe(self, lista, tupla):
@@ -229,18 +247,30 @@ class Planejador:
 
         return proximo_estado
 
+
+    def crie_proximo_estado_graph_plan_alterando(self, estado_atual, ope):
+        nome, parametros = ope
+        proximo_estado = estado_atual
+        operacao = self.operacoes[nome]
+        d = {}
+        for i, j in zip(operacao[0], parametros):
+            d[i] = j
+
+        for pe in operacao[3]:
+            if pe not in proximo_estado:
+                proximo_estado[pe] = set()
+            t = tuple([d[x] if x in d else x for x in operacao[3][pe]])
+            # t = tuple([d[x] for x in operacao[3][pe]])
+            if not self._tupla_existe(proximo_estado[pe], t):
+                proximo_estado[pe].add(t)
+
+        return proximo_estado
+
     def equivalentes(self, atual, meta):
         for predicado in meta:
-            if predicado not in atual:
+            if len(meta[predicado] - atual.get(predicado, set())):
                 return False
-            argumentos = meta[predicado]
-            for arg in argumentos:
-                if arg not in atual[predicado]:
-                    return False
-
         return True
-
-
 
     def heuristica_ff(self, estado_inicial, estado_final):
         estado = estado_inicial
@@ -249,7 +279,7 @@ class Planejador:
         encontrou = False
 
         gff=grafoFF.GrafoFF()
-        nivel=1;
+        nivel=1
         while True:
             # print('\n\nNivel {}'.format(nivel))
             gff.incluir_noOps (estado, nivel)
@@ -308,58 +338,65 @@ class Planejador:
                 return soma+self.f (anterior)
         return soma
 
+    def busca_meta(self, atual, meta):
+        contador = 0
+        terminou = False
+        maximo = 0
+        for predicado in meta:
+            l = len(meta[predicado])
+            meta[predicado] = meta[predicado] - atual.get(predicado, set())
+            l2 = len(meta[predicado])
+            contador += l - l2
+            maximo = max(l2, maximo)
+        if not maximo:
+            terminou = True
+        return contador, terminou
+
 
 
     def lista_niveis(self, estado_inicial, estado_final):
-        estado = estado_inicial
+
+        estado = deepcopy(estado_inicial)
+        meta = deepcopy(estado_final)
+        custo_somadando_niveis = 0
+        niveis = 0
         dict_niveis = []
         dict_niveis.append(estado_inicial)
         encontrou = False
         while True:
-            # print('\n\nNivel {}'.format(nivel))
-            possiveis = self.devolve_possiveis_combinacoes(estado)
-            for i in possiveis:
-                if possiveis[i]:
-                    for j in possiveis[i]:
-                        estado = self.crie_proximo_estado_graph_plan(estado, (i, j))
-
-            dict_niveis.append(estado)
-            if self.equivalentes(estado, estado_final):
+            retirado_nivel, terminou = self.busca_meta(estado, meta)
+            custo_somadando_niveis+=(niveis*retirado_nivel)
+            if terminou:
                 encontrou = True
                 break
+            # print('\n\nNivel {}'.format(nivel))
+            niveis+=1
+            possiveis = self.devolve_possiveis_combinacoes(estado)
+            hash_anterior = self._gere_hash(estado)
+            for i in possiveis:
+                for j in possiveis[i]:
+                    estado = self.crie_proximo_estado_graph_plan_alterando(estado, (i, j))
 
-            if len(dict_niveis) > 1 and self.equivalentes(dict_niveis[-2], dict_niveis[-1]):
+            if hash_anterior == self._gere_hash(estado):
                 break
 
-        return dict_niveis, encontrou
+        return niveis, custo_somadando_niveis, encontrou
 
     def heuristica_graphplan_nivel_maximo(self, estado_atual, estado_meta):
-        lista, encontrou = self.lista_niveis(estado_atual, estado_meta)
+        niveis, custo_somadando_niveis, encontrou = self.lista_niveis(estado_atual, estado_meta)
         if encontrou:
-            return len(lista)-1
+            return niveis
         return inf
 
     def heuristica_um(self, estado_atual, meta):
         return 1
 
     def heuristica_graphplan_soma_niveis(self, estado_atual, meta):
-        lista, encontrou = self.lista_niveis(estado_atual, meta)
+        niveis, custo_somadando_niveis, encontrou = self.lista_niveis(estado_atual, meta)
         if not encontrou:
             return inf
-        estado_meta = deepcopy(meta)
-        soma = 0
-        # print(lista)
-        for i in range(len(lista)):
 
-            for pred in estado_meta:
-                if pred in lista[i]:
-                    comprimento = len(estado_meta[pred])
-                    estado_meta[pred] = [x for x in  estado_meta[pred] if x not in lista[i][pred]]
-                    soma += (i)*(comprimento-len(estado_meta[pred]))
-
-        # print(soma)
-        return soma
-
+        return custo_somadando_niveis
 
     # Fast Foward
     def lista_niveis_fast_forward(self, estado_inicial, estado_final):
