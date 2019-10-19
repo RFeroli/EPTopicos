@@ -4,6 +4,9 @@ import heapq
 from graficos import GrafoGrafico
 from graficos import ColorUtils
 
+import hashlib
+import base64
+
 class PriorityQueue:
     def __init__(self):
         self.elements = []
@@ -29,19 +32,37 @@ class Busca:
             return True
         return False
 
+
     def _gere_hash(self, o):
-      if isinstance(o, (set, tuple, list)):
-        return tuple([self._gere_hash(e) for e in o])
+        hasher = hashlib.sha256()
+        hasher.update(repr(self.make_hashable(o)).encode())
+        return base64.b64encode(hasher.digest()).decode()
 
-      elif not isinstance(o, dict):
-        return hash(o)
+    def make_hashable(self, o):
+        if isinstance(o, (tuple, list)):
+            return tuple((self.make_hashable(e) for e in o))
 
-      nova_estrutura = copy.deepcopy(o)
-      for k, v in nova_estrutura.items():
-        nova_estrutura[k] = self._gere_hash(v)
+        if isinstance(o, dict):
+            return tuple(sorted((k, self.make_hashable(v)) for k, v in o.items()))
 
-      return hash(tuple(frozenset(sorted(nova_estrutura.items()))))
+        if isinstance(o, (set, frozenset)):
+            return tuple(sorted(self.make_hashable(e) for e in o))
 
+        return o
+
+    # def _gere_hash(self, o):
+    #     if isinstance(o, (set, tuple, list)):
+    #         return tuple([self._gere_hash(e) for e in o])
+    #
+    #     elif not isinstance(o, dict):
+    #         return hash(o)
+    #
+    #     nova_estrutura = copy.deepcopy(o)
+    #     for k, v in nova_estrutura.items():
+    #         nova_estrutura[k] = self._gere_hash(v)
+    #
+    #     return hash(tuple(frozenset(sorted(nova_estrutura.items()))))
+    #
 
     def busca_a_estrela(self, planejador):
         if(planejador.gerar_grafico):

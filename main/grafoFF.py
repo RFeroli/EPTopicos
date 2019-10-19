@@ -1,5 +1,6 @@
 from copy import deepcopy
-
+import hashlib
+import base64
 
 class GrafoFF:
     def __init__(self):
@@ -73,16 +74,19 @@ class GrafoFF:
         return no
 
 
-
     def _gere_hash(self, o):
-        if isinstance (o, (set, tuple, list)):
-            return tuple ([self._gere_hash (e) for e in o])
+        hasher = hashlib.sha256()
+        hasher.update(repr(self.make_hashable(o)).encode())
+        return base64.b64encode(hasher.digest()).decode()
 
-        elif not isinstance (o, dict):
-            return hash (o)
+    def make_hashable(self, o):
+        if isinstance(o, (tuple, list)):
+            return tuple((self.make_hashable(e) for e in o))
 
-        new_o = deepcopy(o)
-        for k, v in new_o.items ():
-            new_o[k] = self._gere_hash (v)
+        if isinstance(o, dict):
+            return tuple(sorted((k, self.make_hashable(v)) for k, v in o.items()))
 
-        return hash (tuple (frozenset (sorted (new_o.items ()))))
+        if isinstance(o, (set, frozenset)):
+            return tuple(sorted(self.make_hashable(e) for e in o))
+
+        return o
