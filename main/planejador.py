@@ -291,7 +291,7 @@ class Planejador:
         return True
 
     def heuristica_ff(self, estado_inicial, estado_final):
-        estado = estado_inicial
+        estado = deepcopy(estado_inicial)
         dict_niveis = []
         dict_niveis.append(estado_inicial)
         encontrou = False
@@ -307,17 +307,17 @@ class Planejador:
                     for j in possiveis[i]:
                         efeitos, preconds = self.calcula_efeitos_e_precondicoes (estado, (i, j))
                         gff.incluir(preconds,(i,j),efeitos,nivel)
-                        estado = self.crie_proximo_estado_graph_plan (estado, (i, j))
+                        estado = self.crie_proximo_estado_graph_plan_alterando(estado, (i, j))
 
-            dict_niveis.append(estado)
+            #dict_niveis.append(estado)
             #print(len(gff.nos))
             nivel += 1
             if self.equivalentes(estado, estado_final):
                 encontrou = True
                 break
 
-            if len(dict_niveis) > 1 and self.equivalentes(dict_niveis[-2], dict_niveis[-1]):
-                break
+            #if len(dict_niveis) > 1 and self.equivalentes(dict_niveis[-2], dict_niveis[-1]):
+                #break
 
             # parte do calculo
            # print("nivel-->",nivel)
@@ -339,22 +339,20 @@ class Planejador:
     def f(self,no):
         soma=0
         if(no["operacao"]):
-            if(no["valor"][0]!="NO-OP"and not no["flag"]):
-                soma+=1
-                no["flag"]=True
+            if(no["flag"]):
+                return 0
+            soma+=1
+            no["flag"]=True
             for anterior in no["anteriores"]:
                 #print(anterior["valor"])
                 #print ("valor",self.f (anterior))
                 soma+=self.f(anterior)
             return soma
         else:
-            conj=[x for x in no["anteriores"] if x["valor"][0]=="NO-OP"]
-            for anterior in conj:
-                #print(self.f(anterior))
-                return soma+self.f(anterior)
-            for anterior in no["anteriores"]:
-                #print (self.f (anterior))
-                return soma+self.f (anterior)
+            if(no["noOp"]):
+                return self.f(no["noOp"])
+            if(len(no["anteriores"])>0):
+                return soma+self.f (no["anteriores"][0])
         return soma
 
     def busca_meta(self, atual, meta):
