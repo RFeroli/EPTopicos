@@ -19,20 +19,12 @@ class GrafoFF:
                 if (not noigual["hash"] in self.nos):
                     self.nos[noigual["hash"]] = noigual
                 noigual = self.nos[noigual["hash"]]
+                noigual["noOp"]=no
 
-                noOp = self.NoOp (("NO-OP", (predicado, {args})), nivel)
-                if (not noOp["hash"] in self.nos):
-                    self.nos[noOp["hash"]] = noOp
-                noOp = self.nos[noOp["hash"]]
-                noOp["anteriores"].append(no)
-                noOp["proximos"].append(noigual)
-
-                no["proximos"].append(noOp)
-                noigual["anteriores"].append(noOp)
 
     def incluir(self,precondicoes,op,efeitos, nivel):
 
-        noAc=self.NoOp (op, nivel)
+        noAc=self.NoOperacao (op, nivel)
         if (not noAc["hash"] in self.nos):
             self.nos[noAc["hash"]] = noAc
         noAc = self.nos[noAc["hash"]]
@@ -66,9 +58,10 @@ class GrafoFF:
         no["hash"]=self._gere_hash({"chave":no["valor"],"nivel":no["nivel"]})
         no["operacao"]=False
         no["flag"]=False
+        no["noOp"]= None
         return  no
 
-    def NoOp(self, valor, nivel):
+    def NoOperacao(self, valor, nivel):
         no = {}
         no["valor"] = valor
         no["proximos"] = []

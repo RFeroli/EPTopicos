@@ -76,9 +76,9 @@ class TelaGrafo:
 
     def posicionar(self,nivel):
             n=len(self.niveis[nivel])
-            a=1900/(n+1)
+            a=1200/(n+1)
             for no,i in zip(self.niveis[nivel],range(1,n+1)):
-                no.moverPara(a*i,(nivel*120)+10)
+                no.moverPara(a*i,(nivel*70)+10)
 
 
 

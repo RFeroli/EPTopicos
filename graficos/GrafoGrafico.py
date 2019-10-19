@@ -18,7 +18,7 @@ class GrafoGrafico:
             this.canvas.initAresta=False
             this.canvas.pack(fill=BOTH,expand=1)
             this.tela=TelaGrafo.TelaGrafo(self.canvas, "", self.raiz)
-            this.raiz.withdraw()
+           # this.raiz.withdraw()
             this.raiz.mainloop()
 
         threading.Thread (target=initialization).start()

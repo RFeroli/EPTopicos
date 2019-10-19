@@ -12294,3 +12294,843 @@ E a taxa de ramificaÃ§ao foi de 4.48 filhos por nÃ³O plano possui 27 passos, os 
 25: 	 Aplicando a aÃ§ao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box3', 'room2'), ('box9', 'room2'), ('box2', 'room2'), ('box1', 'room2'), ('box6', 'room2'), ('box4', 'room2'), ('box5', 'room2')}, 'carry': {('box8', 'left'), ('box7', 'right')}}
 26: 	 Aplicando a aÃ§ao ('putdown', ['box7', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box3', 'room2'), ('box9', 'room2'), ('box7', 'room2'), ('box1', 'room2'), ('box2', 'room2'), ('box6', 'room2'), ('box4', 'room2'), ('box5', 'room2')}, 'carry': {('box8', 'left')}, 'free': {('right',)}}
 27: 	 Aplicando a aÃ§ao ('putdown', ['box8', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box3', 'room2'), ('box8', 'room2'), ('box9', 'room2'), ('box7', 'room2'), ('box2', 'room2'), ('box1', 'room2'), ('box6', 'room2'), ('box4', 'room2'), ('box5', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 2 caixas
+Heuristica: retorna 1O algoritmo levou 37 milisegundosNo total 25 nós foram visitados
+Tivemos 70 nós gerados com repeticçoes e 30 sem repetiçoes
+E a taxa de ramificaçao foi de 2.8 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1')}, 'free': {('left',)}, 'carry': {('box2', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'left')}, 'box-at': {('box2', 'room2')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: soma de níveisO algoritmo levou 43 milisegundosNo total 9 nós foram visitados
+Tivemos 29 nós gerados com repeticçoes e 20 sem repetiçoes
+E a taxa de ramificaçao foi de 3.22 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right')}, 'box-at': {('box2', 'room2')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: nível máximoO algoritmo levou 44 milisegundosNo total 15 nós foram visitados
+Tivemos 45 nós gerados com repeticçoes e 24 sem repetiçoes
+E a taxa de ramificaçao foi de 3.0 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right')}, 'box-at': {('box2', 'room2')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 2 caixas
+Heuristica: retorna 1O algoritmo levou 37 milisegundosNo total 25 nós foram visitados
+Tivemos 70 nós gerados com repeticçoes e 30 sem repetiçoes
+E a taxa de ramificaçao foi de 2.8 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1')}, 'free': {('left',)}, 'carry': {('box2', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'left')}, 'box-at': {('box2', 'room2')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: soma de níveisO algoritmo levou 43 milisegundosNo total 9 nós foram visitados
+Tivemos 29 nós gerados com repeticçoes e 20 sem repetiçoes
+E a taxa de ramificaçao foi de 3.22 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right')}, 'box-at': {('box2', 'room2')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: nível máximoO algoritmo levou 44 milisegundosNo total 15 nós foram visitados
+Tivemos 45 nós gerados com repeticçoes e 24 sem repetiçoes
+E a taxa de ramificaçao foi de 3.0 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right')}, 'box-at': {('box2', 'room2')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 3 caixas
+Heuristica: retorna 1O algoritmo levou 144 milisegundosNo total 100 nós foram visitados
+Tivemos 320 nós gerados com repeticçoes e 102 sem repetiçoes
+E a taxa de ramificaçao foi de 3.2 filhos por nóO plano possui 9 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box2', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box3', 'room1')}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box3', 'room1')}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room1')}, 'carry': {('box1', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room1'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box3', 'room1'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box3', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',)}, 'carry': {('box3', 'left')}}
+8: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',)}, 'carry': {('box3', 'left')}}
+9: 	 Aplicando a açao ('putdown', ['box3', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: soma de níveisO algoritmo levou 183 milisegundosNo total 40 nós foram visitados
+Tivemos 139 nós gerados com repeticçoes e 75 sem repetiçoes
+E a taxa de ramificaçao foi de 3.48 filhos por nóO plano possui 9 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box2', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box3', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1')}, 'carry': {('box2', 'right'), ('box3', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1')}, 'carry': {('box2', 'right'), ('box3', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1')}, 'carry': {('box3', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box3', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+8: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+9: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: nível máximoO algoritmo levou 222 milisegundosNo total 89 nós foram visitados
+Tivemos 288 nós gerados com repeticçoes e 102 sem repetiçoes
+E a taxa de ramificaçao foi de 3.24 filhos por nóO plano possui 9 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+3: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box2', 'room1'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+4: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box2', 'room1'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+5: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box3', 'right')}}
+6: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+7: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+8: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box3', 'room2')}, 'carry': {('box2', 'left')}, 'free': {('right',)}}
+9: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box2', 'room2'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 2 caixas
+Heuristica: retorna 1O algoritmo levou 37 milisegundosNo total 25 nós foram visitados
+Tivemos 70 nós gerados com repeticçoes e 30 sem repetiçoes
+E a taxa de ramificaçao foi de 2.8 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1')}, 'free': {('left',)}, 'carry': {('box2', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'left')}, 'box-at': {('box2', 'room2')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: soma de níveisO algoritmo levou 43 milisegundosNo total 9 nós foram visitados
+Tivemos 29 nós gerados com repeticçoes e 20 sem repetiçoes
+E a taxa de ramificaçao foi de 3.22 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right')}, 'box-at': {('box2', 'room2')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: nível máximoO algoritmo levou 44 milisegundosNo total 15 nós foram visitados
+Tivemos 45 nós gerados com repeticçoes e 24 sem repetiçoes
+E a taxa de ramificaçao foi de 3.0 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right')}, 'box-at': {('box2', 'room2')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 3 caixas
+Heuristica: retorna 1O algoritmo levou 144 milisegundosNo total 100 nós foram visitados
+Tivemos 320 nós gerados com repeticçoes e 102 sem repetiçoes
+E a taxa de ramificaçao foi de 3.2 filhos por nóO plano possui 9 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box2', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box3', 'room1')}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box3', 'room1')}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room1')}, 'carry': {('box1', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room1'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box3', 'room1'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box3', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',)}, 'carry': {('box3', 'left')}}
+8: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',)}, 'carry': {('box3', 'left')}}
+9: 	 Aplicando a açao ('putdown', ['box3', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: soma de níveisO algoritmo levou 183 milisegundosNo total 40 nós foram visitados
+Tivemos 139 nós gerados com repeticçoes e 75 sem repetiçoes
+E a taxa de ramificaçao foi de 3.48 filhos por nóO plano possui 9 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box2', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box3', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1')}, 'carry': {('box2', 'right'), ('box3', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1')}, 'carry': {('box2', 'right'), ('box3', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1')}, 'carry': {('box3', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box3', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+8: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+9: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: nível máximoO algoritmo levou 222 milisegundosNo total 89 nós foram visitados
+Tivemos 288 nós gerados com repeticçoes e 102 sem repetiçoes
+E a taxa de ramificaçao foi de 3.24 filhos por nóO plano possui 9 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+3: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box2', 'room1'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+4: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box2', 'room1'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+5: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box3', 'right')}}
+6: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+7: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+8: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box3', 'room2')}, 'carry': {('box2', 'left')}, 'free': {('right',)}}
+9: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box2', 'room2'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 4 caixas
+Heuristica: retorna 1O algoritmo levou 191 milisegundosNo total 308 nós foram visitados
+Tivemos 1116 nós gerados com repeticçoes e 321 sem repetiçoes
+E a taxa de ramificaçao foi de 3.62 filhos por nóO plano possui 11 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box3', 'room1')}, 'free': {('right',)}, 'carry': {('box2', 'left')}}
+2: 	 Aplicando a açao ('pickup', ['box4', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'carry': {('box2', 'left'), ('box4', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'carry': {('box2', 'left'), ('box4', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1'), ('box3', 'room1')}, 'carry': {('box4', 'right')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box4', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1'), ('box3', 'room1'), ('box4', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1'), ('box3', 'room1'), ('box4', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box3', 'room1'), ('box4', 'room2')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+8: 	 Aplicando a açao ('pickup', ['box3', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2')}, 'carry': {('box1', 'right'), ('box3', 'left')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2')}, 'carry': {('box1', 'right'), ('box3', 'left')}}
+10: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2'), ('box4', 'room2')}, 'carry': {('box3', 'left')}, 'free': {('right',)}}
+11: 	 Aplicando a açao ('putdown', ['box3', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: soma de níveisO algoritmo levou 158 milisegundosNo total 49 nós foram visitados
+Tivemos 202 nós gerados com repeticçoes e 114 sem repetiçoes
+E a taxa de ramificaçao foi de 4.12 filhos por nóO plano possui 11 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box3', 'room1')}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box3', 'room1')}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box3', 'room1')}, 'carry': {('box1', 'right')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box3', 'room1'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box3', 'room1'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box1', 'room2')}, 'free': {('left',)}, 'carry': {('box3', 'right')}}
+8: 	 Aplicando a açao ('pickup', ['box4', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'carry': {('box4', 'left'), ('box3', 'right')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'carry': {('box4', 'left'), ('box3', 'right')}}
+10: 	 Aplicando a açao ('putdown', ['box4', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2'), ('box1', 'room2')}, 'carry': {('box3', 'right')}, 'free': {('left',)}}
+11: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2'), ('box3', 'room2'), ('box4', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: nível máximoO algoritmo levou 400 milisegundosNo total 253 nós foram visitados
+Tivemos 879 nós gerados com repeticçoes e 299 sem repetiçoes
+E a taxa de ramificaçao foi de 3.47 filhos por nóO plano possui 11 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box3', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box3', 'room2')}, 'carry': {('box2', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box1', 'room1'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box1', 'room1'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box3', 'room2')}, 'free': {('right',)}, 'carry': {('box1', 'left')}}
+8: 	 Aplicando a açao ('pickup', ['box4', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2')}, 'carry': {('box1', 'left'), ('box4', 'right')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2')}, 'carry': {('box1', 'left'), ('box4', 'right')}}
+10: 	 Aplicando a açao ('putdown', ['box4', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box4', 'room2')}, 'carry': {('box1', 'left')}, 'free': {('right',)}}
+11: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2'), ('box3', 'room2'), ('box4', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 2 caixas
+Heuristica: retorna 1O algoritmo levou 37 milisegundosNo total 25 nós foram visitados
+Tivemos 70 nós gerados com repeticçoes e 30 sem repetiçoes
+E a taxa de ramificaçao foi de 2.8 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1')}, 'free': {('left',)}, 'carry': {('box2', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'left')}, 'box-at': {('box2', 'room2')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: soma de níveisO algoritmo levou 43 milisegundosNo total 9 nós foram visitados
+Tivemos 29 nós gerados com repeticçoes e 20 sem repetiçoes
+E a taxa de ramificaçao foi de 3.22 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right')}, 'box-at': {('box2', 'room2')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: nível máximoO algoritmo levou 44 milisegundosNo total 15 nós foram visitados
+Tivemos 45 nós gerados com repeticçoes e 24 sem repetiçoes
+E a taxa de ramificaçao foi de 3.0 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right')}, 'box-at': {('box2', 'room2')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 3 caixas
+Heuristica: retorna 1O algoritmo levou 144 milisegundosNo total 100 nós foram visitados
+Tivemos 320 nós gerados com repeticçoes e 102 sem repetiçoes
+E a taxa de ramificaçao foi de 3.2 filhos por nóO plano possui 9 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box2', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box3', 'room1')}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box3', 'room1')}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room1')}, 'carry': {('box1', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room1'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box3', 'room1'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box3', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',)}, 'carry': {('box3', 'left')}}
+8: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',)}, 'carry': {('box3', 'left')}}
+9: 	 Aplicando a açao ('putdown', ['box3', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: soma de níveisO algoritmo levou 183 milisegundosNo total 40 nós foram visitados
+Tivemos 139 nós gerados com repeticçoes e 75 sem repetiçoes
+E a taxa de ramificaçao foi de 3.48 filhos por nóO plano possui 9 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box2', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box3', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1')}, 'carry': {('box2', 'right'), ('box3', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1')}, 'carry': {('box2', 'right'), ('box3', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1')}, 'carry': {('box3', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box3', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+8: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+9: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: nível máximoO algoritmo levou 222 milisegundosNo total 89 nós foram visitados
+Tivemos 288 nós gerados com repeticçoes e 102 sem repetiçoes
+E a taxa de ramificaçao foi de 3.24 filhos por nóO plano possui 9 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+3: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box2', 'room1'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+4: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box2', 'room1'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+5: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box3', 'right')}}
+6: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+7: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+8: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box3', 'room2')}, 'carry': {('box2', 'left')}, 'free': {('right',)}}
+9: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box2', 'room2'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 4 caixas
+Heuristica: retorna 1O algoritmo levou 191 milisegundosNo total 308 nós foram visitados
+Tivemos 1116 nós gerados com repeticçoes e 321 sem repetiçoes
+E a taxa de ramificaçao foi de 3.62 filhos por nóO plano possui 11 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box3', 'room1')}, 'free': {('right',)}, 'carry': {('box2', 'left')}}
+2: 	 Aplicando a açao ('pickup', ['box4', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'carry': {('box2', 'left'), ('box4', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'carry': {('box2', 'left'), ('box4', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1'), ('box3', 'room1')}, 'carry': {('box4', 'right')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box4', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1'), ('box3', 'room1'), ('box4', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1'), ('box3', 'room1'), ('box4', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box3', 'room1'), ('box4', 'room2')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+8: 	 Aplicando a açao ('pickup', ['box3', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2')}, 'carry': {('box1', 'right'), ('box3', 'left')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2')}, 'carry': {('box1', 'right'), ('box3', 'left')}}
+10: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2'), ('box4', 'room2')}, 'carry': {('box3', 'left')}, 'free': {('right',)}}
+11: 	 Aplicando a açao ('putdown', ['box3', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: soma de níveisO algoritmo levou 158 milisegundosNo total 49 nós foram visitados
+Tivemos 202 nós gerados com repeticçoes e 114 sem repetiçoes
+E a taxa de ramificaçao foi de 4.12 filhos por nóO plano possui 11 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box3', 'room1')}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box3', 'room1')}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box3', 'room1')}, 'carry': {('box1', 'right')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box3', 'room1'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box3', 'room1'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box1', 'room2')}, 'free': {('left',)}, 'carry': {('box3', 'right')}}
+8: 	 Aplicando a açao ('pickup', ['box4', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'carry': {('box4', 'left'), ('box3', 'right')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'carry': {('box4', 'left'), ('box3', 'right')}}
+10: 	 Aplicando a açao ('putdown', ['box4', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2'), ('box1', 'room2')}, 'carry': {('box3', 'right')}, 'free': {('left',)}}
+11: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2'), ('box3', 'room2'), ('box4', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: nível máximoO algoritmo levou 400 milisegundosNo total 253 nós foram visitados
+Tivemos 879 nós gerados com repeticçoes e 299 sem repetiçoes
+E a taxa de ramificaçao foi de 3.47 filhos por nóO plano possui 11 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box3', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box3', 'room2')}, 'carry': {('box2', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box1', 'room1'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box1', 'room1'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box3', 'room2')}, 'free': {('right',)}, 'carry': {('box1', 'left')}}
+8: 	 Aplicando a açao ('pickup', ['box4', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2')}, 'carry': {('box1', 'left'), ('box4', 'right')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2')}, 'carry': {('box1', 'left'), ('box4', 'right')}}
+10: 	 Aplicando a açao ('putdown', ['box4', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box4', 'room2')}, 'carry': {('box1', 'left')}, 'free': {('right',)}}
+11: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2'), ('box3', 'room2'), ('box4', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 5 caixas
+Heuristica: retorna 1O algoritmo levou 715 milisegundosNo total 1206 nós foram visitados
+Tivemos 4588 nós gerados com repeticçoes e 1212 sem repetiçoes
+E a taxa de ramificaçao foi de 3.8 filhos por nóO plano possui 15 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room1'), ('box5', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box4', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1'), ('box3', 'room1'), ('box5', 'room1')}, 'carry': {('box1', 'right'), ('box4', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1'), ('box3', 'room1'), ('box5', 'room1')}, 'carry': {('box1', 'right'), ('box4', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box2', 'room1'), ('box3', 'room1'), ('box5', 'room1')}, 'carry': {('box4', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box4', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1'), ('box4', 'room2'), ('box1', 'room2'), ('box5', 'room1'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1'), ('box4', 'room2'), ('box5', 'room1'), ('box1', 'room2'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1'), ('box4', 'room2'), ('box5', 'room1'), ('box1', 'room2')}, 'free': {('left',)}, 'carry': {('box3', 'right')}}
+8: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box5', 'room1'), ('box4', 'room2')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box4', 'room2'), ('box5', 'room1')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+10: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box5', 'room1'), ('box2', 'room2'), ('box4', 'room2')}, 'carry': {('box3', 'right')}, 'free': {('left',)}}
+11: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box4', 'room2'), ('box1', 'room2'), ('box5', 'room1')}, 'free': {('right',), ('left',)}}
+12: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box4', 'room2'), ('box3', 'room2'), ('box5', 'room1'), ('box2', 'room2')}, 'free': {('right',), ('left',)}}
+13: 	 Aplicando a açao ('pickup', ['box5', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room2'), ('box2', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',)}, 'carry': {('box5', 'left')}}
+14: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2'), ('box3', 'room2'), ('box4', 'room2')}, 'free': {('right',)}, 'carry': {('box5', 'left')}}
+15: 	 Aplicando a açao ('putdown', ['box5', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box1', 'room2'), ('box3', 'room2'), ('box4', 'room2'), ('box2', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: soma de níveisO algoritmo levou 546 milisegundosNo total 128 nós foram visitados
+Tivemos 607 nós gerados com repeticçoes e 395 sem repetiçoes
+E a taxa de ramificaçao foi de 4.74 filhos por nóO plano possui 15 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box2', 'room1'), ('box5', 'room1')}, 'free': {('left',)}, 'carry': {('box3', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box5', 'room1')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box5', 'room1')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box1', 'room1'), ('box5', 'room1')}, 'carry': {('box3', 'right')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box3', 'room2'), ('box5', 'room1'), ('box2', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box3', 'room2'), ('box5', 'room1'), ('box2', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box5', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box3', 'room2'), ('box2', 'room2')}, 'free': {('left',)}, 'carry': {('box5', 'right')}}
+8: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box3', 'room2')}, 'carry': {('box5', 'right'), ('box1', 'left')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box3', 'room2')}, 'carry': {('box5', 'right'), ('box1', 'left')}}
+10: 	 Aplicando a açao ('putdown', ['box5', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box3', 'room2'), ('box5', 'room2')}, 'carry': {('box1', 'left')}, 'free': {('right',)}}
+11: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box5', 'room2'), ('box1', 'room2'), ('box3', 'room2'), ('box2', 'room2')}, 'free': {('right',), ('left',)}}
+12: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box5', 'room2'), ('box2', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+13: 	 Aplicando a açao ('pickup', ['box4', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box5', 'room2'), ('box1', 'room2'), ('box3', 'room2'), ('box2', 'room2')}, 'free': {('right',)}, 'carry': {('box4', 'left')}}
+14: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box1', 'room2'), ('box2', 'room2'), ('box3', 'room2')}, 'free': {('right',)}, 'carry': {('box4', 'left')}}
+15: 	 Aplicando a açao ('putdown', ['box4', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box2', 'room2'), ('box3', 'room2'), ('box4', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: nível máximoO algoritmo levou 1987 milisegundosNo total 1148 nós foram visitados
+Tivemos 4344 nós gerados com repeticçoes e 1205 sem repetiçoes
+E a taxa de ramificaçao foi de 3.78 filhos por nóO plano possui 15 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box5', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box2', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box5', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room1'), ('box3', 'room1')}, 'carry': {('box5', 'right'), ('box1', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room1'), ('box3', 'room1')}, 'carry': {('box5', 'right'), ('box1', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box5', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box5', 'room2'), ('box2', 'room1'), ('box3', 'room1')}, 'carry': {('box1', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box3', 'room1'), ('box2', 'room1'), ('box5', 'room2')}, 'carry': {('box1', 'left')}, 'free': {('right',)}}
+6: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box5', 'room2'), ('box3', 'room1')}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+7: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box3', 'room1'), ('box5', 'room2')}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+8: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box5', 'room2'), ('box3', 'room1'), ('box1', 'room2')}, 'carry': {('box2', 'right')}, 'free': {('left',)}}
+9: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box5', 'room2'), ('box1', 'room2'), ('box2', 'room2'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+10: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box5', 'room2'), ('box2', 'room2'), ('box1', 'room2'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+11: 	 Aplicando a açao ('pickup', ['box3', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box5', 'room2'), ('box1', 'room2'), ('box2', 'room2')}, 'free': {('right',)}, 'carry': {('box3', 'left')}}
+12: 	 Aplicando a açao ('pickup', ['box4', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box2', 'room2'), ('box5', 'room2')}, 'carry': {('box3', 'left'), ('box4', 'right')}}
+13: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box1', 'room2'), ('box2', 'room2')}, 'carry': {('box3', 'left'), ('box4', 'right')}}
+14: 	 Aplicando a açao ('putdown', ['box4', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box1', 'room2'), ('box2', 'room2'), ('box4', 'room2')}, 'carry': {('box3', 'left')}, 'free': {('right',)}}
+15: 	 Aplicando a açao ('putdown', ['box3', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box2', 'room2'), ('box3', 'room2'), ('box4', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 2 caixas
+Heuristica: retorna 1O algoritmo levou 37 milisegundosNo total 25 nós foram visitados
+Tivemos 70 nós gerados com repeticçoes e 30 sem repetiçoes
+E a taxa de ramificaçao foi de 2.8 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1')}, 'free': {('left',)}, 'carry': {('box2', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'left')}, 'box-at': {('box2', 'room2')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: soma de níveisO algoritmo levou 43 milisegundosNo total 9 nós foram visitados
+Tivemos 29 nós gerados com repeticçoes e 20 sem repetiçoes
+E a taxa de ramificaçao foi de 3.22 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right')}, 'box-at': {('box2', 'room2')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: nível máximoO algoritmo levou 44 milisegundosNo total 15 nós foram visitados
+Tivemos 45 nós gerados com repeticçoes e 24 sem repetiçoes
+E a taxa de ramificaçao foi de 3.0 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right')}, 'box-at': {('box2', 'room2')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 3 caixas
+Heuristica: retorna 1O algoritmo levou 144 milisegundosNo total 100 nós foram visitados
+Tivemos 320 nós gerados com repeticçoes e 102 sem repetiçoes
+E a taxa de ramificaçao foi de 3.2 filhos por nóO plano possui 9 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box2', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box3', 'room1')}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box3', 'room1')}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room1')}, 'carry': {('box1', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room1'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box3', 'room1'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box3', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',)}, 'carry': {('box3', 'left')}}
+8: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',)}, 'carry': {('box3', 'left')}}
+9: 	 Aplicando a açao ('putdown', ['box3', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: soma de níveisO algoritmo levou 183 milisegundosNo total 40 nós foram visitados
+Tivemos 139 nós gerados com repeticçoes e 75 sem repetiçoes
+E a taxa de ramificaçao foi de 3.48 filhos por nóO plano possui 9 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box2', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box3', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1')}, 'carry': {('box2', 'right'), ('box3', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1')}, 'carry': {('box2', 'right'), ('box3', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1')}, 'carry': {('box3', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box3', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+8: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+9: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: nível máximoO algoritmo levou 222 milisegundosNo total 89 nós foram visitados
+Tivemos 288 nós gerados com repeticçoes e 102 sem repetiçoes
+E a taxa de ramificaçao foi de 3.24 filhos por nóO plano possui 9 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+3: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box2', 'room1'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+4: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box2', 'room1'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+5: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box3', 'right')}}
+6: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+7: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+8: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box3', 'room2')}, 'carry': {('box2', 'left')}, 'free': {('right',)}}
+9: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box2', 'room2'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 4 caixas
+Heuristica: retorna 1O algoritmo levou 191 milisegundosNo total 308 nós foram visitados
+Tivemos 1116 nós gerados com repeticçoes e 321 sem repetiçoes
+E a taxa de ramificaçao foi de 3.62 filhos por nóO plano possui 11 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box3', 'room1')}, 'free': {('right',)}, 'carry': {('box2', 'left')}}
+2: 	 Aplicando a açao ('pickup', ['box4', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'carry': {('box2', 'left'), ('box4', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'carry': {('box2', 'left'), ('box4', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1'), ('box3', 'room1')}, 'carry': {('box4', 'right')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box4', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1'), ('box3', 'room1'), ('box4', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1'), ('box3', 'room1'), ('box4', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box3', 'room1'), ('box4', 'room2')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+8: 	 Aplicando a açao ('pickup', ['box3', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2')}, 'carry': {('box1', 'right'), ('box3', 'left')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2')}, 'carry': {('box1', 'right'), ('box3', 'left')}}
+10: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2'), ('box4', 'room2')}, 'carry': {('box3', 'left')}, 'free': {('right',)}}
+11: 	 Aplicando a açao ('putdown', ['box3', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: soma de níveisO algoritmo levou 158 milisegundosNo total 49 nós foram visitados
+Tivemos 202 nós gerados com repeticçoes e 114 sem repetiçoes
+E a taxa de ramificaçao foi de 4.12 filhos por nóO plano possui 11 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box3', 'room1')}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box3', 'room1')}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box3', 'room1')}, 'carry': {('box1', 'right')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box3', 'room1'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box3', 'room1'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box1', 'room2')}, 'free': {('left',)}, 'carry': {('box3', 'right')}}
+8: 	 Aplicando a açao ('pickup', ['box4', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'carry': {('box4', 'left'), ('box3', 'right')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'carry': {('box4', 'left'), ('box3', 'right')}}
+10: 	 Aplicando a açao ('putdown', ['box4', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2'), ('box1', 'room2')}, 'carry': {('box3', 'right')}, 'free': {('left',)}}
+11: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2'), ('box3', 'room2'), ('box4', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: nível máximoO algoritmo levou 400 milisegundosNo total 253 nós foram visitados
+Tivemos 879 nós gerados com repeticçoes e 299 sem repetiçoes
+E a taxa de ramificaçao foi de 3.47 filhos por nóO plano possui 11 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box3', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box3', 'room2')}, 'carry': {('box2', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box1', 'room1'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box1', 'room1'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box3', 'room2')}, 'free': {('right',)}, 'carry': {('box1', 'left')}}
+8: 	 Aplicando a açao ('pickup', ['box4', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2')}, 'carry': {('box1', 'left'), ('box4', 'right')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2')}, 'carry': {('box1', 'left'), ('box4', 'right')}}
+10: 	 Aplicando a açao ('putdown', ['box4', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box4', 'room2')}, 'carry': {('box1', 'left')}, 'free': {('right',)}}
+11: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2'), ('box3', 'room2'), ('box4', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 5 caixas
+Heuristica: retorna 1O algoritmo levou 715 milisegundosNo total 1206 nós foram visitados
+Tivemos 4588 nós gerados com repeticçoes e 1212 sem repetiçoes
+E a taxa de ramificaçao foi de 3.8 filhos por nóO plano possui 15 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room1'), ('box5', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box4', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1'), ('box3', 'room1'), ('box5', 'room1')}, 'carry': {('box1', 'right'), ('box4', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1'), ('box3', 'room1'), ('box5', 'room1')}, 'carry': {('box1', 'right'), ('box4', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box2', 'room1'), ('box3', 'room1'), ('box5', 'room1')}, 'carry': {('box4', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box4', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1'), ('box4', 'room2'), ('box1', 'room2'), ('box5', 'room1'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1'), ('box4', 'room2'), ('box5', 'room1'), ('box1', 'room2'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1'), ('box4', 'room2'), ('box5', 'room1'), ('box1', 'room2')}, 'free': {('left',)}, 'carry': {('box3', 'right')}}
+8: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box5', 'room1'), ('box4', 'room2')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box4', 'room2'), ('box5', 'room1')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+10: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box5', 'room1'), ('box2', 'room2'), ('box4', 'room2')}, 'carry': {('box3', 'right')}, 'free': {('left',)}}
+11: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box4', 'room2'), ('box1', 'room2'), ('box5', 'room1')}, 'free': {('right',), ('left',)}}
+12: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box4', 'room2'), ('box3', 'room2'), ('box5', 'room1'), ('box2', 'room2')}, 'free': {('right',), ('left',)}}
+13: 	 Aplicando a açao ('pickup', ['box5', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room2'), ('box2', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',)}, 'carry': {('box5', 'left')}}
+14: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2'), ('box3', 'room2'), ('box4', 'room2')}, 'free': {('right',)}, 'carry': {('box5', 'left')}}
+15: 	 Aplicando a açao ('putdown', ['box5', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box1', 'room2'), ('box3', 'room2'), ('box4', 'room2'), ('box2', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: soma de níveisO algoritmo levou 546 milisegundosNo total 128 nós foram visitados
+Tivemos 607 nós gerados com repeticçoes e 395 sem repetiçoes
+E a taxa de ramificaçao foi de 4.74 filhos por nóO plano possui 15 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box2', 'room1'), ('box5', 'room1')}, 'free': {('left',)}, 'carry': {('box3', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box5', 'room1')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box5', 'room1')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box1', 'room1'), ('box5', 'room1')}, 'carry': {('box3', 'right')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box3', 'room2'), ('box5', 'room1'), ('box2', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box3', 'room2'), ('box5', 'room1'), ('box2', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box5', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box3', 'room2'), ('box2', 'room2')}, 'free': {('left',)}, 'carry': {('box5', 'right')}}
+8: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box3', 'room2')}, 'carry': {('box5', 'right'), ('box1', 'left')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box3', 'room2')}, 'carry': {('box5', 'right'), ('box1', 'left')}}
+10: 	 Aplicando a açao ('putdown', ['box5', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box3', 'room2'), ('box5', 'room2')}, 'carry': {('box1', 'left')}, 'free': {('right',)}}
+11: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box5', 'room2'), ('box1', 'room2'), ('box3', 'room2'), ('box2', 'room2')}, 'free': {('right',), ('left',)}}
+12: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box5', 'room2'), ('box2', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+13: 	 Aplicando a açao ('pickup', ['box4', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box5', 'room2'), ('box1', 'room2'), ('box3', 'room2'), ('box2', 'room2')}, 'free': {('right',)}, 'carry': {('box4', 'left')}}
+14: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box1', 'room2'), ('box2', 'room2'), ('box3', 'room2')}, 'free': {('right',)}, 'carry': {('box4', 'left')}}
+15: 	 Aplicando a açao ('putdown', ['box4', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box2', 'room2'), ('box3', 'room2'), ('box4', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: nível máximoO algoritmo levou 1987 milisegundosNo total 1148 nós foram visitados
+Tivemos 4344 nós gerados com repeticçoes e 1205 sem repetiçoes
+E a taxa de ramificaçao foi de 3.78 filhos por nóO plano possui 15 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box5', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room1'), ('box2', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box5', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room1'), ('box3', 'room1')}, 'carry': {('box5', 'right'), ('box1', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room1'), ('box3', 'room1')}, 'carry': {('box5', 'right'), ('box1', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box5', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box5', 'room2'), ('box2', 'room1'), ('box3', 'room1')}, 'carry': {('box1', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box3', 'room1'), ('box2', 'room1'), ('box5', 'room2')}, 'carry': {('box1', 'left')}, 'free': {('right',)}}
+6: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box5', 'room2'), ('box3', 'room1')}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+7: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box3', 'room1'), ('box5', 'room2')}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+8: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box5', 'room2'), ('box3', 'room1'), ('box1', 'room2')}, 'carry': {('box2', 'right')}, 'free': {('left',)}}
+9: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box5', 'room2'), ('box1', 'room2'), ('box2', 'room2'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+10: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box5', 'room2'), ('box2', 'room2'), ('box1', 'room2'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+11: 	 Aplicando a açao ('pickup', ['box3', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box5', 'room2'), ('box1', 'room2'), ('box2', 'room2')}, 'free': {('right',)}, 'carry': {('box3', 'left')}}
+12: 	 Aplicando a açao ('pickup', ['box4', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box2', 'room2'), ('box5', 'room2')}, 'carry': {('box3', 'left'), ('box4', 'right')}}
+13: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box1', 'room2'), ('box2', 'room2')}, 'carry': {('box3', 'left'), ('box4', 'right')}}
+14: 	 Aplicando a açao ('putdown', ['box4', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box1', 'room2'), ('box2', 'room2'), ('box4', 'room2')}, 'carry': {('box3', 'left')}, 'free': {('right',)}}
+15: 	 Aplicando a açao ('putdown', ['box3', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box2', 'room2'), ('box3', 'room2'), ('box4', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 6 caixas
+Heuristica: retorna 1O algoritmo levou 2564 milisegundosNo total 3839 nós foram visitados
+Tivemos 15265 nós gerados com repeticçoes e 3870 sem repetiçoes
+E a taxa de ramificaçao foi de 3.98 filhos por nóO plano possui 17 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room1'), ('box5', 'room1'), ('box6', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box5', 'room1'), ('box6', 'room1'), ('box3', 'room1')}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box6', 'room1'), ('box3', 'room1'), ('box5', 'room1')}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box5', 'room1'), ('box6', 'room1'), ('box3', 'room1')}, 'carry': {('box1', 'right')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box1', 'room2'), ('box5', 'room1'), ('box2', 'room2'), ('box6', 'room1'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box5', 'room1'), ('box1', 'room2'), ('box6', 'room1'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box6', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room2'), ('box5', 'room1'), ('box2', 'room2'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box6', 'right')}}
+8: 	 Aplicando a açao ('pickup', ['box3', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box5', 'room1'), ('box1', 'room2')}, 'carry': {('box6', 'right'), ('box3', 'left')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box1', 'room2'), ('box5', 'room1')}, 'carry': {('box6', 'right'), ('box3', 'left')}}
+10: 	 Aplicando a açao ('putdown', ['box3', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box1', 'room2'), ('box3', 'room2'), ('box5', 'room1'), ('box2', 'room2')}, 'carry': {('box6', 'right')}, 'free': {('left',)}}
+11: 	 Aplicando a açao ('putdown', ['box6', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box6', 'room2'), ('box2', 'room2'), ('box3', 'room2'), ('box5', 'room1'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+12: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box1', 'room2'), ('box6', 'room2'), ('box3', 'room2'), ('box5', 'room1'), ('box2', 'room2')}, 'free': {('right',), ('left',)}}
+13: 	 Aplicando a açao ('pickup', ['box4', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box6', 'room2'), ('box2', 'room2'), ('box3', 'room2'), ('box5', 'room1'), ('box1', 'room2')}, 'free': {('right',)}, 'carry': {('box4', 'left')}}
+14: 	 Aplicando a açao ('pickup', ['box5', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box6', 'room2'), ('box3', 'room2'), ('box2', 'room2')}, 'carry': {('box5', 'right'), ('box4', 'left')}}
+15: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box6', 'room2'), ('box2', 'room2'), ('box3', 'room2')}, 'carry': {('box5', 'right'), ('box4', 'left')}}
+16: 	 Aplicando a açao ('putdown', ['box5', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box6', 'room2'), ('box2', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'carry': {('box4', 'left')}, 'free': {('right',)}}
+17: 	 Aplicando a açao ('putdown', ['box4', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box1', 'room2'), ('box6', 'room2'), ('box3', 'room2'), ('box4', 'room2'), ('box2', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: soma de níveisO algoritmo levou 533 milisegundosNo total 104 nós foram visitados
+Tivemos 596 nós gerados com repeticçoes e 367 sem repetiçoes
+E a taxa de ramificaçao foi de 5.73 filhos por nóO plano possui 17 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box4', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box2', 'room1'), ('box5', 'room1'), ('box6', 'room1'), ('box3', 'room1')}, 'free': {('right',)}, 'carry': {('box4', 'left')}}
+2: 	 Aplicando a açao ('pickup', ['box6', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box2', 'room1'), ('box5', 'room1'), ('box3', 'room1')}, 'carry': {('box4', 'left'), ('box6', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1'), ('box2', 'room1'), ('box3', 'room1'), ('box5', 'room1')}, 'carry': {('box4', 'left'), ('box6', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box4', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1'), ('box2', 'room1'), ('box4', 'room2'), ('box5', 'room1'), ('box3', 'room1')}, 'carry': {('box6', 'right')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box6', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1'), ('box2', 'room1'), ('box4', 'room2'), ('box6', 'room2'), ('box5', 'room1'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box2', 'room1'), ('box6', 'room2'), ('box4', 'room2'), ('box5', 'room1'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box5', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box2', 'room1'), ('box6', 'room2'), ('box4', 'room2'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box5', 'right')}}
+8: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1'), ('box6', 'room2'), ('box4', 'room2'), ('box3', 'room1')}, 'carry': {('box5', 'right'), ('box1', 'left')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1'), ('box6', 'room2'), ('box3', 'room1'), ('box4', 'room2')}, 'carry': {('box5', 'right'), ('box1', 'left')}}
+10: 	 Aplicando a açao ('putdown', ['box5', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box2', 'room1'), ('box6', 'room2'), ('box4', 'room2'), ('box3', 'room1')}, 'carry': {('box1', 'left')}, 'free': {('right',)}}
+11: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box2', 'room1'), ('box6', 'room2'), ('box4', 'room2'), ('box1', 'room2'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+12: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box5', 'room2'), ('box2', 'room1'), ('box6', 'room2'), ('box4', 'room2'), ('box1', 'room2'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+13: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box5', 'room2'), ('box6', 'room2'), ('box4', 'room2'), ('box1', 'room2'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box2', 'right')}}
+14: 	 Aplicando a açao ('pickup', ['box3', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box5', 'room2'), ('box6', 'room2'), ('box4', 'room2'), ('box1', 'room2')}, 'carry': {('box2', 'right'), ('box3', 'left')}}
+15: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box1', 'room2'), ('box6', 'room2'), ('box4', 'room2')}, 'carry': {('box2', 'right'), ('box3', 'left')}}
+16: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box6', 'room2'), ('box2', 'room2'), ('box4', 'room2'), ('box1', 'room2')}, 'carry': {('box3', 'left')}, 'free': {('right',)}}
+17: 	 Aplicando a açao ('putdown', ['box3', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box1', 'room2'), ('box6', 'room2'), ('box3', 'room2'), ('box4', 'room2'), ('box2', 'room2')}, 'free': {('right',), ('left',)}}
+
+Heuristica: nível máximoO algoritmo levou 7087 milisegundosNo total 3537 nós foram visitados
+Tivemos 13790 nós gerados com repeticçoes e 3737 sem repetiçoes
+E a taxa de ramificaçao foi de 3.9 filhos por nóO plano possui 17 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room1'), ('box5', 'room1'), ('box6', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box5', 'room1'), ('box6', 'room1'), ('box3', 'room1')}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box6', 'room1'), ('box3', 'room1'), ('box5', 'room1')}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box5', 'room1'), ('box6', 'room1'), ('box3', 'room1')}, 'carry': {('box1', 'right')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box1', 'room2'), ('box5', 'room1'), ('box2', 'room2'), ('box6', 'room1'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room2'), ('box5', 'room1'), ('box1', 'room2'), ('box6', 'room1'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box4', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box5', 'room1'), ('box2', 'room2'), ('box6', 'room1'), ('box3', 'room1')}, 'free': {('right',)}, 'carry': {('box4', 'left')}}
+8: 	 Aplicando a açao ('pickup', ['box6', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box5', 'room1'), ('box1', 'room2'), ('box3', 'room1')}, 'carry': {('box4', 'left'), ('box6', 'right')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2'), ('box3', 'room1'), ('box5', 'room1')}, 'carry': {('box4', 'left'), ('box6', 'right')}}
+10: 	 Aplicando a açao ('putdown', ['box4', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box4', 'room2'), ('box2', 'room2'), ('box5', 'room1'), ('box3', 'room1')}, 'carry': {('box6', 'right')}, 'free': {('left',)}}
+11: 	 Aplicando a açao ('putdown', ['box6', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room2'), ('box6', 'room2'), ('box2', 'room2'), ('box5', 'room1'), ('box1', 'room2'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+12: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box6', 'room2'), ('box4', 'room2'), ('box5', 'room1'), ('box2', 'room2'), ('box3', 'room1')}, 'free': {('right',), ('left',)}}
+13: 	 Aplicando a açao ('pickup', ['box5', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box6', 'room2'), ('box4', 'room2'), ('box2', 'room2'), ('box1', 'room2'), ('box3', 'room1')}, 'free': {('right',)}, 'carry': {('box5', 'left')}}
+14: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box6', 'room2'), ('box4', 'room2'), ('box2', 'room2')}, 'carry': {('box5', 'left'), ('box3', 'right')}}
+15: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box6', 'room2'), ('box2', 'room2'), ('box4', 'room2')}, 'carry': {('box5', 'left'), ('box3', 'right')}}
+16: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box6', 'room2'), ('box2', 'room2'), ('box3', 'room2'), ('box4', 'room2'), ('box1', 'room2')}, 'carry': {('box5', 'left')}, 'free': {('right',)}}
+17: 	 Aplicando a açao ('putdown', ['box5', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box5', 'room2'), ('box1', 'room2'), ('box6', 'room2'), ('box3', 'room2'), ('box4', 'room2'), ('box2', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 2 caixas
+Heuristica: fast forwardO algoritmo levou 1664 milisegundosNo total 11 nós foram visitados
+Tivemos 35 nós gerados com repeticçoes e 22 sem repetiçoes
+E a taxa de ramificaçao foi de 3.18 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'left'), ('box1', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right')}, 'box-at': {('box2', 'room2')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 2 caixas
+Heuristica: fast forwardO algoritmo levou 1311 milisegundosNo total 12 nós foram visitados
+Tivemos 38 nós gerados com repeticçoes e 24 sem repetiçoes
+E a taxa de ramificaçao foi de 3.17 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1')}, 'free': {('left',)}, 'carry': {('box2', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box2', 'right'), ('box1', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'right'), ('box1', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'right')}, 'box-at': {('box1', 'room2')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box2', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 2 caixas
+Heuristica: fast forwardO algoritmo levou 1125 milisegundosNo total 11 nós foram visitados
+Tivemos 35 nós gerados com repeticçoes e 21 sem repetiçoes
+E a taxa de ramificaçao foi de 3.18 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box1', 'right'), ('box2', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right'), ('box2', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'left')}, 'box-at': {('box1', 'room2')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 2 caixas
+Heuristica: fast forwardO algoritmo levou 1125 milisegundosNo total 11 nós foram visitados
+Tivemos 35 nós gerados com repeticçoes e 21 sem repetiçoes
+E a taxa de ramificaçao foi de 3.18 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box1', 'right'), ('box2', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right'), ('box2', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'left')}, 'box-at': {('box1', 'room2')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 3 caixas
+Heuristica: fast forwardO algoritmo levou 9516 milisegundosNo total 60 nós foram visitados
+Tivemos 191 nós gerados com repeticçoes e 84 sem repetiçoes
+E a taxa de ramificaçao foi de 3.18 filhos por nóO plano possui 9 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box3', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'carry': {('box1', 'left'), ('box3', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1')}, 'carry': {('box1', 'left'), ('box3', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1'), ('box3', 'room2')}, 'carry': {('box1', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',)}, 'carry': {('box2', 'left')}}
+8: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',)}, 'carry': {('box2', 'left')}}
+9: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 2 caixas
+Heuristica: fast forwardO algoritmo levou 1125 milisegundosNo total 11 nós foram visitados
+Tivemos 35 nós gerados com repeticçoes e 21 sem repetiçoes
+E a taxa de ramificaçao foi de 3.18 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box1', 'right'), ('box2', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right'), ('box2', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'left')}, 'box-at': {('box1', 'room2')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 3 caixas
+Heuristica: fast forwardO algoritmo levou 9516 milisegundosNo total 60 nós foram visitados
+Tivemos 191 nós gerados com repeticçoes e 84 sem repetiçoes
+E a taxa de ramificaçao foi de 3.18 filhos por nóO plano possui 9 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box3', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'carry': {('box1', 'left'), ('box3', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1')}, 'carry': {('box1', 'left'), ('box3', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1'), ('box3', 'room2')}, 'carry': {('box1', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',)}, 'carry': {('box2', 'left')}}
+8: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',)}, 'carry': {('box2', 'left')}}
+9: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 4 caixas
+Heuristica: fast forwardO algoritmo levou 44424 milisegundosNo total 99 nós foram visitados
+Tivemos 352 nós gerados com repeticçoes e 166 sem repetiçoes
+E a taxa de ramificaçao foi de 3.56 filhos por nóO plano possui 11 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box2', 'room1'), ('box4', 'room1')}, 'free': {('left',)}, 'carry': {('box3', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box4', 'room1')}, 'carry': {('box3', 'right'), ('box2', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1'), ('box4', 'room1')}, 'carry': {('box3', 'right'), ('box2', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1'), ('box2', 'room2'), ('box4', 'room1')}, 'carry': {('box3', 'right')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1'), ('box2', 'room2'), ('box3', 'room2'), ('box4', 'room1')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box2', 'room2'), ('box3', 'room2'), ('box4', 'room1')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box4', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box2', 'room2'), ('box3', 'room2')}, 'free': {('right',)}, 'carry': {('box4', 'left')}}
+8: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2')}, 'carry': {('box1', 'right'), ('box4', 'left')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box3', 'room2'), ('box2', 'room2')}, 'carry': {('box1', 'right'), ('box4', 'left')}}
+10: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'carry': {('box4', 'left')}, 'free': {('right',)}}
+11: 	 Aplicando a açao ('putdown', ['box4', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room2'), ('box3', 'room2'), ('box2', 'room2'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 2 caixas
+Heuristica: fast forwardO algoritmo levou 1346 milisegundosNo total 14 nós foram visitados
+Tivemos 44 nós gerados com repeticçoes e 24 sem repetiçoes
+E a taxa de ramificaçao foi de 3.14 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'free': {('right',)}, 'carry': {('box1', 'left')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box2', 'right'), ('box1', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'right')}, 'box-at': {('box1', 'room2')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('left',), ('right',)}}
+
+
+Tratando o Problema do robo: 2 caixas
+Heuristica: fast forwardO algoritmo levou 1346 milisegundosNo total 14 nós foram visitados
+Tivemos 44 nós gerados com repeticçoes e 24 sem repetiçoes
+E a taxa de ramificaçao foi de 3.14 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'free': {('right',)}, 'carry': {('box1', 'left')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box2', 'right'), ('box1', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'right')}, 'box-at': {('box1', 'room2')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('left',), ('right',)}}
+
+
+Tratando o Problema do robo: 3 caixas
+Heuristica: fast forwardO algoritmo levou 14080 milisegundosNo total 64 nós foram visitados
+Tivemos 210 nós gerados com repeticçoes e 101 sem repetiçoes
+E a taxa de ramificaçao foi de 3.28 filhos por nóO plano possui 9 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box3', 'room1'), ('box2', 'room1')}, 'free': {('right',)}, 'carry': {('box1', 'left')}}
+2: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'carry': {('box3', 'right'), ('box1', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1')}, 'carry': {('box3', 'right'), ('box1', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box2', 'room1')}, 'carry': {('box3', 'right')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box2', 'room1')}, 'carry': {('box3', 'right')}, 'free': {('left',)}}
+6: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+7: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+8: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'carry': {('box3', 'right')}, 'free': {('left',)}}
+9: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('left',), ('right',)}}
+
+
+Tratando o Problema do robo: 2 caixas
+Heuristica: fast forwardO algoritmo levou 1346 milisegundosNo total 14 nós foram visitados
+Tivemos 44 nós gerados com repeticçoes e 24 sem repetiçoes
+E a taxa de ramificaçao foi de 3.14 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'free': {('right',)}, 'carry': {('box1', 'left')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box2', 'right'), ('box1', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box2', 'right')}, 'box-at': {('box1', 'room2')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('left',), ('right',)}}
+
+
+Tratando o Problema do robo: 3 caixas
+Heuristica: fast forwardO algoritmo levou 14080 milisegundosNo total 64 nós foram visitados
+Tivemos 210 nós gerados com repeticçoes e 101 sem repetiçoes
+E a taxa de ramificaçao foi de 3.28 filhos por nóO plano possui 9 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box3', 'room1'), ('box2', 'room1')}, 'free': {('right',)}, 'carry': {('box1', 'left')}}
+2: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'carry': {('box3', 'right'), ('box1', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1')}, 'carry': {('box3', 'right'), ('box1', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box2', 'room1')}, 'carry': {('box3', 'right')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2'), ('box2', 'room1')}, 'carry': {('box3', 'right')}, 'free': {('left',)}}
+6: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room2')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+7: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2')}, 'carry': {('box2', 'left'), ('box3', 'right')}}
+8: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'carry': {('box3', 'right')}, 'free': {('left',)}}
+9: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('left',), ('right',)}}
+
+
+Tratando o Problema do robo: 4 caixas
+Heuristica: fast forwardO algoritmo levou 86793 milisegundosNo total 127 nós foram visitados
+Tivemos 454 nós gerados com repeticçoes e 218 sem repetiçoes
+E a taxa de ramificaçao foi de 3.57 filhos por nóO plano possui 11 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box4', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1'), ('box2', 'room1')}, 'free': {('left',)}, 'carry': {('box4', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'carry': {('box2', 'left'), ('box4', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'carry': {('box2', 'left'), ('box4', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room1'), ('box3', 'room1')}, 'carry': {('box4', 'right')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box4', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2'), ('box1', 'room1'), ('box3', 'room1')}, 'free': {('left',), ('right',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2'), ('box1', 'room1'), ('box3', 'room1')}, 'free': {('left',), ('right',)}}
+7: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+8: 	 Aplicando a açao ('pickup', ['box3', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2')}, 'carry': {('box3', 'left'), ('box1', 'right')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2')}, 'carry': {('box3', 'left'), ('box1', 'right')}}
+10: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2'), ('box1', 'room2')}, 'carry': {('box3', 'left')}, 'free': {('right',)}}
+11: 	 Aplicando a açao ('putdown', ['box3', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('left',), ('right',)}}
+
+
+Tratando o Problema do robo: 2 caixas
+Heuristica: fast forwardO algoritmo levou 1266 milisegundosNo total 12 nós foram visitados
+Tivemos 38 nós gerados com repeticçoes e 24 sem repetiçoes
+E a taxa de ramificaçao foi de 3.17 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1')}, 'free': {('right',)}, 'carry': {('box2', 'left')}}
+2: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box1', 'right'), ('box2', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right'), ('box2', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right')}, 'box-at': {('box2', 'room2')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('left',), ('right',)}}
+
+
+Tratando o Problema do robo: 2 caixas
+Heuristica: fast forwardO algoritmo levou 1266 milisegundosNo total 12 nós foram visitados
+Tivemos 38 nós gerados com repeticçoes e 24 sem repetiçoes
+E a taxa de ramificaçao foi de 3.17 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1')}, 'free': {('right',)}, 'carry': {('box2', 'left')}}
+2: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box1', 'right'), ('box2', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right'), ('box2', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right')}, 'box-at': {('box2', 'room2')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('left',), ('right',)}}
+
+
+Tratando o Problema do robo: 3 caixas
+Heuristica: fast forwardO algoritmo levou 14669 milisegundosNo total 68 nós foram visitados
+Tivemos 227 nós gerados com repeticçoes e 104 sem repetiçoes
+E a taxa de ramificaçao foi de 3.34 filhos por nóO plano possui 9 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'free': {('right',)}, 'carry': {('box2', 'left')}}
+2: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1')}, 'carry': {('box3', 'right'), ('box2', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1')}, 'carry': {('box3', 'right'), ('box2', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1'), ('box3', 'room2')}, 'carry': {('box2', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box3', 'room2')}, 'carry': {('box2', 'left')}, 'free': {('right',)}}
+6: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box3', 'room2')}, 'carry': {('box1', 'right'), ('box2', 'left')}}
+7: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box3', 'room2')}, 'carry': {('box1', 'right'), ('box2', 'left')}}
+8: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box3', 'room2')}, 'carry': {('box2', 'left')}, 'free': {('right',)}}
+9: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 2 caixas
+Heuristica: fast forwardO algoritmo levou 1266 milisegundosNo total 12 nós foram visitados
+Tivemos 38 nós gerados com repeticçoes e 24 sem repetiçoes
+E a taxa de ramificaçao foi de 3.17 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1')}, 'free': {('right',)}, 'carry': {('box2', 'left')}}
+2: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box1', 'right'), ('box2', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right'), ('box2', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'right')}, 'box-at': {('box2', 'room2')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('left',), ('right',)}}
+
+
+Tratando o Problema do robo: 3 caixas
+Heuristica: fast forwardO algoritmo levou 14669 milisegundosNo total 68 nós foram visitados
+Tivemos 227 nós gerados com repeticçoes e 104 sem repetiçoes
+E a taxa de ramificaçao foi de 3.34 filhos por nóO plano possui 9 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'free': {('right',)}, 'carry': {('box2', 'left')}}
+2: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1')}, 'carry': {('box3', 'right'), ('box2', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1')}, 'carry': {('box3', 'right'), ('box2', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1'), ('box3', 'room2')}, 'carry': {('box2', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box3', 'room2')}, 'carry': {('box2', 'left')}, 'free': {('right',)}}
+6: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box3', 'room2')}, 'carry': {('box1', 'right'), ('box2', 'left')}}
+7: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box3', 'room2')}, 'carry': {('box1', 'right'), ('box2', 'left')}}
+8: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box3', 'room2')}, 'carry': {('box2', 'left')}, 'free': {('right',)}}
+9: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 4 caixas
+Heuristica: fast forwardO algoritmo levou 75841 milisegundosNo total 142 nós foram visitados
+Tivemos 527 nós gerados com repeticçoes e 235 sem repetiçoes
+E a taxa de ramificaçao foi de 3.71 filhos por nóO plano possui 11 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box4', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1'), ('box1', 'room1'), ('box3', 'room1')}, 'free': {('right',)}, 'carry': {('box4', 'left')}}
+2: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1'), ('box1', 'room1')}, 'carry': {('box4', 'left'), ('box3', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1'), ('box1', 'room1')}, 'carry': {('box4', 'left'), ('box3', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1'), ('box1', 'room1'), ('box3', 'room2')}, 'carry': {('box4', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box4', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room1'), ('box1', 'room1'), ('box4', 'room2'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1'), ('box1', 'room1'), ('box4', 'room2'), ('box3', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box4', 'room2'), ('box3', 'room2')}, 'free': {('left',)}, 'carry': {('box2', 'right')}}
+8: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room2'), ('box3', 'room2')}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room2'), ('box3', 'room2')}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+10: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box4', 'room2'), ('box3', 'room2')}, 'carry': {('box2', 'right')}, 'free': {('left',)}}
+11: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2'), ('box4', 'room2'), ('box3', 'room2')}, 'free': {('left',), ('right',)}}
+
+
+Tratando o Problema do robo: 2 caixas
+Heuristica: fast forwardO algoritmo levou 1287 milisegundosNo total 12 nós foram visitados
+Tivemos 38 nós gerados com repeticçoes e 24 sem repetiçoes
+E a taxa de ramificaçao foi de 3.17 filhos por nóO plano possui 5 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room1')}, 'free': {('right',)}, 'carry': {('box1', 'left')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'left'), ('box2', 'right')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'carry': {('box1', 'left')}, 'box-at': {('box2', 'room2')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box1', 'room2')}, 'free': {('left',), ('right',)}}

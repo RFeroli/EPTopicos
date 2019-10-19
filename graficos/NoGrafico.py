@@ -135,8 +135,8 @@ class NoGrafico:
 
         for predicado in self.dono.dict:
             string+=predicado+"  "+str(self.dono.dict[predicado])+"\n"
-
-        img_label = Label(f, text=string)
+        print(string)
+        img_label = Label(f, text=string+"\n "+str(self.dono.contador))
         img_label.pack()
         f.pack()
 
