@@ -3,7 +3,7 @@ from main.planejador import Estado, Planejador
 from main.conversorPDDL import Conversor
 import time
 
-nome_heuristica = {'um': 'retorna 1', 'soma': 'soma de níveis', 'max': 'nível máximo','FF':"fast forward"}
+nome_heuristica = {'um': 'retorna 1', 'soma': 'soma de níveis', 'max': 'nível máximo','FF':"fast forward 1", 'FF2':"fast forward 2"}
 
 # problema do robo e problema tyreworld
 problemas = [
@@ -20,7 +20,7 @@ problemas = [
             ]
 # Heurísticas que retorna 1, soma de nível, máximo nível e fast foward
 # TODO incluir FF
-heuristicas = ['um','max','FF','soma']
+heuristicas = ['FF']
 
 path = '../in/'
 saida_estatisticas = '../estatisticas/saida_problema.txt'
@@ -49,6 +49,11 @@ for problema in problemas:
         escreve_planos+='\nHeuristica: {}'.format(nome_heuristica[heuristica])
 
         estado, meta, operacoes, argumentos  = Conversor(path + problema[0], path + problema[1]).get_planner_args()
+        # print(estado)
+        # print(meta)
+        # print(operacoes)
+        # print(argumentos)
+
         pl = Planejador(argumentos, operacoes, Estado(estado), Estado(meta), heuristica)
         pl.nome_do_problema=problema[2]
         pl.gerar_grafico=False

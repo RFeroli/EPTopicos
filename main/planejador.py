@@ -79,6 +79,8 @@ class Planejador:
             return self.heuristica_graphplan_soma_niveis(atual.dict, final.dict)
         elif self.heu == 'max':
             return self.heuristica_graphplan_nivel_maximo(atual.dict, final.dict)
+        elif self.heu == 'FF2':
+            return self.heuristica_fast_foward(atual.dict, final.dict)
         elif self.heu == 'FF':
             return self.heuristica_ff(atual.dict, final.dict)
         elif self.heu == 'um':
@@ -134,7 +136,7 @@ class Planejador:
             if not lista or not l:
                 continue
 
-            saida[operacao] = []
+            # saida[operacao] = []
 
             unique_entries = set(l)
             indices = {value: [i for i, v in enumerate(l) if v == value] for value in unique_entries}
@@ -187,6 +189,7 @@ class Planejador:
                         if '?' in s[el]:
                             s[el] = linha[contador]
                             contador+=1
+                    saida[operacao] = saida.get(operacao, [])
                     saida[operacao].append(s)
 
         return saida
@@ -298,10 +301,29 @@ class Planejador:
 
         gff=grafoFF.GrafoFF()
         gff.incluir_estado_inicial(estado_inicial)
+        possiveis_excludentes = {}
         while True:
             # print('\n\nNivel {}'.format(nivel))
 
-            possiveis = self.devolve_possiveis_combinacoes(estado)
+            # possiveis = self.devolve_possiveis_combinacoes(estado)
+            possiveis_momento = self.devolve_possiveis_combinacoes(estado)
+            # print(possiveis)
+            possiveis = {}
+            for att in possiveis_momento:
+                if att not in possiveis_excludentes:
+                    possiveis[att] = possiveis_momento[att]
+                    continue
+                for i in possiveis_momento[att]:
+                    if i not in possiveis_excludentes[att]:
+                        possiveis[att] = possiveis.get(att, [])
+                        possiveis[att].append(i)
+
+            possiveis_excludentes = possiveis_momento
+
+
+
+
+
             for i in possiveis:
                 if possiveis[i]:
                     for j in possiveis[i]:
@@ -413,6 +435,15 @@ class Planejador:
         return custo_somadando_niveis
 
     # Fast Foward wesley
+
+    def crie_estado_inicial_AT(self, estado_inicial):
+        atributos_anteriores = {}
+        for att in estado_inicial:
+            for l in estado_inicial[att]:
+                atributos_anteriores[self._gere_hash((att, list(l)))] = [-1, set(), str(att)+str(l)]
+
+        return atributos_anteriores
+
     def crie_proximo_estado_graph_plan_ff(self, estado_atual, ope, niveis_operacao_geradora, nivel):
         nome, parametros = ope
         proximo_estado = estado_atual
@@ -464,10 +495,124 @@ class Planejador:
             #     break
             #
 
+    def insere_operacao(self, ope, operacoes_preconds):
+        nome, parametros = ope
+        precondicoes = self.operacoes[nome][2]
+        variaveis = self.operacoes[nome][0]
+        d = {}
+        for i, j in zip(variaveis, parametros):
+            d[i] = j
+        hash_atual = self._gere_hash(ope)
+        # print('hash de {} : {}'.format(ope, hash_atual))
+        operacoes_preconds[hash_atual] = []
+        for precond in precondicoes:
+            for el in precondicoes[precond]:
+                arg = [d[x] if x in d else x for x in el]
+                operacoes_preconds[hash_atual].append((precond, arg))
 
+
+    def devolve_custo_operacao(self, hash_ope, operacoes_preconds, atributos_anteriores):
+        l = operacoes_preconds[hash_ope]
+        return sum([max(0, atributos_anteriores[self._gere_hash(x)][0]) for x in l])
+
+    def devolve_operacoes(self, hash_ope, operacoes_preconds, atributos_anteriores):
+        l = operacoes_preconds[hash_ope]
+        conjunto_saida = set()
+        for x in l:
+            conjunto_saida = conjunto_saida.union(atributos_anteriores[self._gere_hash(x)][1])
+
+        return conjunto_saida
+
+    def insere_atributos(self, predicado, ope, operacoes_preconds, atributos_anteriores):
+        hash_ope = self._gere_hash(ope)
+        hash_precidado = self._gere_hash(predicado)
+        # print(hash_precidado)
+        if hash_precidado not in atributos_anteriores:
+            conjunto = self.devolve_operacoes(hash_ope, operacoes_preconds, atributos_anteriores)
+            conjunto.add(hash_ope)
+            atributos_anteriores[hash_precidado] = [len(conjunto), conjunto, predicado]
+        else:
+            custo_atual = self.devolve_custo_operacao(hash_ope, operacoes_preconds, atributos_anteriores)
+            if atributos_anteriores[hash_precidado][0] > custo_atual + 1:
+                conjunto = self.devolve_operacoes(hash_ope, operacoes_preconds, atributos_anteriores)
+                conjunto.add(hash_ope)
+                atributos_anteriores[hash_precidado] = [len(conjunto), conjunto, predicado]
+
+    def confere_estado_meta(self, atributos_anteriores, meta):
+        soma = 0
+        for att in meta:
+            for l in meta[att]:
+                hash_condicao = self._gere_hash( (att, list(l) ) )
+                if hash_condicao not in atributos_anteriores:
+                    return False
+                else:
+                    soma += max(0, atributos_anteriores[hash_condicao][0])
+        return True
 
     def heuristica_fast_foward(self, estado_atual, meta):
-        lista, encontrou = self.lista_niveis_fast_forward(estado_atual, meta)
+        estado = deepcopy(estado_atual)
+
+        # metat = {'robot-at': {('room1',)}}
+        atributos_anteriores = self.crie_estado_inicial_AT(estado)
+        # print(atributos_anteriores)
+        operacoes_preconds = {}
+        # print(self.confere_estado_meta(atributos_anteriores, metat))
+
+        # comparar quando nao existe mudancas
+        hash_anterior = self._gere_hash(atributos_anteriores)
+        possiveis_excludentes = {}
+        while True:
+
+            if self.confere_estado_meta(atributos_anteriores, meta):
+                s = set()
+                for att in meta:
+                    for l in meta[att]:
+                        hash_condicao = self._gere_hash((att, list(l)))
+                        s = s.union(atributos_anteriores[hash_condicao][1])
+                return len(s)
+
+
+            possiveis_momento = self.devolve_possiveis_combinacoes(estado)
+            # print(possiveis)
+            possiveis = {}
+            for att in possiveis_momento:
+                if att not in possiveis_excludentes:
+                    possiveis[att] = possiveis_momento[att]
+                    continue
+                for i in possiveis_momento[att]:
+                    if i not in possiveis_excludentes[att]:
+                        possiveis[att] = possiveis.get(att, [])
+                        possiveis[att].append(i)
+
+            possiveis_excludentes = possiveis_momento
+
+            efeitos_positivos = []
+
+            for operacao in possiveis:
+                efp = self.operacoes[operacao][3]
+                lista_variaveis = self.operacoes[operacao][0]
+                for conj in  possiveis[operacao]:
+                    estado = self.crie_proximo_estado_graph_plan_alterando(estado, (operacao, conj))
+                    self.insere_operacao((operacao, tuple(conj)), operacoes_preconds)
+                    d = {}
+                    for i, j in zip(lista_variaveis, conj):
+                        d[i] = j
+                    for att in efp:
+                        efeitos_positivos.append([(att, [d[x] if x in d else x for x in efp[att]]), (operacao, tuple(conj))])
+
+
+            for ef in efeitos_positivos:
+                self.insere_atributos(ef[0], ef[1], operacoes_preconds, atributos_anteriores)
+
+            novo_hash_dict = self._gere_hash(atributos_anteriores)
+            if novo_hash_dict == hash_anterior:
+                return inf
+            else:
+                hash_anterior = novo_hash_dict
+
+            # print(self.confere_estado_meta(atributos_anteriores, metat))
+            # print()
+        # lista, encontrou = self.lista_niveis_fast_forward(estado_atual, meta)
 
 
 
