@@ -463,38 +463,6 @@ class Planejador:
         return proximo_estado
 
 
-    def lista_niveis_fast_forward(self, estado_inicial, estado_final):
-        estado = deepcopy(estado_inicial)
-        encontrou = False
-        ant_pred, ant_op = {}, {}
-        nivel = 0
-        ant_pred[nivel] = {}
-        for predicado in estado:
-            for t in estado[predicado]:
-                ant_pred[nivel][self._gere_hash((predicado, t))] = [None]
-
-        while True:
-            # print('\n\nNivel {}'.format(nivel))
-            if self.equivalentes(estado, estado_final):
-                encontrou = True
-                break
-            # niveis_operacao_geradora[nivel] = {}
-            # for predicado in estado:
-            #     for t in estado[predicado]:
-            #         niveis_operacao_geradora[nivel][self._gere_hash([predicado, t])]
-
-            # possiveis = self.devolve_possiveis_combinacoes(estado)
-            # niveis_operacao_geradora[nivel] = {}
-            # for i in possiveis:
-            #     if possiveis[i]:
-            #         for j in possiveis[i]:
-            #             estado = self.crie_proximo_estado_graph_plan_ff(estado, (i, j), niveis_operacao_geradora, nivel)
-            #
-            #
-            # if len(dict_niveis) > 1 and self.equivalentes(dict_niveis[-2], dict_niveis[-1]):
-            #     break
-            #
-
     def insere_operacao(self, ope, operacoes_preconds):
         nome, parametros = ope
         precondicoes = self.operacoes[nome][2]

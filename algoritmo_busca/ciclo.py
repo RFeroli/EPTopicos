@@ -20,7 +20,7 @@ problemas = [
             ]
 # Heurísticas que retorna 1, soma de nível, máximo nível e fast foward
 # TODO incluir FF
-heuristicas = ['FF']
+heuristicas = ['um', 'soma', 'FF', 'max']
 
 path = '../in/'
 saida_estatisticas = '../estatisticas/saida_problema.txt'
