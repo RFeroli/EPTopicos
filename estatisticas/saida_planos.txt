@@ -13986,3 +13986,35 @@ E a taxa de ramificaçao foi de 3.89 filhos por nóO plano possui 15 passos, os 
 13: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box3', 'room2'), ('box5', 'room2'), ('box1', 'room2')}, 'carry': {('box2', 'right'), ('box4', 'left')}}
 14: 	 Aplicando a açao ('putdown', ['box4', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box3', 'room2'), ('box5', 'room2'), ('box4', 'room2'), ('box1', 'room2')}, 'carry': {('box2', 'right')}, 'free': {('left',)}}
 15: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box3', 'room2'), ('box1', 'room2'), ('box2', 'room2'), ('box4', 'room2'), ('box5', 'room2')}, 'free': {('left',), ('right',)}}
+
+
+Tratando o Problema do robo: 4 caixas
+Heuristica: soma de níveisO algoritmo levou 159 milisegundosNo total 49 nós foram visitados
+Tivemos 204 nós gerados com repeticçoes e 116 sem repetiçoes
+E a taxa de ramificaçao foi de 4.16 filhos por nóO plano possui 11 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box4', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box2', 'room1'), ('box3', 'room1')}, 'free': {('left',)}, 'carry': {('box4', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box2', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'carry': {('box4', 'right'), ('box2', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1'), ('box3', 'room1')}, 'carry': {('box4', 'right'), ('box2', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box2', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1'), ('box2', 'room2'), ('box3', 'room1')}, 'carry': {('box4', 'right')}, 'free': {('left',)}}
+5: 	 Aplicando a açao ('putdown', ['box4', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room1'), ('box2', 'room2'), ('box3', 'room1'), ('box4', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box1', 'room1'), ('box2', 'room2'), ('box3', 'room1'), ('box4', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box1', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box3', 'room1'), ('box4', 'room2')}, 'free': {('left',)}, 'carry': {('box1', 'right')}}
+8: 	 Aplicando a açao ('pickup', ['box3', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2')}, 'carry': {('box3', 'left'), ('box1', 'right')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box4', 'room2')}, 'carry': {('box3', 'left'), ('box1', 'right')}}
+10: 	 Aplicando a açao ('putdown', ['box3', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box2', 'room2'), ('box3', 'room2'), ('box4', 'room2')}, 'carry': {('box1', 'right')}, 'free': {('left',)}}
+11: 	 Aplicando a açao ('putdown', ['box1', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box1', 'room2'), ('box2', 'room2'), ('box3', 'room2'), ('box4', 'room2')}, 'free': {('right',), ('left',)}}
+
+
+Tratando o Problema do robo: 4 caixas
+Heuristica: soma de níveisO algoritmo levou 179 milisegundosNo total 37 nós foram visitados
+Tivemos 149 nós gerados com repeticçoes e 89 sem repetiçoes
+E a taxa de ramificaçao foi de 4.03 filhos por nóO plano possui 11 passos, os quais, a partir do estado inicial, sao:1: 	 Aplicando a açao ('pickup', ['box3', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room1'), ('box1', 'room1')}, 'free': {('left',)}, 'carry': {('box3', 'right')}}
+2: 	 Aplicando a açao ('pickup', ['box1', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box2', 'room1')}, 'carry': {('box3', 'right'), ('box1', 'left')}}
+3: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box2', 'room1')}, 'carry': {('box3', 'right'), ('box1', 'left')}}
+4: 	 Aplicando a açao ('putdown', ['box3', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box3', 'room2'), ('box2', 'room1')}, 'carry': {('box1', 'left')}, 'free': {('right',)}}
+5: 	 Aplicando a açao ('putdown', ['box1', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box4', 'room1'), ('box3', 'room2'), ('box2', 'room1'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+6: 	 Aplicando a açao ('move', ['room2', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box3', 'room2'), ('box2', 'room1'), ('box1', 'room2')}, 'free': {('right',), ('left',)}}
+7: 	 Aplicando a açao ('pickup', ['box2', 'right', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box4', 'room1'), ('box3', 'room2'), ('box1', 'room2')}, 'free': {('left',)}, 'carry': {('box2', 'right')}}
+8: 	 Aplicando a açao ('pickup', ['box4', 'left', 'room1']), gera-se o estado		{'robot-at': {('room1',)}, 'box-at': {('box3', 'room2'), ('box1', 'room2')}, 'carry': {('box2', 'right'), ('box4', 'left')}}
+9: 	 Aplicando a açao ('move', ['room1', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box3', 'room2'), ('box1', 'room2')}, 'carry': {('box2', 'right'), ('box4', 'left')}}
+10: 	 Aplicando a açao ('putdown', ['box2', 'right', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box3', 'room2'), ('box2', 'room2'), ('box1', 'room2')}, 'carry': {('box4', 'left')}, 'free': {('right',)}}
+11: 	 Aplicando a açao ('putdown', ['box4', 'left', 'room2']), gera-se o estado		{'robot-at': {('room2',)}, 'box-at': {('box3', 'room2'), ('box2', 'room2'), ('box1', 'room2'), ('box4', 'room2')}, 'free': {('right',), ('left',)}}
