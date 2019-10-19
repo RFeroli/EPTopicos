@@ -7,68 +7,71 @@ class GrafoFF:
         self.nos={}
         self.niveis={}
 
+    #
+    # def incluir_noOps(self,estado,nivel):
+    #     for predicado in estado:
+    #         for args in estado[predicado]:
+    #             no = self.NoPred ((predicado, {args}), nivel)
+    #             if (not no["hash"] in self.nos):
+    #                 self.nos[no["hash"]] = no
+    #             no = self.nos[no["hash"]]
+    #
+    #             noigual=self.NoPred ((predicado, {args}), nivel + 1)
+    #             if (not noigual["hash"] in self.nos):
+    #                 self.nos[noigual["hash"]] = noigual
+    #             noigual = self.nos[noigual["hash"]]
+    #             noigual["noOp"]=no
 
-    def incluir_noOps(self,estado,nivel):
-        for predicado in estado:
-            for args in estado[predicado]:
-                no = self.No ((predicado, {args}), nivel)
+    def incluir_estado_inicial(self,estado_inicial):
+        for predicado in estado_inicial:
+
+            for args in estado_inicial[predicado]:
+                no = self.NoPred ((predicado, {args}))
                 if (not no["hash"] in self.nos):
                     self.nos[no["hash"]] = no
                 no = self.nos[no["hash"]]
 
-                noigual=self.No ((predicado, {args}), nivel+1)
-                if (not noigual["hash"] in self.nos):
-                    self.nos[noigual["hash"]] = noigual
-                noigual = self.nos[noigual["hash"]]
-                noigual["noOp"]=no
+    def incluir(self,precondicoes,op,efeitos):
 
-
-    def incluir(self,precondicoes,op,efeitos, nivel):
-
-        noAc=self.NoOperacao (op, nivel)
+        noAc=self.NoOperacao (op)
         if (not noAc["hash"] in self.nos):
             self.nos[noAc["hash"]] = noAc
         noAc = self.nos[noAc["hash"]]
-        self.niveis[nivel] = self.niveis.get (nivel, dict())[noAc["hash"]]=noAc
 
 
         for efeito in efeitos:
-            no = self.No ((efeito, efeitos[efeito]), nivel+1)
+            no = self.NoPred ((efeito, efeitos[efeito]))
             if (not no["hash"] in self.nos):
                 self.nos[no["hash"]] = no
-            no = self.nos[no["hash"]]
-            noAc["proximos"].append(self.nos[no["hash"]])
-            no["anteriores"].append(self.nos[noAc["hash"]])
+                no["anterior"] = self.nos[noAc["hash"]]
+
 
 
         for precond in precondicoes:
-            no=self.No((precond,precondicoes[precond]),nivel)
+            no=self.NoPred((precond, precondicoes[precond]))
             if(not no["hash"] in self.nos ):
                 self.nos[no["hash"]]=no
             no=self.nos[no["hash"]]
             noAc["anteriores"].append (self.nos[no["hash"]])
-            no["proximos"].append(self.nos[noAc["hash"]])
+            #no["proximos"].append(self.nos[noAc["hash"]])
 
 
-    def No(self,valor,nivel):
+    def NoPred(self, valor):
         no={}
         no["valor"]=valor
-        no["proximos"]=[]
-        no["anteriores"]=[]
-        no["nivel"] = nivel
-        no["hash"]=self._gere_hash({"chave":no["valor"],"nivel":no["nivel"]})
+       #no["proximos"]=[]
+        no["anterior"]=None
+        no["hash"]=self._gere_hash({"chave":no["valor"]})
         no["operacao"]=False
         no["flag"]=False
-        no["noOp"]= None
         return  no
 
-    def NoOperacao(self, valor, nivel):
+    def NoOperacao(self, valor):
         no = {}
         no["valor"] = valor
-        no["proximos"] = []
+       # no["proximos"] = []
         no["anteriores"] = []
-        no["nivel"] = nivel
-        no["hash"] = self._gere_hash ({"chave": no["valor"], "nivel": no["nivel"]})
+        no["hash"] = self._gere_hash ({"chave": no["valor"]})
         no["operacao"] = True
         no["flag"] = False
         return no

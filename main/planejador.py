@@ -297,21 +297,21 @@ class Planejador:
         encontrou = False
 
         gff=grafoFF.GrafoFF()
-        nivel=1
+        gff.incluir_estado_inicial(estado_inicial)
         while True:
             # print('\n\nNivel {}'.format(nivel))
-            gff.incluir_noOps (estado, nivel)
+
             possiveis = self.devolve_possiveis_combinacoes(estado)
             for i in possiveis:
                 if possiveis[i]:
                     for j in possiveis[i]:
                         efeitos, preconds = self.calcula_efeitos_e_precondicoes (estado, (i, j))
-                        gff.incluir(preconds,(i,j),efeitos,nivel)
+                        gff.incluir(preconds,(i,j),efeitos)
                         estado = self.crie_proximo_estado_graph_plan_alterando(estado, (i, j))
 
             #dict_niveis.append(estado)
             #print(len(gff.nos))
-            nivel += 1
+
             if self.equivalentes(estado, estado_final):
                 encontrou = True
                 break
@@ -324,7 +324,7 @@ class Planejador:
         valor_heuristica=0
         for predicado in estado_final:
              for args in estado_final[predicado]:
-                no = gff.No ((predicado, {args}), nivel)
+                no = gff.NoPred ((predicado, {args}))
                 if (not no["hash"] in gff.nos):
                     gff.nos[no["hash"]] = no
                 no = gff.nos[no["hash"]]
@@ -349,10 +349,9 @@ class Planejador:
                 soma+=self.f(anterior)
             return soma
         else:
-            if(no["noOp"]):
-                return self.f(no["noOp"])
-            if(len(no["anteriores"])>0):
-                return soma+self.f (no["anteriores"][0])
+            if(no["anterior"] and not no["flag"]):
+                no["flag"]=True;
+                return soma+self.f (no["anterior"])
         return soma
 
     def busca_meta(self, atual, meta):
