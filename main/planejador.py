@@ -2,7 +2,8 @@ from itertools import product, chain
 from copy import copy, deepcopy
 from math import inf
 from main import grafoFF
-
+import hashlib
+import base64
 
 class Estado:
     def __init__(self, dict):
@@ -28,19 +29,36 @@ class Planejador:
 
     def recupera_meta(self):
         return self.estado_meta
+    #
+    # def _gere_hash(self, o):
+    #   if isinstance(o, (set, tuple, list)):
+    #     return tuple([self._gere_hash(e) for e in o])
+    #
+    #   elif not isinstance(o, dict):
+    #     return hash(o)
+    #
+    #   nova_estrutura = deepcopy(o)
+    #   for k, v in nova_estrutura.items():
+    #     nova_estrutura[k] = self._gere_hash(v)
+    #
+    #   return hash(tuple(frozenset(sorted(nova_estrutura.items()))))
 
     def _gere_hash(self, o):
-      if isinstance(o, (set, tuple, list)):
-        return tuple([self._gere_hash(e) for e in o])
+        hasher = hashlib.sha256()
+        hasher.update(repr(self.make_hashable(o)).encode())
+        return base64.b64encode(hasher.digest()).decode()
 
-      elif not isinstance(o, dict):
-        return hash(o)
+    def make_hashable(self, o):
+        if isinstance(o, (tuple, list)):
+            return tuple((self.make_hashable(e) for e in o))
 
-      nova_estrutura = deepcopy(o)
-      for k, v in nova_estrutura.items():
-        nova_estrutura[k] = self._gere_hash(v)
+        if isinstance(o, dict):
+            return tuple(sorted((k, self.make_hashable(v)) for k, v in o.items()))
 
-      return hash(tuple(frozenset(sorted(nova_estrutura.items()))))
+        if isinstance(o, (set, frozenset)):
+            return tuple(sorted(self.make_hashable(e) for e in o))
+
+        return o
 
     def vizinhos(self, estado_atual):
         possiveis = self.devolve_possiveis_combinacoes(estado_atual.dict)
@@ -62,7 +80,7 @@ class Planejador:
         elif self.heu == 'max':
             return self.heuristica_graphplan_nivel_maximo(atual.dict, final.dict)
         elif self.heu == 'FF':
-            return self.heuristica_ff(atual.dict, final.dict)
+            return self.heuristica_fast_foward(atual.dict, final.dict)
         elif self.heu == 'um':
             return self.heuristica_um(atual.dict, final.dict)
 
@@ -360,8 +378,6 @@ class Planejador:
         meta = deepcopy(estado_final)
         custo_somadando_niveis = 0
         niveis = 0
-        dict_niveis = []
-        dict_niveis.append(estado_inicial)
         encontrou = False
         while True:
             retirado_nivel, terminou = self.busca_meta(estado, meta)
@@ -398,29 +414,58 @@ class Planejador:
 
         return custo_somadando_niveis
 
-    # Fast Foward
+    # Fast Foward wesley
+    def crie_proximo_estado_graph_plan_ff(self, estado_atual, ope, niveis_operacao_geradora, nivel):
+        nome, parametros = ope
+        proximo_estado = estado_atual
+        operacao = self.operacoes[nome]
+        d = {}
+        for i, j in zip(operacao[0], parametros):
+            d[i] = j
+        # niveis_operacao_geradora[nivel][self._gere_hash(ope)] =
+        for pe in operacao[3]:
+            if pe not in proximo_estado:
+                proximo_estado[pe] = set()
+            t = tuple([d[x] if x in d else x for x in operacao[3][pe]])
+            # t = tuple([d[x] for x in operacao[3][pe]])
+            if not self._tupla_existe(proximo_estado[pe], t):
+                proximo_estado[pe].add(t)
+
+        return proximo_estado
+
+
     def lista_niveis_fast_forward(self, estado_inicial, estado_final):
-        estado = estado_inicial
-        dict_niveis = []
-        dict_niveis.append(estado_inicial)
+        estado = deepcopy(estado_inicial)
         encontrou = False
+        ant_pred, ant_op = {}, {}
+        nivel = 0
+        ant_pred[nivel] = {}
+        for predicado in estado:
+            for t in estado[predicado]:
+                ant_pred[nivel][self._gere_hash((predicado, t))] = [None]
+
         while True:
             # print('\n\nNivel {}'.format(nivel))
-            possiveis = self.devolve_possiveis_combinacoes(estado)
-            for i in possiveis:
-                if possiveis[i]:
-                    for j in possiveis[i]:
-                        estado = self.crie_proximo_estado_graph_plan(estado, (i, j))
-
-            dict_niveis.append(estado)
             if self.equivalentes(estado, estado_final):
                 encontrou = True
                 break
+            # niveis_operacao_geradora[nivel] = {}
+            # for predicado in estado:
+            #     for t in estado[predicado]:
+            #         niveis_operacao_geradora[nivel][self._gere_hash([predicado, t])]
+
+            possiveis = self.devolve_possiveis_combinacoes(estado)
+            niveis_operacao_geradora[nivel] = {}
+            for i in possiveis:
+                if possiveis[i]:
+                    for j in possiveis[i]:
+                        estado = self.crie_proximo_estado_graph_plan_ff(estado, (i, j), niveis_operacao_geradora, nivel)
+
 
             if len(dict_niveis) > 1 and self.equivalentes(dict_niveis[-2], dict_niveis[-1]):
                 break
 
-        return dict_niveis, encontrou
+
 
 
     def heuristica_fast_foward(self, estado_atual, meta):
