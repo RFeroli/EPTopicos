@@ -51,7 +51,8 @@ def plota_grafico(indice, label1, label2):
     plt.plot(n_caixas, valores_heuristicas['FF'], color='gray', label='Fast Forward')
     plt.xlabel('Número de caixas')
     plt.ylabel(label1)
-    plt.yscale('log')
+    if 'ramificação' not in label2:
+        plt.yscale('log')
     plt.title(label2)
     plt.legend()
     plt.show()
@@ -59,7 +60,7 @@ def plota_grafico(indice, label1, label2):
 
 
 plota_grafico(0, 'tempo (ms)', 'Tempo em ms para as quatro heurísticas.')
-plota_grafico(1, 'nós', 'Número de nós expandidos')
-plota_grafico(2, 'nós', 'Nós criados com repetiçao')
-plota_grafico(3, 'nós', 'Nós criados sem repetiçao')
-plota_grafico(4, 'nós', 'Taxa de ramificaçao')
+plota_grafico(1, 'Estados', 'Número de estados expandidos')
+plota_grafico(2, 'Estados', 'Estados criados com repetição')
+plota_grafico(3, 'Estados', 'Estados criados sem repetição')
+plota_grafico(4, 'Estados', 'Taxa de ramificação')

@@ -53,7 +53,7 @@ for problema in problemas:
     rects4 = ax.bar(x + 3*width/4, heuristica_medias['FF'], width/2, label='Fast Forward')
 
     # Add some text for labels, title and custom x-axis tick labels, etc.
-    ax.set_ylabel('Nós')
+    ax.set_ylabel('Estados')
     ax.set_title('Comparação de heurísticas ('+problema[2]+')')
     ax.set_xticks(x)
     ax.set_xticklabels(legenda)
