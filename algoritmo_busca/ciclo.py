@@ -19,7 +19,7 @@ problemas = [
               ('tyreworld_domain.pddl', 'tyreworld_problem.pddl', 'Problema TyreWorld')
             ]
 # Heurísticas que retorna 1, soma de nível, máximo nível e fast foward
-# TODO incluir FF
+
 heuristicas = ['um', 'soma', 'FF', 'max']
 
 path = '../in/'
