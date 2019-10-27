@@ -9,14 +9,14 @@ nome_heuristica = {'um': 'retorna 1', 'soma': 'soma de níveis', 'max': 'nível 
 
 nome_problema_teste = 'nome problema teste'
 problemas = [
-             # ('robot_domain.pddl', 'robot_problem_2b.pddl', 'Problema do robo: 2 caixas'),
+             #('robot_domain.pddl', 'robot_problem_2b.pddl', 'Problema do robo: 2 caixas'),
              #  ('robot_domain.pddl', 'robot_problem_3b.pddl', 'Problema do robo: 3 caixas'),
-             #  ('robot_domain.pddl', 'robot_problem_4b.pddl', 'Problema do robo: 4 caixas')
-                ('robot_domain.pddl', 'robot_problem_10b.pddl', nome_problema_teste)
+              # ('robot_domain.pddl', 'robot_problem_4b.pddl', 'Problema do robo: 4 caixas')
+                #('robot_domain.pddl', 'robot_problem_10b.pddl', nome_problema_teste)
     # ,
-    #           ('robot_domain.pddl', 'robot_problem_5b.pddl', 'Problema do robo: 5 caixas'),
+               ('robot_domain.pddl', 'robot_problem_5b.pddl', 'Problema do robo: 5 caixas'),
     #           ('robot_domain.pddl', 'robot_problem_6b.pddl', 'Problema do robo: 6 caixas'),
-    #           ('robot_domain.pddl', 'robot_problem_7b.pddl', 'Problema do robo: 7 caixas'),
+              # ('robot_domain.pddl', 'robot_problem_7b.pddl', 'Problema do robo: 7 caixas'),
     #          ('robot_domain.pddl', 'robot_problem_8b.pddl', 'Problema do robo: 8 caixas'),
     #          ('robot_domain.pddl', 'robot_problem_9b.pddl', 'Problema do robo: 9 caixas'),
     #          ('robot_domain.pddl', 'robot_problem_10b.pddl', 'Problema do robo: 10 caixas'),
@@ -68,6 +68,7 @@ for problema in problemas:
         pl = Planejador(argumentos, operacoes, Estado(estado), Estado(meta), heuristica)
         pl.nome_do_problema=problema[2]
         pl.gerar_grafico=False
+
 
         tempo_inicial = time.time()
         plano_estados, dicionario_expansao, contador_gerados = Busca().busca_a_estrela(pl)

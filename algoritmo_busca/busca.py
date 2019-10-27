@@ -119,10 +119,16 @@ class Busca:
             grafico.tela.mudarCorArvore (ColorUtils.toHex (0, 255, 0))
             for no in meta_plano:
                 grafico.tela.tradutorNo[no].mudarCorTexto (ColorUtils.toHex (0, 200, 30))
-            grafico.tela.reordenarArvore ()
-            grafico.tela.canvas.postscript (file="../graficos_ramificacao/grafico_" + planejador.heu + "_" + planejador.nome_do_problema.replace(" ","_")+".ps",
-                                            colormode='color')
+            grafico.tela.reordenarArvore()
+            #grafico.tela.canvas.postscript (file="../graficos_ramificacao/grafico_" + planejador.heu + "_" + planejador.nome_do_problema.replace(" ","_")+".ps",
+                                            #colormode='color')
+
+            #grafico.tela.raiz.deiconify()
+
 
         # Esses dicionarios sao usados para extrair a solucao
         # return came_from, custo_neste_momento, nos_expandidos
         return meta_plano, nos_ramificacao, contador_gerados
+
+
+
