@@ -6,21 +6,30 @@ import time
 nome_heuristica = {'um': 'retorna 1', 'soma': 'soma de níveis', 'max': 'nível máximo','FF':"fast forward 1", 'FF2':"fast forward 2"}
 
 # problema do robo e problema tyreworld
+
+nome_problema_teste = 'nome problema teste'
 problemas = [
-             ('robot_domain.pddl', 'robot_problem_2b.pddl', 'Problema do robo: 2 caixas'),
-              ('robot_domain.pddl', 'robot_problem_3b.pddl', 'Problema do robo: 3 caixas'),
-              ('robot_domain.pddl', 'robot_problem_4b.pddl', 'Problema do robo: 4 caixas'),
-              ('robot_domain.pddl', 'robot_problem_5b.pddl', 'Problema do robo: 5 caixas'),
-              ('robot_domain.pddl', 'robot_problem_6b.pddl', 'Problema do robo: 6 caixas'),
-              ('robot_domain.pddl', 'robot_problem_7b.pddl', 'Problema do robo: 7 caixas'),
-             ('robot_domain.pddl', 'robot_problem_8b.pddl', 'Problema do robo: 8 caixas'),
-             ('robot_domain.pddl', 'robot_problem_9b.pddl', 'Problema do robo: 9 caixas'),
-             ('robot_domain.pddl', 'robot_problem_10b.pddl', 'Problema do robo: 10 caixas'),
-              ('tyreworld_domain.pddl', 'tyreworld_problem.pddl', 'Problema TyreWorld')
+             # ('robot_domain.pddl', 'robot_problem_2b.pddl', 'Problema do robo: 2 caixas'),
+             #  ('robot_domain.pddl', 'robot_problem_3b.pddl', 'Problema do robo: 3 caixas'),
+             #  ('robot_domain.pddl', 'robot_problem_4b.pddl', 'Problema do robo: 4 caixas')
+                ('robot_domain.pddl', 'robot_problem_10b.pddl', nome_problema_teste)
+    # ,
+    #           ('robot_domain.pddl', 'robot_problem_5b.pddl', 'Problema do robo: 5 caixas'),
+    #           ('robot_domain.pddl', 'robot_problem_6b.pddl', 'Problema do robo: 6 caixas'),
+    #           ('robot_domain.pddl', 'robot_problem_7b.pddl', 'Problema do robo: 7 caixas'),
+    #          ('robot_domain.pddl', 'robot_problem_8b.pddl', 'Problema do robo: 8 caixas'),
+    #          ('robot_domain.pddl', 'robot_problem_9b.pddl', 'Problema do robo: 9 caixas'),
+    #          ('robot_domain.pddl', 'robot_problem_10b.pddl', 'Problema do robo: 10 caixas'),
+    #           ('tyreworld_domain.pddl', 'tyreworld_problem.pddl', 'Problema TyreWorld')
             ]
 # Heurísticas que retorna 1, soma de nível, máximo nível e fast foward
 
-heuristicas = ['um', 'soma', 'FF', 'max']
+heuristicas = [
+    # 'um',
+    'soma'
+    # ,
+    # 'FF', 'max'
+]
 
 path = '../in/'
 saida_estatisticas = '../estatisticas/saida_problema.txt'
@@ -34,7 +43,9 @@ estatisticas = {'Problema do robo: 2 caixas':{'um':[], 'soma': [], 'max': [], 'F
                 'Problema do robo: 8 caixas':{'um':[], 'soma': [], 'max': [], 'FF':[]},
                 'Problema do robo: 9 caixas':{'um':[], 'soma': [], 'max': [], 'FF':[]},
                 'Problema do robo: 10 caixas':{'um':[], 'soma': [], 'max': [], 'FF':[]},
-                'Problema TyreWorld': {'um':[], 'soma': [], 'max': [], 'FF':[]}}
+                'Problema TyreWorld': {'um':[], 'soma': [], 'max': [], 'FF':[]},
+                nome_problema_teste: {'um':[], 'soma': [], 'max': [], 'FF':[]}
+                }
 
 f = open(saida_estatisticas, 'a+')
 f_planos = open(saida_planos, 'a+')
